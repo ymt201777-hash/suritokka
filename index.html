@@ -65,7 +65,8 @@ nav.scrolled {
   position: relative; z-index: 101;
   cursor: pointer;
 }
-.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links { display: flex; gap: 32px; list-style: none; pointer-events: none; }
+.nav-links li { pointer-events: auto; }
 .nav-links a {
   font-family: var(--jp); font-weight: 200;
   font-size: 11.5px; letter-spacing: 0.14em;
@@ -551,12 +552,12 @@ footer {
 <!-- ========== Footer ========== -->
 <footer>
   <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
-  <nav class="footer-nav">
+  <div class="footer-nav">
     <a href="/courses">コース・料金</a>
     <a href="/facility">施設</a>
     <a href="/booking">体験予約</a>
     <a href="/legal">特商法</a>
-  </nav>
+  </div>
 </footer>
 
 <!-- ========== JS ========== -->
