@@ -129,6 +129,19 @@
   .results-section .page-label { color: rgba(200,184,154,0.8); }
   .results-section .page-label::after { background: rgba(200,184,154,0.4); }
 
+  .results-heading {
+    display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .results-heading-title {
+    font-weight: 300; font-size: clamp(20px, 3vw, 28px);
+    letter-spacing: 0.1em; color: var(--cream);
+  }
+  .results-heading-count {
+    font-weight: 200; font-size: 13px;
+    letter-spacing: 0.12em; color: var(--warm-mid);
+  }
+
   .results-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -322,7 +335,10 @@
 <!-- ========== 大学受験 ========== -->
 <div class="results-section" id="univ">
   <div class="results-inner">
-    <div class="page-label reveal">2026年3月卒　大学受験 合格実績</div>
+    <div class="results-heading reveal">
+      <span class="results-heading-title">2026年3月卒　大学受験 合格実績</span>
+      <span class="results-heading-count">受験者数 12人</span>
+    </div>
     <div class="results-grid">
       <div class="result-item">
         <span class="result-univ">慶應義塾大学</span>
@@ -523,7 +539,10 @@
 <!-- ========== 高校受験 ========== -->
 <div class="results-section" id="highschool">
   <div class="results-inner">
-    <div class="page-label reveal">2026年3月卒　高校受験 合格実績</div>
+    <div class="results-heading reveal">
+      <span class="results-heading-title">2026年3月卒　高校受験 合格実績</span>
+      <span class="results-heading-count">受験者数 3人</span>
+    </div>
     <div class="results-grid">
       <div class="result-item">
         <span class="result-univ">江南高校</span>
