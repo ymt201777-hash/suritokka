@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合格実績・体験記 | 犬山数学理科特化塾</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --cream: #f4efe6;
+    --warm-mid: #c8b89a;
+    --warm-light: #e8dfd0;
+    --serif-jp: 'Noto Serif JP', 'ヒラギノ明朝 ProN', serif;
+    --serif-en: 'Cormorant Garamond', Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--serif-jp); font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 52px; height: 72px;
+    background: rgba(244, 239, 230, 0);
+    backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(244, 239, 230, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom-color: rgba(14, 12, 10, 0.07);
+  }
+  .nav-logo {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 12px; letter-spacing: 0.2em;
+    opacity: 0.85;
+    position: relative; z-index: 101;
+    cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 11.5px; letter-spacing: 0.14em;
+    opacity: 0.5; transition: opacity 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px; position: relative; z-index: 110;
+  }
+  .hamburger span {
+    display: block; width: 100%; height: 1px; background: var(--ink);
+    position: absolute; left: 0; transition: all 0.35s;
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 50%; }
+  .hamburger span:nth-child(3) { top: 100%; }
+  .hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 105;
+    background: var(--cream);
+    flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 15px; letter-spacing: 0.18em;
+    opacity: 0.7; transition: opacity 0.3s;
+  }
+  .mobile-menu a:hover { opacity: 1; }
+
+  /* PAGE HEADER */
+  .page-header { padding: 160px 52px 80px; max-width: 1100px; margin: 0 auto; }
+  .page-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
+  }
+  .page-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
+  .page-title { font-weight: 200; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; line-height: 1.5; margin-bottom: 16px; }
+  .page-date { font-family: var(--serif-en); font-size: 11px; letter-spacing: 0.3em; color: var(--warm-mid); text-transform: uppercase; }
+
+  /* RESULTS SECTION */
+  .results-section {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 100px 52px;
+  }
+  .results-inner { max-width: 1100px; margin: 0 auto; }
+  .results-section .page-label { color: rgba(200,184,154,0.8); }
+  .results-section .page-label::after { background: rgba(200,184,154,0.4); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(200,184,154,0.15);
+    margin-bottom: 52px;
+  }
+
+  .result-item {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(200,184,154,0.1);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .result-item:nth-child(odd) { padding-right: 48px; }
+  .result-item:nth-child(even) { padding-left: 48px; border-left: 1px solid rgba(200,184,154,0.1); }
+
+  .result-univ {
+    font-weight: 300; font-size: 17px; letter-spacing: 0.08em; color: var(--cream);
+  }
+  .result-dept {
+    font-weight: 200; font-size: 12px; letter-spacing: 0.08em; color: rgba(244,239,230,0.7);
+    margin-left: auto; white-space: nowrap;
+  }
+
+  .results-others {
+    font-weight: 200; font-size: 12.5px; letter-spacing: 0.1em;
+    color: rgba(244,239,230,0.65); line-height: 2.4;
+    border-top: 1px solid rgba(200,184,154,0.1);
+    padding-top: 28px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section { max-width: 800px; margin: 0 auto; padding: 100px 52px 120px; }
+  .section-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 60px; display: flex; align-items: center; gap: 20px;
+  }
+  .section-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
+
+  .testimonial-list { display: flex; flex-direction: column; }
+
+  .testimonial-item {
+    padding: 64px 0;
+    border-bottom: 1px solid rgba(14,12,10,0.1);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .testimonial-item:first-child { border-top: 1px solid rgba(14,12,10,0.1); }
+  .testimonial-item.visible { opacity: 1; transform: translateY(0); }
+
+  .testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .testimonial-initial {
+    font-family: var(--serif-en); font-weight: 400; font-size: 20px;
+    letter-spacing: 0.08em; color: var(--ink);
+  }
+  .testimonial-divider {
+    width: 1px; height: 14px; background: var(--warm-mid);
+  }
+  .testimonial-school {
+    font-weight: 200; font-size: 12px; letter-spacing: 0.1em;
+    color: rgba(14,12,10,0.75);
+  }
+  .testimonial-dest {
+    font-weight: 400; font-size: 13px; letter-spacing: 0.08em;
+    color: var(--ink); margin-left: auto;
+    background: rgba(200,184,154,0.2);
+    padding: 4px 14px;
+  }
+
+  .testimonial-qa { margin-bottom: 28px; }
+  .testimonial-qa:last-child { margin-bottom: 0; }
+
+  .testimonial-question {
+    font-weight: 400; font-size: 12px; letter-spacing: 0.16em;
+    color: var(--ink); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .testimonial-question::before {
+    content: 'Q';
+    font-family: var(--serif-en); font-size: 13px;
+    color: var(--warm-mid);
+  }
+
+  .testimonial-answer {
+    font-weight: 300; font-size: 14.5px; letter-spacing: 0.06em;
+    line-height: 2.8; color: rgba(14,12,10,0.95);
+  }
+
+  .testimonial-message-wrap {
+    margin-top: 32px;
+    padding: 28px 28px;
+    background: rgba(200,184,154,0.12);
+    border-left: 3px solid var(--warm-mid);
+  }
+  .testimonial-message-label {
+    font-weight: 400; font-size: 11px; letter-spacing: 0.18em;
+    color: rgba(14,12,10,0.7); margin-bottom: 12px;
+  }
+  .testimonial-message {
+    font-weight: 300; font-size: 14px; letter-spacing: 0.06em;
+    line-height: 2.8; color: rgba(14,12,10,0.92);
+  }
+
+  /* CTA */
+  .cta-section { background: var(--warm-light); padding: 100px 52px; text-align: center; }
+  .cta-text { font-weight: 300; font-size: 14px; letter-spacing: 0.2em; color: rgba(14,12,10,0.75); margin-bottom: 48px; }
+  .cta-btn {
+    display: inline-block; padding: 20px 64px;
+    background: var(--ink); color: var(--cream);
+    font-weight: 300; font-size: 14px; letter-spacing: 0.22em;
+    text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s;
+  }
+  .cta-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--warm-mid); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s ease;
+  }
+  .cta-btn:hover::before { transform: scaleX(1); }
+  .cta-btn span { position: relative; z-index: 1; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(244,239,230,0.4);
+    padding: 64px 52px; display: flex;
+    justify-content: space-between; align-items: center;
+    font-weight: 200; font-size: 11px; letter-spacing: 0.15em;
+  }
+  footer a { color: rgba(244,239,230,0.4); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--warm-mid); }
+  .footer-nav { display: flex; gap: 28px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; height: 60px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .page-header { padding: 120px 24px 60px; }
+    .results-section { padding: 80px 24px; }
+    .results-grid { grid-template-columns: 1fr; }
+    .result-item:nth-child(even) { padding-left: 0; border-left: none; }
+    .result-item:nth-child(odd) { padding-right: 0; }
+    .testimonials-section { padding: 80px 24px; }
+    .testimonial-item { grid-template-columns: 1fr; gap: 32px; }
+    .cta-section { padding: 80px 24px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="./index.html">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="results.html">合格実績</a></li>
+    <li><a href="instructors.html">講師紹介</a></li>
+    <li><a href="booking.html">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">トップ</a>
+  <a href="results.html">合格実績</a>
+  <a href="instructors.html">講師紹介</a>
+  <a href="booking.html">体験予約</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-label">Achievement</div>
+  <h1 class="page-title">合格実績・体験記</h1>
+  <div class="page-date">2026年3月</div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-section">
+  <div class="results-inner">
+    <div class="page-label reveal">2026年3月　合格実績</div>
+    <div class="results-grid">
+      <div class="result-item">
+        <span class="result-univ">慶應義塾大学</span>
+        <span class="result-dept">理工学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">名古屋大学</span>
+        <span class="result-dept">法学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">名古屋工業大学</span>
+        <span class="result-dept"></span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">岐阜大学</span>
+        <span class="result-dept">医学部医学科</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">岐阜薬科大学</span>
+        <span class="result-dept"></span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">藤田医科大学</span>
+        <span class="result-dept">医学部医学科</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">愛知医科大学</span>
+        <span class="result-dept">医学部医学科</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">青山学院大学</span>
+        <span class="result-dept">理工学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">南山大学</span>
+        <span class="result-dept">人文学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">関西大学</span>
+        <span class="result-dept">化学生命工学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">近畿大学</span>
+        <span class="result-dept">理工学部</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">法政大学</span>
+        <span class="result-dept">生命科学部</span>
+      </div>
+    </div>
+    <div class="results-others">
+      他、愛知大学・名古屋学院大学・名城大学・中部大学（特別奨学金含む）、<br>
+      江南高校・大成高校・尾北高校・一宮南高校 など
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-section">
+  <div class="section-label">Voice</div>
+
+  <div class="testimonial-list">
+
+    <!-- S.W -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">S.W</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">滝高校</span>
+        <span class="testimonial-dest">進学先：名古屋大学 法学部</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">自習室ではたくさんの人が来て勉強していたので自分もがんばろうと思えました。先生が塾にいないときでもLINEで質問ができて、いつでも教えてもらえる環境が整っていたので、苦手な数学もどんどん問題集を進めることができました。塾の2階には私語厳禁の自習室があったので、よく使っていました。特に時間を測って過去問を解くときにおすすめです。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">授業について</div>
+        <p class="testimonial-answer">授業は少人数制でじっくり教えてもらえるので、数学が苦手な私に合っていました。先生が、私が手を動かしているところを見て考え方の癖を分析し、それを基に教えてくれました。1人1人に合ったアドバイスをしてくれます。数学の授業は週1コマ（70分）なので手いっぱいになることなく、自習の時間をしっかり確保できるところも良かったです。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">受験生は辛いし焦るし、想像以上に大変だと思いますが、睡眠はしっかり取ってがんばってください。少しでも困ったことがあったら先生に相談してみると、いいアドバイスがもらえるのでおすすめです。応援しています。</p>
+      </div>
+    </div>
+
+    <!-- K.H -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">K.H</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">滝高校</span>
+        <span class="testimonial-dest">進学先：藤田医科大学 医学部医学科</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">入塾前後で変わったこと</div>
+        <p class="testimonial-answer">平日に夜11時まで勉強時間を確保できるようになりました。塾の規模が自分の好みに合っていて、友達もできて、勉強のモチベーションになりました。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">朝8時から夜11時まで使えてすごく便利で、食事スペースでご飯も食べることができて、雰囲気がよかった。LINEですぐに質問することができて分かりやすかった。先生がいたらホワイトボードを使って分かりやすい解説をしてくれて、とても話しやすく、相談もしやすかった。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">3年生は成績が伸びるからがんばって。途中の模試で伸び悩んだり、友達の成績を見て落ち込むこともあるけど、人によって伸びる時期は違うから大丈夫だよ。友達とご飯に行くとすごくリラックスできるよ！</p>
+      </div>
+    </div>
+
+    <!-- M.U -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">M.U</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">滝高校</span>
+        <span class="testimonial-dest">進学先：青山学院大学 理工学部</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">仲良い友達に分からない問題を聞いたり、先生に聞いたりして難しい問題もクリアしていました。杉村先生がLINEで熱心に教えてくれてとても助かりました。友達のおかげで高め合うことができて、楽しく勉強し続けることができてよかったです。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">授業について</div>
+        <p class="testimonial-answer">周りのレベルが高かったので、自分も負けじとがんばったので、数学の成績がとても上がってよかったです。化学に関しても、授業のレベルが高かったので、元々興味を持っていたのもあってさらに強化することができました。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">今は不安なこともいっぱいあると思うけれど、成績が上がらなくて辛いときに友達がいることが大きな助けになったので、今の環境を大切にしてください！</p>
+      </div>
+    </div>
+
+    <!-- R.G -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">R.G</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">滝高校</span>
+        <span class="testimonial-dest">進学先：慶應義塾大学 理工学部</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">入塾のきっかけ・入塾前後で変わったこと</div>
+        <p class="testimonial-answer">以前の自習室は自分のスペースが狭くぎゅうぎゅう詰めで、迷惑な人も多くストレスがありました。ここは自習室が開いている時間も長いし、ストレスもないから自習しやすくなりました。雰囲気もアットホームで居心地がとてもよかったです。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">受験に向けて大切にしてきたこと</div>
+        <p class="testimonial-answer">受験など先のことを考えすぎずに、まず直近の目の前のテストや模試に対して目標を定めてそれに向かって勉強しました。相対的な目標でなく、「自分の中でとれないといけない問題がとれているか」を目標にすることを大切にしました。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">高1のころから地道に勉強しておけば、成績が伸び悩んだときに他の選択肢が増えたり、受験後に大学の奨学金に申し込んだときに通りやすかったりするから、受験に関係ない教科でも真面目にやっといて損はないよ！</p>
+      </div>
+    </div>
+
+    <!-- R.H -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">R.H</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">帝京大学可児高校</span>
+        <span class="testimonial-dest">進学先：南山大学 人文学部</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">入塾前後で変わったこと</div>
+        <p class="testimonial-answer">塾の先生に、苦手な単元に特化して解き進める「タテに解く」方法をすすめられました。それを実践した結果、今まで苦手意識を持っていたものがなくなり、成績も向上しました。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾でのLINEサポートについて</div>
+        <p class="testimonial-answer">従来の問題集では計算過程が具体的でなく理解が曖昧でしたが、この塾の最大の特徴ともいえるLINEでの質問対応を駆使したことで、理解が鮮明になりました。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">受験は「最後まで諦めなかった者が勝つ」ものだと思うので、最後まで粘って、志望校の合格を勝ち取ってください！心から応援しています！</p>
+      </div>
+    </div>
+
+    <!-- Y.U -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">Y.U</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">犬山市立南部中学校</span>
+        <span class="testimonial-dest">進学先：江南高校 普通科</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">自習室はいつも和やかな雰囲気でとてもリラックスしながら勉強ができました。先生に質問するとホワイトボードに書きながら説明してもらえるので、それを写真に残して後から復習できてよかったです。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">授業について</div>
+        <p class="testimonial-answer">数学の授業では1人ひとりに合ったアドバイスがあり、自分の考え方の良い癖・悪い癖を知ることができました。問題が難しく行き詰まったときに先生からもらうヒントが、ちょうど自分が迷っていたところを解決するもので、とても役に立つことが多かったです。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">これから大変なことが増えると思うけど、無理せず学校生活を楽しんでください！</p>
+      </div>
+    </div>
+
+    <!-- N.K -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">N.K</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">江南高校</span>
+        <span class="testimonial-dest">進学先：関西大学 化学生命工学部</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">自習室が多くあり、自分で好きな場所を見つけて勉強できるのがすごくいい。個別ブースも広くて1人の空間が作れて集中して勉強できて快適でした。ロッカーやウォーターサーバーなど他の塾にはない便利なものが多くあって1日塾にいられるのでよかったです。LINEも返信が早くて、分からないところをわかるまで教えてもらえました。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">授業について</div>
+        <p class="testimonial-answer">自分は解法を暗記して解いていたんですが、この塾では根本から理解できるので苦手だった確率などができるようになりました。その人の苦手な単元を先生が見つけて重点的に対応してくれるのがよかったです。化学は難しい内容を扱うこともあったんですが、先生の説明がわかりやすく、幅広く知識を詰められました。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">受験は最終的に結果しか見られないけど、その人の努力や勉強した過程は無駄にならないから、自分を追い詰めすぎずがんばってください。生きてればどうにかなるので、無理せず自分の目標に向けて突き進んで良い未来をつかみとってください。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p class="cta-text">まずは、雰囲気を感じてみてください。</p>
+  <a href="booking.html" class="cta-btn"><span>無料体験を予約する</span></a>
+</div>
+
+<footer>
+  <span>© 2024 犬山数学理科特化塾　suritokka.com</span>
+  <nav class="footer-nav">
+    <a href="instructors.html">講師紹介</a>
+    <a href="booking.html">体験予約</a>
+    <a href="results.html">合格実績</a>
+  </nav>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Fade-up on scroll
+const items = document.querySelectorAll('.testimonial-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+items.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

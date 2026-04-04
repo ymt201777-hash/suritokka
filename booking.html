@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料体験予約 | 犬山数学理科特化塾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --cream: #f4efe6;
+    --warm-mid: #c8b89a;
+    --warm-light: #e8dfd0;
+    --serif-jp: 'Noto Serif JP', 'ヒラギノ明朝 ProN', serif;
+    --serif-en: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 52px; height: 72px;
+    background: rgba(244, 239, 230, 0);
+    backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(244, 239, 230, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom-color: rgba(14, 12, 10, 0.07);
+  }
+  .nav-logo {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 12px; letter-spacing: 0.2em;
+    opacity: 0.85;
+    position: relative; z-index: 101;
+    cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 11.5px; letter-spacing: 0.14em;
+    opacity: 0.5; transition: opacity 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* Hamburger */
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px; position: relative; z-index: 110;
+  }
+  .hamburger span {
+    display: block; width: 100%; height: 1px; background: var(--ink);
+    position: absolute; left: 0; transition: all 0.35s;
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 50%; }
+  .hamburger span:nth-child(3) { top: 100%; }
+  .hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 105;
+    background: var(--cream);
+    flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 15px; letter-spacing: 0.18em;
+    opacity: 0.7; transition: opacity 0.3s;
+  }
+  .mobile-menu a:hover { opacity: 1; }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 160px 52px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .page-label {
+    font-family: var(--serif-en);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .page-label::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--warm-mid);
+  }
+  .page-title {
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .page-desc {
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: 13.5px;
+    letter-spacing: 0.1em;
+    line-height: 2.4;
+    color: rgba(14, 12, 10, 0.6);
+    max-width: 560px;
+  }
+
+  /* FORM */
+  .form-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 52px 120px;
+  }
+
+  .form-section-title {
+    font-family: var(--serif-en);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin: 56px 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .form-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(200, 184, 154, 0.4);
+  }
+
+  .form-group {
+    margin-bottom: 36px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  label .required {
+    font-family: var(--serif-en);
+    font-size: 10px;
+    color: var(--warm-mid);
+    letter-spacing: 0.1em;
+    margin-left: 8px;
+  }
+  label .optional {
+    font-family: var(--serif-en);
+    font-size: 10px;
+    color: rgba(14, 12, 10, 0.35);
+    letter-spacing: 0.1em;
+    margin-left: 8px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(14, 12, 10, 0.2);
+    padding: 12px 0;
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-bottom-color: var(--ink);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(14, 12, 10, 0.3);
+    font-size: 13px;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8b89a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 4px center;
+    padding-right: 24px;
+    cursor: pointer;
+  }
+  select option[value=""] { color: rgba(14, 12, 10, 0.3); }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 2;
+  }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .course-grid .form-group { margin-bottom: 0; }
+  .course-grid label {
+    font-size: 11.5px;
+    color: rgba(14, 12, 10, 0.6);
+  }
+
+  /* SUBMIT */
+  .form-submit {
+    margin-top: 64px;
+    text-align: center;
+  }
+  .submit-note {
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: rgba(14, 12, 10, 0.45);
+    margin-bottom: 36px;
+    line-height: 2.2;
+  }
+  .submit-btn {
+    display: inline-block;
+    padding: 20px 72px;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+  }
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--warm-mid);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .submit-btn:hover::before { transform: scaleX(1); }
+  .submit-btn span { position: relative; z-index: 1; }
+
+  /* SUCCESS */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 80px 40px;
+  }
+  .success-msg .check {
+    font-family: var(--serif-en);
+    font-size: 48px;
+    color: var(--warm-mid);
+    margin-bottom: 28px;
+  }
+  .success-msg h2 {
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+  .success-msg p {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: rgba(14, 12, 10, 0.6);
+    line-height: 2.4;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(244, 239, 230, 0.4);
+    padding: 64px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+  }
+  footer a { color: rgba(244, 239, 230, 0.4); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--warm-mid); }
+  .footer-nav { display: flex; gap: 28px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; height: 60px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .page-header { padding: 120px 24px 60px; }
+    .form-wrap { padding: 0 24px 80px; }
+    .course-grid { grid-template-columns: 1fr; gap: 28px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="./index.html">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="results.html">合格実績</a></li>
+    <li><a href="instructors.html">講師紹介</a></li>
+    <li><a href="booking.html">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">トップ</a>
+  <a href="results.html">合格実績</a>
+  <a href="instructors.html">講師紹介</a>
+  <a href="booking.html">体験予約</a>
+</div>
+
+<div class="page-header">
+  <div class="page-label">Trial Lesson</div>
+  <h1 class="page-title">無料体験予約</h1>
+  <p class="page-desc">
+    まずは一度、気軽に来てみてください。<br>
+    フォーム送信後、2〜3営業日以内にご連絡いたします。
+  </p>
+</div>
+
+<div class="form-wrap">
+  <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+    <!-- 基本情報 -->
+    <div class="form-section-title">Basic Info</div>
+
+    <div class="form-group">
+      <label>お名前 <span class="required">required</span></label>
+      <input type="text" name="name" placeholder="山田 太郎" required>
+    </div>
+
+    <div class="form-group">
+      <label>学年 <span class="required">required</span></label>
+      <select name="grade" required>
+        <option value="">選択してください</option>
+        <optgroup label="中学生">
+          <option value="中1">中学1年生</option>
+          <option value="中2">中学2年生</option>
+          <option value="中3">中学3年生</option>
+        </optgroup>
+        <optgroup label="高校生">
+          <option value="高1">高校1年生</option>
+          <option value="高2">高校2年生</option>
+          <option value="高3">高校3年生</option>
+        </optgroup>
+        <optgroup label="その他">
+          <option value="浪人">浪人生</option>
+          <option value="その他">その他</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>在籍校 <span class="required">required</span></label>
+      <input type="text" name="school" placeholder="〇〇高等学校" required>
+    </div>
+
+    <div class="form-group">
+      <label>志望校（現時点で） <span class="optional">optional</span></label>
+      <input type="text" name="target_school" placeholder="〇〇大学　〇〇学部">
+    </div>
+
+    <!-- 連絡先 -->
+    <div class="form-section-title">Contact</div>
+
+    <div class="form-group">
+      <label>電話番号 / LINE ID <span class="required">required</span></label>
+      <input type="text" name="phone" placeholder="090-0000-0000" required>
+    </div>
+
+    <div class="form-group">
+      <label>メールアドレス <span class="required">required</span></label>
+      <input type="email" name="email" placeholder="example@email.com" required>
+    </div>
+
+    <!-- 体験希望授業 -->
+    <div class="form-section-title">Courses</div>
+    <p style="font-size:12px; letter-spacing:0.1em; color:rgba(14,12,10,0.5); margin-bottom:28px; line-height:2;">
+      体験を希望する授業を最大3つ選んでください。
+    </p>
+
+    <div class="course-grid">
+      <div class="form-group">
+        <label>第1希望 <span class="required">required</span></label>
+        <select name="course1" required>
+          <option value="">選択</option>
+          <optgroup label="数学">
+            <option>中２数学</option>
+            <option>公立中３数学</option>
+            <option>私立中３数学</option>
+            <option>高１数学</option>
+            <option>高２数学ミドル</option>
+            <option>高２数学ハイレベル</option>
+            <option>高３数学ミドル</option>
+            <option>高３数学ハイレベル</option>
+            <option>高３文系数学</option>
+          </optgroup>
+          <optgroup label="理科">
+            <option>中３理科</option>
+            <option>高３化学</option>
+            <option>高３物理</option>
+          </optgroup>
+          <optgroup label="英語">
+            <option>中学英語</option>
+            <option>高１・２英文法</option>
+            <option>高３英文法</option>
+            <option>高３英語長文ハイレベル</option>
+          </optgroup>
+          <optgroup label="自習室">
+            <option>自習室のみ</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>第2希望 <span class="optional">optional</span></label>
+        <select name="course2">
+          <option value="">選択</option>
+          <optgroup label="数学">
+            <option>中２数学</option>
+            <option>公立中３数学</option>
+            <option>私立中３数学</option>
+            <option>高１数学</option>
+            <option>高２数学ミドル</option>
+            <option>高２数学ハイレベル</option>
+            <option>高３数学ミドル</option>
+            <option>高３数学ハイレベル</option>
+            <option>高３文系数学</option>
+          </optgroup>
+          <optgroup label="理科">
+            <option>中３理科</option>
+            <option>高３化学</option>
+            <option>高３物理</option>
+          </optgroup>
+          <optgroup label="英語">
+            <option>中学英語</option>
+            <option>高１・２英文法</option>
+            <option>高３英文法</option>
+            <option>高３英語長文ハイレベル</option>
+          </optgroup>
+          <optgroup label="自習室">
+            <option>自習室のみ</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>第3希望 <span class="optional">optional</span></label>
+        <select name="course3">
+          <option value="">選択</option>
+          <optgroup label="数学">
+            <option>中２数学</option>
+            <option>公立中３数学</option>
+            <option>私立中３数学</option>
+            <option>高１数学</option>
+            <option>高２数学ミドル</option>
+            <option>高２数学ハイレベル</option>
+            <option>高３数学ミドル</option>
+            <option>高３数学ハイレベル</option>
+            <option>高３文系数学</option>
+          </optgroup>
+          <optgroup label="理科">
+            <option>中３理科</option>
+            <option>高３化学</option>
+            <option>高３物理</option>
+          </optgroup>
+          <optgroup label="英語">
+            <option>中学英語</option>
+            <option>高１・２英文法</option>
+            <option>高３英文法</option>
+            <option>高３英語長文ハイレベル</option>
+          </optgroup>
+          <optgroup label="自習室">
+            <option>自習室のみ</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <!-- 日程 -->
+    <div class="form-section-title">Schedule</div>
+
+    <div class="form-group">
+      <label>初回体験希望日 <span class="required">required</span></label>
+      <input type="date" name="trial_date" required>
+    </div>
+
+    <div class="form-group">
+      <label>面談希望日程 <span class="optional">optional</span></label>
+      <input type="text" name="interview_date" placeholder="例：平日18時以降、土曜午前中など">
+    </div>
+
+    <!-- メッセージ -->
+    <div class="form-section-title">Message</div>
+
+    <div class="form-group">
+      <label>メッセージ・ご質問など <span class="optional">optional</span></label>
+      <textarea name="message" placeholder="気になることがあればお気軽にどうぞ。"></textarea>
+    </div>
+
+    <!-- 送信 -->
+    <div class="form-submit">
+      <p class="submit-note">
+        送信後、2〜3営業日以内にご登録の連絡先へご連絡いたします。<br>
+        お急ぎの場合はLINE公式アカウントからお問い合わせください。
+      </p>
+      <button type="submit" class="submit-btn"><span>送信する</span></button>
+    </div>
+
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <div class="check">✦</div>
+    <h2>送信が完了しました</h2>
+    <p>
+      お申し込みありがとうございます。<br>
+      2〜3営業日以内にご連絡いたします。<br>
+      しばらくお待ちください。
+    </p>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
+  <nav class="footer-nav">
+    <a href="courses.html">コース・料金</a>
+    <a href="facility.html">施設</a>
+    <a href="booking.html">体験予約</a>
+    <a href="legal.html">特商法</a>
+  </nav>
+</footer>
+
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Form
+  const form = document.getElementById('bookingForm');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch (err) {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+    }
+  });
+</script>
+
+</body>
+</html>

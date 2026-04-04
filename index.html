@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>犬山数学理科特化塾 suritokka</title>
+<meta name="description" content="犬山数学理科特化塾 suritokka｜数学と理科のプロを、近くにおける環境を。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   Reset & Variables
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0e0c0a;
+  --cream: #f4efe6;
+  --warm: #c8b89a;
+  --warm-light: #e8dfd0;
+  --warm-faint: rgba(200, 184, 154, 0.35);
+  --text-sub: rgba(14, 12, 10, 0.75);
+  --jp: 'Noto Serif JP', 'YuMincho', serif;
+  --en: 'Cormorant Garamond', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--jp);
+  font-weight: 300;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+/* ============================================
+   Nav
+   ============================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 52px; height: 72px;
+  background: rgba(244, 239, 230, 0);
+  backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+}
+nav.scrolled {
+  background: rgba(244, 239, 230, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(14, 12, 10, 0.07);
+}
+.nav-logo {
+  font-family: var(--jp); font-weight: 200;
+  font-size: 12px; letter-spacing: 0.2em;
+  opacity: 0.85;
+  position: relative; z-index: 101;
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: var(--jp); font-weight: 200;
+  font-size: 11.5px; letter-spacing: 0.14em;
+  opacity: 0.5; transition: opacity 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--ink);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 28px; height: 20px; position: relative; z-index: 110;
+}
+.hamburger span {
+  display: block; width: 100%; height: 1px; background: var(--ink);
+  position: absolute; left: 0; transition: all 0.35s;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; }
+.hamburger span:nth-child(3) { top: 100%; }
+.hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 105;
+  background: var(--cream);
+  flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--jp); font-weight: 300;
+  font-size: 15px; letter-spacing: 0.18em;
+  opacity: 0.7; transition: opacity 0.3s;
+}
+.mobile-menu a:hover { opacity: 1; }
+
+/* ============================================
+   Hero
+   ============================================ */
+.hero {
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 40px 80px;
+  position: relative;
+}
+.hero-copy {
+  font-family: var(--jp); font-weight: 300;
+  font-size: clamp(24px, 5vw, 52px);
+  letter-spacing: 0.1em; line-height: 1.7;
+}
+.hero-en {
+  font-family: var(--en); font-weight: 300;
+  font-size: clamp(11px, 1.4vw, 14px);
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--warm); margin-top: 36px;
+}
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.hero-scroll span {
+  font-family: var(--en); font-size: 10px;
+  letter-spacing: 0.25em; color: var(--warm);
+}
+.hero-scroll-line {
+  width: 1px; height: 52px; background: var(--warm);
+  animation: scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  30%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  70%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ============================================
+   News Banner
+   ============================================ */
+.news-banner {
+  background: var(--ink); color: var(--cream);
+  text-align: center; padding: 32px 40px;
+  font-size: 15px; letter-spacing: 0.18em; font-weight: 300;
+  border-bottom: 1px solid var(--warm);
+}
+.news-banner .date {
+  font-family: var(--en); font-weight: 300;
+  margin-right: 20px; opacity: 0.6;
+}
+
+/* ============================================
+   Results Preview
+   ============================================ */
+.results {
+  background: var(--ink); color: var(--cream);
+  padding: 72px 52px;
+}
+.results-inner {
+  max-width: 960px; margin: 0 auto;
+}
+.results-schools {
+  display: flex; flex-wrap: wrap; gap: 12px 36px;
+  margin-bottom: 48px;
+}
+.results-schools span {
+  font-size: clamp(18px, 3vw, 32px);
+  font-weight: 400; letter-spacing: 0.08em;
+}
+.results-schools .other {
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 200; opacity: 0.7;
+  align-self: flex-end; margin-bottom: 4px;
+}
+.results-date {
+  font-weight: 300;
+  font-size: 12px; letter-spacing: 0.16em;
+  color: var(--warm); margin-bottom: 48px;
+}
+.results-link {
+  font-size: 13px; letter-spacing: 0.12em;
+  color: rgba(244, 239, 230, 0.75);
+  transition: color 0.3s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.results-link:hover { color: var(--cream); }
+.results-link .arrow {
+  display: inline-block; transition: transform 0.3s;
+}
+.results-link:hover .arrow { transform: translateX(4px); }
+
+/* ============================================
+   Features
+   ============================================ */
+.features {
+  padding: 120px 52px;
+}
+.features-inner {
+  max-width: 960px; margin: 0 auto;
+}
+.section-label {
+  font-family: var(--en); font-weight: 300;
+  font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--warm); margin-bottom: 64px;
+  display: flex; align-items: center; gap: 20px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--warm-faint);
+}
+.feature-item {
+  display: grid; grid-template-columns: 56px 1fr;
+  gap: 0 32px; margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+}
+.feature-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.feature-num {
+  font-family: var(--en); font-weight: 300;
+  font-size: 13px; letter-spacing: 0.15em;
+  color: var(--warm); padding-top: 4px;
+}
+.feature-title {
+  font-weight: 400; font-size: clamp(17px, 2.2vw, 22px);
+  letter-spacing: 0.08em; margin-bottom: 16px;
+}
+.feature-link {
+  grid-column: 2;
+  display: inline-block;
+  margin-top: 24px;
+  padding: 14px 36px;
+  font-size: 14px; letter-spacing: 0.14em;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  transition: background 0.4s, color 0.4s;
+}
+.feature-link:hover {
+  background: var(--ink); color: var(--cream);
+}
+.feature-desc {
+  grid-column: 2; font-size: 13.5px;
+  letter-spacing: 0.06em; line-height: 2.3;
+  color: var(--text-sub);
+}
+
+
+/* ============================================
+   CTA
+   ============================================ */
+.cta {
+  background: var(--warm-light);
+  padding: 120px 52px;
+  text-align: center;
+}
+.cta-text {
+  font-weight: 300; font-size: clamp(18px, 2.8vw, 26px);
+  letter-spacing: 0.1em; line-height: 1.8;
+  margin-bottom: 48px;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 20px 64px;
+  background: var(--ink); color: var(--cream);
+  font-family: var(--jp); font-weight: 300;
+  font-size: 14px; letter-spacing: 0.2em;
+  border: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: opacity 0.3s;
+}
+.cta-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--warm); transform: scaleX(0);
+  transform-origin: left; transition: transform 0.45s ease;
+}
+.cta-btn:hover::before { transform: scaleX(1); }
+.cta-btn span { position: relative; z-index: 1; }
+
+/* ============================================
+   Story
+   ============================================ */
+.story {
+  padding: 120px 52px;
+}
+.story-inner {
+  max-width: 960px; margin: 0 auto;
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 0 64px;
+}
+.story-label {
+  font-family: var(--en); font-weight: 300;
+  font-size: 13px; letter-spacing: 0.2em;
+  color: var(--warm); line-height: 2;
+}
+.story-label small {
+  display: block; font-size: 11px;
+  letter-spacing: 0.3em; opacity: 0.8;
+}
+.story-body {
+  font-size: 14px; letter-spacing: 0.06em; line-height: 2.6;
+  color: var(--text-sub);
+}
+.story-body .dialogue {
+  color: var(--ink); font-weight: 400;
+}
+
+/* ============================================
+   SNS
+   ============================================ */
+.sns {
+  padding: 80px 52px;
+  border-top: 1px solid rgba(14, 12, 10, 0.08);
+}
+.sns-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; justify-content: center; gap: 56px;
+}
+.sns-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; letter-spacing: 0.12em;
+  color: var(--text-sub); transition: color 0.3s;
+}
+.sns-item:hover { color: var(--ink); }
+.sns-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+footer {
+  background: var(--ink);
+  color: rgba(244, 239, 230, 0.5);
+  padding: 56px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 200; font-size: 11px; letter-spacing: 0.14em;
+}
+.footer-nav { display: flex; gap: 28px; }
+.footer-nav a {
+  color: rgba(244, 239, 230, 0.5);
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-nav a:hover { color: var(--warm); }
+
+/* ============================================
+   Fade-in
+   ============================================ */
+.fade-up {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-up.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; height: 60px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .hero { padding: 100px 24px 60px; }
+  .news-banner { padding: 24px 24px; font-size: 13.5px; }
+
+  .results { padding: 56px 24px; }
+  .results-schools { gap: 8px 24px; }
+
+  .features { padding: 80px 24px; }
+  .feature-item {
+    grid-template-columns: 1fr; gap: 8px;
+    margin-bottom: 48px; padding-bottom: 48px;
+  }
+  .feature-num { margin-bottom: 4px; }
+  .feature-desc { grid-column: 1; }
+  .feature-link { grid-column: 1; }
+
+  .instructors { padding: 80px 24px; }
+  .instructor-item {
+    grid-template-columns: 1fr; gap: 8px;
+    padding: 36px 0;
+  }
+  .instructor-subject { margin-bottom: 4px; }
+
+  .cta { padding: 80px 24px; }
+  .cta-btn { padding: 18px 48px; font-size: 13px; }
+
+  .story { padding: 80px 24px; }
+  .story-inner {
+    grid-template-columns: 1fr; gap: 28px;
+  }
+
+  .sns { padding: 56px 24px; }
+  .sns-inner { flex-direction: column; align-items: center; gap: 24px; }
+
+  footer {
+    padding: 40px 24px;
+    flex-direction: column; gap: 20px; text-align: center;
+  }
+  .footer-nav { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Nav ========== -->
+<nav id="navbar">
+  <a class="nav-logo" href="./index.html">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="results.html">合格実績</a></li>
+    <li><a href="instructors.html">講師紹介</a></li>
+    <li><a href="booking.html">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">トップ</a>
+  <a href="results.html">合格実績</a>
+  <a href="instructors.html">講師紹介</a>
+  <a href="booking.html">体験予約</a>
+</div>
+
+<!-- ========== Hero ========== -->
+<section class="hero">
+  <h1 class="hero-copy fade-up">数学と理科のプロを、<br>近くにおける環境を。</h1>
+  <p class="hero-en fade-up">Inuyama Math &amp; Science Academy</p>
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ========== News Banner ========== -->
+<div class="news-banner">
+  <span class="date">2026.06.01</span>岩倉校（自習室）オープン
+</div>
+
+<!-- ========== Results ========== -->
+<section class="results">
+  <div class="results-inner">
+    <p class="results-date fade-up">2026年3月卒 合格実績</p>
+    <div class="results-schools fade-up">
+      <span>慶應義塾大学</span>
+      <span>名古屋大学</span>
+      <span>岐阜大学医学部</span>
+      <span class="other">他</span>
+    </div>
+    <a href="results.html" class="results-link fade-up">
+      合格実績・体験記を見る<span class="arrow">&nbsp;&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== Features ========== -->
+<section class="features">
+  <div class="features-inner">
+    <div class="section-label fade-up">Features</div>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">01</span>
+      <h3 class="feature-title">圧倒的な講師陣</h3>
+      <p class="feature-desc">
+        全国大会で最優秀賞を獲った数学、東大大学院・企業研究経験を持つ理科。<br>
+        本物のプロが、目の前で教える。
+      </p>
+      <a href="instructors.html" class="feature-link">講師紹介を見る&nbsp;&rarr;</a>
+    </div>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">02</span>
+      <h3 class="feature-title">自習室　毎日 8:00〜22:00（高３生は23時まで）</h3>
+      <p class="feature-desc">
+        塾生はいつでも使える自習室。<br>
+        朝から夜まで、集中できる場所が毎日開いている。
+      </p>
+    </div>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">03</span>
+      <h3 class="feature-title">LINEでいつでも質問</h3>
+      <p class="feature-desc">
+        授業外でも講師に質問できる環境。<br>
+        わからないまま次の日を迎えることがなくなる。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta">
+  <p class="cta-text fade-up">まずは、雰囲気を感じてみてください。</p>
+  <a href="booking.html" class="cta-btn fade-up"><span>無料体験を予約する</span></a>
+</section>
+
+<!-- ========== Story ========== -->
+<section class="story">
+  <div class="story-inner fade-up">
+    <div class="story-label">
+      誕生秘話
+    </div>
+    <div class="story-body">
+      高橋と杉村は、小学生時代からの25年来の親友です。<br><br>
+      ある日一緒に飲んでいて、<br>
+      <span class="dialogue">高橋「おれが数学教えるで杉が理科教えて一緒に塾やらん？」</span><br>
+      <span class="dialogue">杉村「いいよー」</span><br><br>
+      そこから始まった、"教える楽しさ"だけから始まった塾です。<br>
+      なので、是非カジュアルな気持ちで一度来てみてください。
+    </div>
+  </div>
+</section>
+
+<!-- ========== SNS ========== -->
+<section class="sns">
+  <div class="sns-inner">
+    <a href="https://www.instagram.com/inuyamasurijuku/" target="_blank" rel="noopener" class="sns-item">
+      <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+    <a href="https://lin.ee/5OTmMP9" target="_blank" rel="noopener" class="sns-item">
+      <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M12 1c-6.627 0-12 4.974-12 11.111 0 5.49 4.871 10.093 11.448 10.965.446.096 1.051.293 1.205.672.138.342.09.878.044 1.222l-.195 1.17c-.059.349-.271 1.37 1.2.747 1.472-.623 7.927-4.669 10.814-7.993C22.268 16.774 24 14.108 24 12.111 24 5.974 18.627 1 12 1"/>
+      </svg>
+      LINE
+    </a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer>
+  <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
+  <nav class="footer-nav">
+    <a href="courses.html">コース・料金</a>
+    <a href="facility.html">施設</a>
+    <a href="booking.html">体験予約</a>
+    <a href="legal.html">特商法</a>
+  </nav>
+</footer>
+
+<!-- ========== JS ========== -->
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Fade-up on scroll
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

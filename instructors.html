@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>講師紹介 | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾 suritokka の講師紹介。数学・理科・英語のプロフェッショナルが直接指導します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   Reset & Variables (shared with index.html)
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0e0c0a;
+  --cream: #f4efe6;
+  --warm: #c8b89a;
+  --warm-light: #e8dfd0;
+  --warm-faint: rgba(200, 184, 154, 0.35);
+  --text-sub: rgba(14, 12, 10, 0.55);
+  --jp: 'Noto Serif JP', 'YuMincho', serif;
+  --en: 'Cormorant Garamond', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--jp);
+  font-weight: 300;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+/* ============================================
+   Nav (identical to index.html)
+   ============================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 52px; height: 72px;
+  background: rgba(244, 239, 230, 0);
+  backdrop-filter: blur(0px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+}
+nav.scrolled {
+  background: rgba(244, 239, 230, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(14, 12, 10, 0.07);
+}
+.nav-logo {
+  font-family: var(--jp); font-weight: 200;
+  font-size: 12px; letter-spacing: 0.2em;
+  opacity: 0.85;
+  position: relative; z-index: 101;
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: var(--jp); font-weight: 200;
+  font-size: 11.5px; letter-spacing: 0.14em;
+  opacity: 0.5; transition: opacity 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--ink);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-links a:hover { opacity: 1; }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 28px; height: 20px; position: relative; z-index: 110;
+}
+.hamburger span {
+  display: block; width: 100%; height: 1px; background: var(--ink);
+  position: absolute; left: 0; transition: all 0.35s;
+}
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; }
+.hamburger span:nth-child(3) { top: 100%; }
+.hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 105;
+  background: var(--cream);
+  flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--jp); font-weight: 300;
+  font-size: 15px; letter-spacing: 0.18em;
+  opacity: 0.7; transition: opacity 0.3s;
+}
+.mobile-menu a:hover { opacity: 1; }
+
+/* ============================================
+   Page Header
+   ============================================ */
+.page-header {
+  padding: 160px 52px 80px;
+  max-width: 1100px; margin: 0 auto;
+}
+.page-label {
+  font-family: var(--en); font-weight: 300;
+  font-size: 11px; letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--warm); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 20px;
+}
+.page-label::after {
+  content: ''; width: 48px; height: 1px; background: var(--warm);
+}
+.page-title {
+  font-weight: 200;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: 0.08em; line-height: 1.5;
+}
+
+/* ============================================
+   Instructor List
+   ============================================ */
+.instructors-list {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 52px 120px;
+}
+
+.instructor-row {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+}
+.instructor-row:first-child {
+  border-top: 1px solid rgba(14, 12, 10, 0.08);
+}
+
+/* Illustration */
+.instructor-illust {
+  width: 300px; height: 300px;
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden; position: relative;
+}
+.instructor-illust img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center bottom;
+  filter: drop-shadow(0 4px 24px rgba(14, 12, 10, 0.08));
+}
+
+/* Text */
+.instructor-subject-ja {
+  font-weight: 300;
+  font-size: 32px; letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.instructor-subject {
+  font-family: var(--en); font-size: 10.5px;
+  letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--warm); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 16px;
+}
+.instructor-subject::after {
+  content: ''; width: 32px; height: 1px; background: var(--warm);
+}
+
+.instructor-name {
+  font-weight: 300; font-size: 28px;
+  letter-spacing: 0.14em; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--warm-faint);
+  padding: 3px 12px;
+  font-size: 11px; font-weight: 200;
+  letter-spacing: 0.12em;
+  color: var(--warm);
+  vertical-align: middle;
+}
+
+.instructor-catch {
+  font-weight: 200; font-size: 15px;
+  letter-spacing: 0.1em; line-height: 2;
+  border-left: 2px solid var(--warm);
+  padding-left: 20px;
+  margin-bottom: 32px;
+}
+
+.instructor-profile {
+  font-weight: 200; font-size: 12.5px;
+  letter-spacing: 0.08em; line-height: 2.8;
+  color: rgba(14, 12, 10, 0.7);
+}
+
+.instructor-bio {
+  margin-top: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.instructor-bio p {
+  font-weight: 200; font-size: 13.5px;
+  letter-spacing: 0.08em; line-height: 2.6;
+  color: rgba(14, 12, 10, 0.95);
+}
+
+/* ============================================
+   CTA (shared pattern)
+   ============================================ */
+.cta {
+  background: var(--warm-light);
+  padding: 120px 52px;
+  text-align: center;
+}
+.cta-text {
+  font-weight: 300;
+  font-size: clamp(18px, 2.8vw, 26px);
+  letter-spacing: 0.1em; line-height: 1.8;
+  margin-bottom: 48px;
+}
+.cta-btn {
+  display: inline-block; padding: 20px 64px;
+  background: var(--ink); color: var(--cream);
+  font-family: var(--jp); font-weight: 300;
+  font-size: 14px; letter-spacing: 0.2em;
+  border: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: opacity 0.3s;
+}
+.cta-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--warm); transform: scaleX(0);
+  transform-origin: left; transition: transform 0.45s ease;
+}
+.cta-btn:hover::before { transform: scaleX(1); }
+.cta-btn span { position: relative; z-index: 1; }
+
+/* ============================================
+   Footer (shared pattern)
+   ============================================ */
+footer {
+  background: var(--ink);
+  color: rgba(244, 239, 230, 0.35);
+  padding: 56px 52px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 200; font-size: 11px; letter-spacing: 0.14em;
+}
+.footer-nav { display: flex; gap: 28px; }
+.footer-nav a {
+  color: rgba(244, 239, 230, 0.35);
+  text-decoration: none; transition: color 0.3s;
+}
+.footer-nav a:hover { color: var(--warm); }
+
+/* ============================================
+   Fade-up (shared pattern)
+   ============================================ */
+.fade-up {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-up.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  nav { padding: 0 24px; height: 60px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .page-header { padding: 120px 24px 60px; }
+
+  .instructors-list { padding: 0 24px 80px; }
+  .instructor-row {
+    grid-template-columns: 1fr;
+    gap: 36px; padding: 60px 0;
+  }
+  .instructor-illust {
+    width: 220px; height: 220px; margin: 0 auto;
+  }
+  .instructor-name { font-size: 22px; }
+  .instructor-subject-ja { font-size: 26px; }
+
+  .cta { padding: 80px 24px; }
+  .cta-btn { padding: 18px 48px; font-size: 13px; }
+
+  footer {
+    padding: 40px 24px;
+    flex-direction: column; gap: 20px; text-align: center;
+  }
+  .footer-nav { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Nav ========== -->
+<nav id="navbar">
+  <a class="nav-logo" href="./index.html">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="results.html">合格実績</a></li>
+    <li><a href="instructors.html">講師紹介</a></li>
+    <li><a href="booking.html">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">トップ</a>
+  <a href="results.html">合格実績</a>
+  <a href="instructors.html">講師紹介</a>
+  <a href="booking.html">体験予約</a>
+</div>
+
+<!-- ========== Page Header ========== -->
+<div class="page-header fade-up">
+  <div class="page-label">Instructors</div>
+  <h1 class="page-title">講師紹介</h1>
+</div>
+
+<!-- ========== Instructor List ========== -->
+<div class="instructors-list">
+
+  <!-- 数学 -->
+  <div class="instructor-row fade-up">
+    <div class="instructor-illust">
+      <img src="sugaku_koshi.png" alt="高橋祐一郎">
+    </div>
+    <div class="instructor-right">
+      <div class="instructor-subject-ja">数学</div>
+      <div class="instructor-subject">Mathematics</div>
+      <div class="instructor-name">高橋 祐一郎<span class="tag">数学</span><span class="tag">塾長</span></div>
+      <div class="instructor-profile">
+        計算機統計学会　データ解析コンペティション<br>
+        最優秀賞 ── 2016年（平成28年）
+      </div>
+      <div class="instructor-bio">
+        <p>高校までは、お世辞にも真面目な学生ではありませんでした。大学に入ってから数学の面白さに気づき、気づいたら年に一度のデータ解析の全国大会で最優秀賞を獲るまでやり込んでいました。「楽しいからやる」という経験があるからこそ、数学の本質的な面白さから教えることができます。以前は個人で家庭教師もしており、海外の有名大学に進んだ生徒も多数います。</p>
+        <p>元バックパッカーで中南米を旅していました。とにかく楽しいと思うことをとことんまでやりたい"行動力"が一番強みの数学講師です。笑</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 理科 -->
+  <div class="instructor-row fade-up">
+    <div class="instructor-illust">
+      <img src="rika_koshi.png" alt="杉村優一">
+    </div>
+    <div class="instructor-right">
+      <div class="instructor-subject-ja">理科</div>
+      <div class="instructor-subject">Science</div>
+      <div class="instructor-name">杉村 優一<span class="tag">理科</span><span class="tag">岩倉校室長</span></div>
+      <div class="instructor-profile">
+        旭丘高校 → 東京大学 → 東京大学大学院<br>
+        大学・企業での研究経験あり
+      </div>
+      <div class="instructor-bio">
+        <p>県内トップレベルの高校から東大。あまり面白みのない経歴かもしれませんが、常に高いレベルを目指してきた経験が指導の説得力につながっていると考えています。論理的なアプローチが求められる物理・化学を得意とする講師でありながら、運動部で鍛えられた熱い言葉で生徒を奮い立たせます。</p>
+        <p>現在に至るまで研究開発の現場で培ってきた「生きた」理科の知識を武器に、近年の入試で問われている柔軟な思考力を生徒が身につけられるようサポートして参ります。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 英語 -->
+  <div class="instructor-row fade-up">
+    <div class="instructor-illust">
+      <img src="eigo_koshi.png" alt="富田匠">
+    </div>
+    <div class="instructor-right">
+      <div class="instructor-subject-ja">英語</div>
+      <div class="instructor-subject">English</div>
+      <div class="instructor-name">富田 匠<span class="tag">英語</span></div>
+      <div class="instructor-profile">
+        名大オープン医学部医学科　全国4位<br>
+        全国模試　総合100位以内　複数回
+      </div>
+      <div class="instructor-bio">
+        <p>英語・数学・理科はもちろん、独学で差がつく国語・社会まで全教科を網羅。圧倒的な成績を支えたのは、闇雲な努力ではなく「正しい戦略」です。単に教えるだけでなく、志望校合格から逆算した「参考書選び」や「学習計画」の立案を得意としています。</p>
+        <p>寝食忘れるほどの、元ゲーマーで、ゲームの攻略と同じように、勉強も楽しみましょう。</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== CTA ========== -->
+<section class="cta">
+  <p class="cta-text fade-up">まずは、雰囲気を感じてみてください。</p>
+  <a href="booking.html" class="cta-btn fade-up"><span>無料体験を予約する</span></a>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer>
+  <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
+  <nav class="footer-nav">
+    <a href="courses.html">コース・料金</a>
+    <a href="facility.html">施設</a>
+    <a href="booking.html">体験予約</a>
+    <a href="legal.html">特商法</a>
+  </nav>
+</footer>
+
+<!-- ========== JS ========== -->
+<script>
+// Nav scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Fade-up on scroll
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
