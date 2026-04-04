@@ -96,7 +96,27 @@
     margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
   }
   .page-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
-  .page-title { font-weight: 200; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; line-height: 1.5; margin-bottom: 16px; }
+  .page-title { font-weight: 200; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; line-height: 1.5; margin-bottom: 0; }
+  .page-title-row {
+    display: flex; align-items: baseline; gap: 32px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .page-btns { display: flex; gap: 12px; }
+  .page-btn {
+    padding: 8px 24px;
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 13px; letter-spacing: 0.12em;
+    border: 1px solid rgba(14, 12, 10, 0.2);
+    color: rgba(14, 12, 10, 0.5);
+    background: transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .page-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .page-btn.active {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
   .page-date { font-family: var(--serif-en); font-size: 11px; letter-spacing: 0.3em; color: var(--warm-mid); text-transform: uppercase; }
 
   /* RESULTS SECTION */
@@ -289,14 +309,20 @@
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-label">Achievement</div>
-  <h1 class="page-title">合格実績・体験記</h1>
+  <div class="page-title-row">
+    <h1 class="page-title">合格実績・体験記</h1>
+    <div class="page-btns">
+      <a href="#univ" class="page-btn active">大学受験</a>
+      <a href="#highschool" class="page-btn">高校受験</a>
+    </div>
+  </div>
   <div class="page-date">2026年3月</div>
 </div>
 
-<!-- RESULTS -->
-<div class="results-section">
+<!-- ========== 大学受験 ========== -->
+<div class="results-section" id="univ">
   <div class="results-inner">
-    <div class="page-label reveal">2026年3月　合格実績</div>
+    <div class="page-label reveal">2026年3月卒　大学受験 合格実績</div>
     <div class="results-grid">
       <div class="result-item">
         <span class="result-univ">慶應義塾大学</span>
@@ -348,15 +374,14 @@
       </div>
     </div>
     <div class="results-others">
-      他、愛知大学・名古屋学院大学・名城大学・中部大学（特別奨学金含む）、<br>
-      江南高校・大成高校・尾北高校・一宮南高校 など
+      他、愛知大学・名古屋学院大学・名城大学・中部大学（特別奨学金含む）
     </div>
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
+<!-- 大学受験 体験記 -->
 <div class="testimonials-section">
-  <div class="section-label">Voice</div>
+  <div class="section-label">Voice — 大学受験</div>
 
   <div class="testimonial-list">
 
@@ -470,28 +495,6 @@
       </div>
     </div>
 
-    <!-- Y.U -->
-    <div class="testimonial-item">
-      <div class="testimonial-header">
-        <span class="testimonial-initial">Y.U</span>
-        <span class="testimonial-divider"></span>
-        <span class="testimonial-school">犬山市立南部中学校</span>
-        <span class="testimonial-dest">進学先：江南高校 普通科</span>
-      </div>
-      <div class="testimonial-qa">
-        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
-        <p class="testimonial-answer">自習室はいつも和やかな雰囲気でとてもリラックスしながら勉強ができました。先生に質問するとホワイトボードに書きながら説明してもらえるので、それを写真に残して後から復習できてよかったです。</p>
-      </div>
-      <div class="testimonial-qa">
-        <div class="testimonial-question">授業について</div>
-        <p class="testimonial-answer">数学の授業では1人ひとりに合ったアドバイスがあり、自分の考え方の良い癖・悪い癖を知ることができました。問題が難しく行き詰まったときに先生からもらうヒントが、ちょうど自分が迷っていたところを解決するもので、とても役に立つことが多かったです。</p>
-      </div>
-      <div class="testimonial-message-wrap">
-        <div class="testimonial-message-label">後輩へのメッセージ</div>
-        <p class="testimonial-message">これから大変なことが増えると思うけど、無理せず学校生活を楽しんでください！</p>
-      </div>
-    </div>
-
     <!-- N.K -->
     <div class="testimonial-item">
       <div class="testimonial-header">
@@ -511,6 +514,62 @@
       <div class="testimonial-message-wrap">
         <div class="testimonial-message-label">後輩へのメッセージ</div>
         <p class="testimonial-message">受験は最終的に結果しか見られないけど、その人の努力や勉強した過程は無駄にならないから、自分を追い詰めすぎずがんばってください。生きてればどうにかなるので、無理せず自分の目標に向けて突き進んで良い未来をつかみとってください。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== 高校受験 ========== -->
+<div class="results-section" id="highschool">
+  <div class="results-inner">
+    <div class="page-label reveal">2026年3月卒　高校受験 合格実績</div>
+    <div class="results-grid">
+      <div class="result-item">
+        <span class="result-univ">江南高校</span>
+        <span class="result-dept">普通科</span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">大成高校</span>
+        <span class="result-dept"></span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">尾北高校</span>
+        <span class="result-dept"></span>
+      </div>
+      <div class="result-item">
+        <span class="result-univ">一宮南高校</span>
+        <span class="result-dept"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 高校受験 体験記 -->
+<div class="testimonials-section">
+  <div class="section-label">Voice — 高校受験</div>
+
+  <div class="testimonial-list">
+
+    <!-- Y.U -->
+    <div class="testimonial-item">
+      <div class="testimonial-header">
+        <span class="testimonial-initial">Y.U</span>
+        <span class="testimonial-divider"></span>
+        <span class="testimonial-school">犬山市立南部中学校</span>
+        <span class="testimonial-dest">進学先：江南高校 普通科</span>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">塾での自習室・LINEサポートについて</div>
+        <p class="testimonial-answer">自習室はいつも和やかな雰囲気でとてもリラックスしながら勉強ができました。先生に質問するとホワイトボードに書きながら説明してもらえるので、それを写真に残して後から復習できてよかったです。</p>
+      </div>
+      <div class="testimonial-qa">
+        <div class="testimonial-question">授業について</div>
+        <p class="testimonial-answer">数学の授業では1人ひとりに合ったアドバイスがあり、自分の考え方の良い癖・悪い癖を知ることができました。問題が難しく行き詰まったときに先生からもらうヒントが、ちょうど自分が迷っていたところを解決するもので、とても役に立つことが多かったです。</p>
+      </div>
+      <div class="testimonial-message-wrap">
+        <div class="testimonial-message-label">後輩へのメッセージ</div>
+        <p class="testimonial-message">これから大変なことが増えると思うけど、無理せず学校生活を楽しんでください！</p>
       </div>
     </div>
 
@@ -552,6 +611,22 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
+  });
+});
+
+// Page buttons - active state & scroll offset
+const pageBtns = document.querySelectorAll('.page-btn');
+pageBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    pageBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // offset for fixed nav
+    const target = document.querySelector(btn.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
   });
 });
 
