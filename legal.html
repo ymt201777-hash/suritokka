@@ -92,6 +92,16 @@
     opacity: 0.7; transition: opacity 0.3s;
   }
   .mobile-menu a:hover { opacity: 1; }
+  .mobile-menu .mobile-cta {
+    margin-top: 12px;
+    padding: 12px 36px;
+    border: 1px solid var(--ink);
+    opacity: 1;
+    transition: background 0.3s, color 0.3s;
+  }
+  .mobile-menu .mobile-cta:hover {
+    background: var(--ink); color: var(--cream);
+  }
 
   .page-header { padding: 160px 52px 80px; max-width: 860px; margin: 0 auto; }
   .page-label {
@@ -163,7 +173,7 @@
   <a href="/intensive">講習</a>
   <a href="/results">合格実績</a>
   <a href="/legal">特商法</a>
-  <a href="/booking">体験予約</a>
+  <a href="/booking" class="mobile-cta">体験予約</a>
 </div>
 
 <div class="page-header">
