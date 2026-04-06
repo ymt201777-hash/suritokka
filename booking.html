@@ -27,85 +27,40 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  a { color: inherit; text-decoration: none; }
-  button { font-family: inherit; }
-
   /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 52px; height: 72px;
-    background: rgba(244, 239, 230, 0);
-    backdrop-filter: blur(0px);
-    border-bottom: 1px solid transparent;
-    transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
-  }
-  nav.scrolled {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 52px;
     background: rgba(244, 239, 230, 0.92);
-    backdrop-filter: blur(14px);
-    border-bottom-color: rgba(14, 12, 10, 0.07);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(14, 12, 10, 0.08);
   }
   .nav-logo {
-    font-family: var(--serif-jp); font-weight: 200;
-    font-size: 12px; letter-spacing: 0.2em;
-    opacity: 0.85;
-    position: relative; z-index: 101;
-    cursor: pointer;
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.7;
   }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a {
-    font-family: var(--serif-jp); font-weight: 200;
-    font-size: 11.5px; letter-spacing: 0.14em;
-    opacity: 0.5; transition: opacity 0.3s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 1px; background: var(--ink);
-    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: var(--serif-jp);
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
   }
   .nav-links a:hover { opacity: 1; }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    opacity: 0.85 !important;
-    padding: 6px 18px;
-    border: 1px solid var(--ink);
-    transition: background 0.3s, color 0.3s, opacity 0.3s;
-  }
-  .nav-cta::after { display: none !important; }
-  .nav-cta:hover {
-    background: var(--ink); color: var(--cream); opacity: 1 !important;
-  }
-
-  /* Hamburger */
-  .hamburger {
-    display: none; background: none; border: none; cursor: pointer;
-    width: 28px; height: 20px; position: relative; z-index: 110;
-  }
-  .hamburger span {
-    display: block; width: 100%; height: 1px; background: var(--ink);
-    position: absolute; left: 0; transition: all 0.35s;
-  }
-  .hamburger span:nth-child(1) { top: 0; }
-  .hamburger span:nth-child(2) { top: 50%; }
-  .hamburger span:nth-child(3) { top: 100%; }
-  .hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
-
-  /* Mobile menu overlay */
-  .mobile-menu {
-    display: none; position: fixed; inset: 0; z-index: 105;
-    background: var(--cream);
-    flex-direction: column; justify-content: center; align-items: center; gap: 36px;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    font-family: var(--serif-jp); font-weight: 300;
-    font-size: 15px; letter-spacing: 0.18em;
-    opacity: 0.7; transition: opacity 0.3s;
-  }
-  .mobile-menu a:hover { opacity: 1; }
 
   /* PAGE HEADER */
   .page-header {
@@ -348,9 +303,8 @@
   .footer-nav { display: flex; gap: 28px; }
 
   @media (max-width: 768px) {
-    nav { padding: 0 24px; height: 60px; }
+    nav { padding: 20px 24px; }
     .nav-links { display: none; }
-    .hamburger { display: block; }
     .page-header { padding: 120px 24px 60px; }
     .form-wrap { padding: 0 24px 80px; }
     .course-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -360,30 +314,16 @@
 </head>
 <body>
 
-<nav id="navbar">
+<nav>
   <a class="nav-logo" href="/">犬山数学理科特化塾</a>
   <ul class="nav-links">
+    <li><a href="/results">合格実績</a></li>
     <li><a href="/instructors">講師紹介</a></li>
     <li><a href="/courses">コース・料金</a></li>
-    <li><a href="/intensive">講習</a></li>
-    <li><a href="/results">合格実績</a></li>
-    <li><a href="/legal">特商法</a></li>
-    <li><a href="/booking" class="nav-cta">体験予約</a></li>
+    <li><a href="/facility">施設</a></li>
+    <li><a href="/booking">体験予約</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="/">トップ</a>
-  <a href="/instructors">講師紹介</a>
-  <a href="/courses">コース・料金</a>
-  <a href="/intensive">講習</a>
-  <a href="/results">合格実績</a>
-  <a href="/legal">特商法</a>
-  <a href="/booking">体験予約</a>
-</div>
 
 <div class="page-header">
   <div class="page-label">Trial Lesson</div>
@@ -395,7 +335,12 @@
 </div>
 
 <div class="form-wrap">
-  <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+  <form id="bookingForm" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="6b5efc42-f262-408d-90a4-ab8aa5c3674b">
+    <input type="hidden" name="subject" value="【無料体験予約】犬山数学理科特化塾">
+    <input type="hidden" name="from_name" value="犬山数学理科特化塾 体験予約フォーム">
+    <input type="hidden" name="replyto" value="inuyama@suritokka.com">
+    <input type="checkbox" name="botcheck" style="display:none;">
 
     <!-- 基本情報 -->
     <div class="form-section-title">Basic Info</div>
@@ -597,39 +542,16 @@
 </div>
 
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
-  <div class="footer-nav">
+  <span>© 2024 犬山数学理科特化塾　suritokka.com</span>
+  <nav class="footer-nav">
     <a href="/courses">コース・料金</a>
     <a href="/facility">施設</a>
     <a href="/booking">体験予約</a>
     <a href="/legal">特商法</a>
-  </div>
+  </nav>
 </footer>
 
 <script>
-// Nav scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// Hamburger
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-});
-mobileMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-});
-
-// Form
   const form = document.getElementById('bookingForm');
   const successMsg = document.getElementById('successMsg');
 
@@ -637,15 +559,17 @@ mobileMenu.querySelectorAll('a').forEach(a => {
     e.preventDefault();
     const data = new FormData(form);
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        body: data
       });
-      if (res.ok) {
+      const json = await res.json();
+      if (json.success) {
         form.style.display = 'none';
         successMsg.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
       }
     } catch (err) {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
