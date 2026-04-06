@@ -335,14 +335,7 @@
 </div>
 
 <div class="form-wrap">
-  <form id="bookingForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="6b5efc42-f262-408d-90a4-ab8aa5c3674b">
-    <input type="hidden" name="subject" value="【無料体験予約】犬山数学理科特化塾">
-    <input type="hidden" name="from_name" value="犬山数学理科特化塾 体験予約フォーム">
-    <input type="hidden" name="replyto" value="inuyama@suritokka.com">
-    <input type="hidden" name="autoresponse" value="">
-    <input type="hidden" name="autoresponse_from" value="犬山数学理科特化塾">
-    <input type="checkbox" name="botcheck" style="display:none;">
+  <form id="bookingForm">
 
     <!-- 利用校 -->
     <div class="form-section-title">Campus</div>
@@ -565,80 +558,44 @@
   </nav>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  emailjs.init('LI36yHTHbw37mvKeA');
+
   const form = document.getElementById('bookingForm');
   const successMsg = document.getElementById('successMsg');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
 
-    // Build autoresponse with form values
-    const v = (name) => data.get(name) || '（未入力）';
-    const campus = data.get('campus') || '';
-    const lines = [
-      '【犬山数学理科特化塾】無料体験のお申し込みありがとうございます。',
-      '',
-      'この度は犬山数学理科特化塾の無料体験にお申し込みいただき、誠にありがとうございます。',
-      '以下の内容でお申し込みを受け付けました。',
-      '',
-      '━━━ お申し込み内容 ━━━',
-      '',
-      '利用校：' + v('campus'),
-      '',
-      'お名前：' + v('name'),
-      '学年：' + v('grade'),
-      '在籍校：' + v('school'),
-      '志望校：' + v('target_school'),
-      '',
-      '電話番号：' + v('phone'),
-      'メールアドレス：' + v('email'),
-      '',
-      '第1希望：' + v('course1'),
-      '第2希望：' + v('course2'),
-      '第3希望：' + v('course3'),
-      '',
-      '初回体験希望日：' + v('trial_date'),
-      '面談希望日程：' + v('interview_date'),
-      '',
-      'メッセージ：' + v('message'),
-      '',
-      '━━━━━━━━━━━━━━━',
-      '',
-      '2〜3営業日以内にご登録の連絡先へご連絡いたします。',
-      'お急ぎの場合はLINE公式アカウントからお問い合わせください。',
-      'https://lin.ee/5OTmMP9',
-      '',
-      '【面談について】',
-      '可能であれば、模試やテストの結果をお持ちいただけると助かります。',
-      ''
-    ];
+    const data = {
+      campus: form.campus.value,
+      name: form.name.value,
+      grade: form.grade.value,
+      school: form.school.value,
+      target_school: form.target_school.value || '（未入力）',
+      phone: form.phone.value,
+      email: form.email.value,
+      course1: form.course1.value,
+      course2: form.course2.value || '（未入力）',
+      course3: form.course3.value || '（未入力）',
+      trial_date: form.trial_date.value,
+      interview_date: form.interview_date.value || '（未入力）',
+      message: form.message.value || '（未入力）',
+      parking_info: form.campus.value === '犬山校'
+        ? '<strong>犬山校へお車でお越しの方へ</strong><br>お車でお越しの場合は、隣の中華料理屋さんの駐車場にお停めください。（面談・送り迎えの際はご利用いただいてよいとの許可を店主さんから得ております。）'
+        : ''
+    };
 
-    if (campus === '犬山校') {
-      lines.push('【犬山校へお車でお越しの方へ】');
-      lines.push('お車でお越しの場合は、隣の中華料理屋さんの駐車場にお停めください。');
-      lines.push('（面談・送り迎えの際はご利用いただいてよいとの許可を店主さんから得ております。）');
-      lines.push('');
-    }
-
-    lines.push('─────────────────');
-    lines.push('犬山数学理科特化塾 suritokka');
-    lines.push('https://suritokka.vercel.app');
-
-    data.set('autoresponse', lines.join('\n'));
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: data
-      });
-      const json = await res.json();
-      if (json.success) {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        alert('送信に失敗しました。時間をおいて再度お試しください。');
-      }
+      // 塾への通知メール
+      await emailjs.send('service_64j7iqj', 'template_o0gslh8', data);
+      // 送信者への自動返信メール
+      await emailjs.send('service_64j7iqj', 'template_rnfv0mf', data);
+
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
     }
