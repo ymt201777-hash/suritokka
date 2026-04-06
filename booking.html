@@ -596,6 +596,7 @@
       form.style.display = 'none';
       successMsg.style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('navbar').classList.add('scrolled');
     } catch (err) {
       alert('送信に失敗しました。時間をおいて再度お試しください。');
     }
