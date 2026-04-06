@@ -101,7 +101,7 @@
     font-size: 13.5px;
     letter-spacing: 0.1em;
     line-height: 2.4;
-    color: rgba(14, 12, 10, 0.6);
+    color: rgba(14, 12, 10, 0.8);
     max-width: 560px;
   }
 
@@ -154,7 +154,7 @@
   label .optional {
     font-family: var(--serif-en);
     font-size: 10px;
-    color: rgba(14, 12, 10, 0.35);
+    color: rgba(14, 12, 10, 0.5);
     letter-spacing: 0.1em;
     margin-left: 8px;
   }
@@ -188,7 +188,7 @@
   }
   input::placeholder,
   textarea::placeholder {
-    color: rgba(14, 12, 10, 0.3);
+    color: rgba(14, 12, 10, 0.45);
     font-size: 13px;
   }
 
@@ -199,7 +199,7 @@
     padding-right: 24px;
     cursor: pointer;
   }
-  select option[value=""] { color: rgba(14, 12, 10, 0.3); }
+  select option[value=""] { color: rgba(14, 12, 10, 0.45); }
 
   textarea {
     resize: vertical;
@@ -215,7 +215,7 @@
   .course-grid .form-group { margin-bottom: 0; }
   .course-grid label {
     font-size: 11.5px;
-    color: rgba(14, 12, 10, 0.6);
+    color: rgba(14, 12, 10, 0.75);
   }
 
   /* SUBMIT */
@@ -228,7 +228,7 @@
     font-weight: 200;
     font-size: 12px;
     letter-spacing: 0.12em;
-    color: rgba(14, 12, 10, 0.45);
+    color: rgba(14, 12, 10, 0.65);
     margin-bottom: 36px;
     line-height: 2.2;
   }
@@ -344,16 +344,28 @@
     <input type="hidden" name="autoresponse_from" value="犬山数学理科特化塾">
     <input type="checkbox" name="botcheck" style="display:none;">
 
+    <!-- 利用校 -->
+    <div class="form-section-title">Campus</div>
+
+    <div class="form-group">
+      <label>メインでの利用校 <span class="required">必須</span></label>
+      <select name="campus" required>
+        <option value="">選択してください</option>
+        <option value="犬山校">犬山校</option>
+        <option value="岩倉校">岩倉校</option>
+      </select>
+    </div>
+
     <!-- 基本情報 -->
     <div class="form-section-title">Basic Info</div>
 
     <div class="form-group">
-      <label>お名前 <span class="required">required</span></label>
+      <label>お名前 <span class="required">必須</span></label>
       <input type="text" name="name" placeholder="山田 太郎" required>
     </div>
 
     <div class="form-group">
-      <label>学年 <span class="required">required</span></label>
+      <label>学年 <span class="required">必須</span></label>
       <select name="grade" required>
         <option value="">選択してください</option>
         <optgroup label="中学生">
@@ -374,12 +386,12 @@
     </div>
 
     <div class="form-group">
-      <label>在籍校 <span class="required">required</span></label>
+      <label>在籍校 <span class="required">必須</span></label>
       <input type="text" name="school" placeholder="〇〇高等学校" required>
     </div>
 
     <div class="form-group">
-      <label>志望校（現時点で） <span class="optional">optional</span></label>
+      <label>志望校（現時点で） <span class="optional">任意</span></label>
       <input type="text" name="target_school" placeholder="〇〇大学　〇〇学部">
     </div>
 
@@ -387,24 +399,24 @@
     <div class="form-section-title">Contact</div>
 
     <div class="form-group">
-      <label>電話番号 / LINE ID <span class="required">required</span></label>
-      <input type="text" name="phone" placeholder="090-0000-0000" required>
+      <label>電話番号 <span class="required">必須</span></label>
+      <input type="tel" name="phone" placeholder="090-0000-0000" required>
     </div>
 
     <div class="form-group">
-      <label>メールアドレス <span class="required">required</span></label>
+      <label>メールアドレス <span class="required">必須</span></label>
       <input type="email" name="email" placeholder="example@email.com" required>
     </div>
 
     <!-- 体験希望授業 -->
     <div class="form-section-title">Courses</div>
-    <p style="font-size:12px; letter-spacing:0.1em; color:rgba(14,12,10,0.5); margin-bottom:28px; line-height:2;">
+    <p style="font-size:12px; letter-spacing:0.1em; color:rgba(14,12,10,0.7); margin-bottom:28px; line-height:2;">
       体験を希望する授業を最大3つ選んでください。
     </p>
 
     <div class="course-grid">
       <div class="form-group">
-        <label>第1希望 <span class="required">required</span></label>
+        <label>第1希望 <span class="required">必須</span></label>
         <select name="course1" required>
           <option value="">選択</option>
           <optgroup label="数学">
@@ -436,7 +448,7 @@
       </div>
 
       <div class="form-group">
-        <label>第2希望 <span class="optional">optional</span></label>
+        <label>第2希望 <span class="optional">任意</span></label>
         <select name="course2">
           <option value="">選択</option>
           <optgroup label="数学">
@@ -468,7 +480,7 @@
       </div>
 
       <div class="form-group">
-        <label>第3希望 <span class="optional">optional</span></label>
+        <label>第3希望 <span class="optional">任意</span></label>
         <select name="course3">
           <option value="">選択</option>
           <optgroup label="数学">
@@ -504,12 +516,12 @@
     <div class="form-section-title">Schedule</div>
 
     <div class="form-group">
-      <label>初回体験希望日 <span class="required">required</span></label>
+      <label>初回体験希望日 <span class="required">必須</span></label>
       <input type="date" name="trial_date" required>
     </div>
 
     <div class="form-group">
-      <label>面談希望日程 <span class="optional">optional</span></label>
+      <label>面談希望日程 <span class="optional">任意</span></label>
       <input type="text" name="interview_date" placeholder="例：平日18時以降、土曜午前中など">
     </div>
 
@@ -517,7 +529,7 @@
     <div class="form-section-title">Message</div>
 
     <div class="form-group">
-      <label>メッセージ・ご質問など <span class="optional">optional</span></label>
+      <label>メッセージ・ご質問など <span class="optional">任意</span></label>
       <textarea name="message" placeholder="気になることがあればお気軽にどうぞ。"></textarea>
     </div>
 
@@ -563,6 +575,7 @@
 
     // Build autoresponse with form values
     const v = (name) => data.get(name) || '（未入力）';
+    const campus = data.get('campus') || '';
     const lines = [
       '【犬山数学理科特化塾】無料体験のお申し込みありがとうございます。',
       '',
@@ -571,12 +584,14 @@
       '',
       '━━━ お申し込み内容 ━━━',
       '',
+      '利用校：' + v('campus'),
+      '',
       'お名前：' + v('name'),
       '学年：' + v('grade'),
       '在籍校：' + v('school'),
       '志望校：' + v('target_school'),
       '',
-      '電話番号 / LINE ID：' + v('phone'),
+      '電話番号：' + v('phone'),
       'メールアドレス：' + v('email'),
       '',
       '第1希望：' + v('course1'),
@@ -594,10 +609,22 @@
       'お急ぎの場合はLINE公式アカウントからお問い合わせください。',
       'https://lin.ee/5OTmMP9',
       '',
-      '─────────────────',
-      '犬山数学理科特化塾 suritokka',
-      'https://suritokka.vercel.app'
+      '【面談について】',
+      '可能であれば、模試やテストの結果をお持ちいただけると助かります。',
+      ''
     ];
+
+    if (campus === '犬山校') {
+      lines.push('【犬山校へお車でお越しの方へ】');
+      lines.push('お車でお越しの場合は、隣の中華料理屋さんの駐車場にお停めください。');
+      lines.push('（面談・送り迎えの際はご利用いただいてよいとの許可を店主さんから得ております。）');
+      lines.push('');
+    }
+
+    lines.push('─────────────────');
+    lines.push('犬山数学理科特化塾 suritokka');
+    lines.push('https://suritokka.vercel.app');
+
     data.set('autoresponse', lines.join('\n'));
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
