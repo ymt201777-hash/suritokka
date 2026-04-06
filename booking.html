@@ -340,7 +340,7 @@
     <input type="hidden" name="subject" value="【無料体験予約】犬山数学理科特化塾">
     <input type="hidden" name="from_name" value="犬山数学理科特化塾 体験予約フォーム">
     <input type="hidden" name="replyto" value="inuyama@suritokka.com">
-    <input type="hidden" name="autoresponse" value="【犬山数学理科特化塾】無料体験のお申し込みありがとうございます。&#10;&#10;この度は犬山数学理科特化塾の無料体験にお申し込みいただき、誠にありがとうございます。&#10;&#10;2〜3営業日以内にご登録の連絡先へご連絡いたします。&#10;お急ぎの場合はLINE公式アカウントからお問い合わせください。&#10;https://lin.ee/5OTmMP9&#10;&#10;─────────────────&#10;犬山数学理科特化塾 suritokka&#10;https://suritokka.vercel.app">
+    <input type="hidden" name="autoresponse" value="">
     <input type="hidden" name="autoresponse_from" value="犬山数学理科特化塾">
     <input type="checkbox" name="botcheck" style="display:none;">
 
@@ -560,6 +560,45 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
+
+    // Build autoresponse with form values
+    const v = (name) => data.get(name) || '（未入力）';
+    const lines = [
+      '【犬山数学理科特化塾】無料体験のお申し込みありがとうございます。',
+      '',
+      'この度は犬山数学理科特化塾の無料体験にお申し込みいただき、誠にありがとうございます。',
+      '以下の内容でお申し込みを受け付けました。',
+      '',
+      '━━━ お申し込み内容 ━━━',
+      '',
+      'お名前：' + v('name'),
+      '学年：' + v('grade'),
+      '在籍校：' + v('school'),
+      '志望校：' + v('target_school'),
+      '',
+      '電話番号 / LINE ID：' + v('phone'),
+      'メールアドレス：' + v('email'),
+      '',
+      '第1希望：' + v('course1'),
+      '第2希望：' + v('course2'),
+      '第3希望：' + v('course3'),
+      '',
+      '初回体験希望日：' + v('trial_date'),
+      '面談希望日程：' + v('interview_date'),
+      '',
+      'メッセージ：' + v('message'),
+      '',
+      '━━━━━━━━━━━━━━━',
+      '',
+      '2〜3営業日以内にご登録の連絡先へご連絡いたします。',
+      'お急ぎの場合はLINE公式アカウントからお問い合わせください。',
+      'https://lin.ee/5OTmMP9',
+      '',
+      '─────────────────',
+      '犬山数学理科特化塾 suritokka',
+      'https://suritokka.vercel.app'
+    ];
+    data.set('autoresponse', lines.join('\n'));
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
