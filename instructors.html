@@ -269,15 +269,9 @@ footer {
   background: var(--ink);
   color: rgba(244, 239, 230, 0.35);
   padding: 56px 52px;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: center; align-items: center;
   font-weight: 200; font-size: 11px; letter-spacing: 0.14em;
 }
-.footer-nav { display: flex; gap: 28px; }
-.footer-nav a {
-  color: rgba(244, 239, 230, 0.35);
-  text-decoration: none; transition: color 0.3s;
-}
-.footer-nav a:hover { color: var(--warm); }
 
 /* ============================================
    Fade-up (shared pattern)
@@ -318,7 +312,6 @@ footer {
     padding: 40px 24px;
     flex-direction: column; gap: 20px; text-align: center;
   }
-  .footer-nav { flex-wrap: wrap; justify-content: center; }
 }
 </style>
 </head>
@@ -429,13 +422,7 @@ footer {
 
 <!-- ========== Footer ========== -->
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾　suritokka.com</span>
-  <div class="footer-nav">
-    <a href="/courses">コース・料金</a>
-    <a href="/facility">施設</a>
-    <a href="/booking">体験予約</a>
-    <a href="/legal">特商法</a>
-  </div>
+  <span>&copy; 2024 犬山数学理科特化塾</span>
 </footer>
 
 <!-- ========== JS ========== -->
