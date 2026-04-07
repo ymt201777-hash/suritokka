@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>特定商取引法に基づく表記 | 犬山数学理科特化塾</title>
+<title>塾の施設・アクセス | 犬山数学理科特化塾</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -21,6 +21,7 @@
   a { color: inherit; text-decoration: none; }
   button { font-family: inherit; }
 
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
@@ -103,32 +104,127 @@
     background: var(--ink); color: var(--cream);
   }
 
-  .page-header { padding: 160px 52px 80px; max-width: 860px; margin: 0 auto; }
+  /* PAGE HEADER */
+  .page-header { padding: 160px 52px 80px; max-width: 1100px; margin: 0 auto; }
   .page-label {
     font-family: var(--serif-en); font-weight: 300; font-size: 11px;
     letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
     margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
   }
   .page-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
-  .page-title { font-weight: 200; font-size: clamp(20px, 3vw, 36px); letter-spacing: 0.08em; }
+  .page-title { font-weight: 200; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; }
 
-  .content { max-width: 860px; margin: 0 auto; padding: 0 52px 120px; }
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
 
-  table { width: 100%; border-collapse: collapse; }
-  tr { border-bottom: 1px solid rgba(14,12,10,0.08); }
-  tr:first-child { border-top: 1px solid rgba(14,12,10,0.08); }
-  td {
-    padding: 24px 0; vertical-align: top;
-    font-weight: 200; font-size: 13.5px;
-    letter-spacing: 0.08em; line-height: 2.6;
+  .section-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 40px; display: flex; align-items: center; gap: 20px;
   }
-  td:first-child {
-    width: 220px; color: rgba(14,12,10,0.45);
-    font-size: 12px; letter-spacing: 0.12em;
-    padding-right: 40px; white-space: nowrap;
-  }
-  td:last-child { color: rgba(14,12,10,0.88); }
+  .section-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
 
+  /* CAMPUS SECTION */
+  .campus-section { margin-bottom: 100px; }
+
+  .campus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .map-coming {
+    background: rgba(14,12,10,0.04);
+    border: 1px solid rgba(14,12,10,0.08);
+    aspect-ratio: 16/7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-coming-text {
+    font-weight: 200; font-size: 12.5px;
+    letter-spacing: 0.15em; color: rgba(14,12,10,0.35);
+  }
+
+  .campus-card {
+    background: var(--cream);
+    padding: 48px 44px;
+  }
+  .campus-card.coming {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .campus-badge {
+    font-family: var(--serif-en); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--warm-mid); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .coming-soon-tag {
+    background: var(--warm-mid);
+    color: var(--ink);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 3px 10px;
+  }
+
+  .campus-name {
+    font-weight: 300; font-size: 26px; letter-spacing: 0.12em;
+    margin-bottom: 32px;
+  }
+  .campus-card.coming .campus-name { color: var(--cream); }
+
+  .campus-info { list-style: none; }
+  .campus-info li {
+    display: flex; gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(14,12,10,0.08);
+    font-weight: 200; font-size: 13.5px; letter-spacing: 0.08em; line-height: 2;
+  }
+  .campus-card.coming .campus-info li {
+    border-color: rgba(244,239,230,0.1);
+    color: rgba(244,239,230,0.8);
+  }
+  .campus-info li:last-child { border-bottom: none; }
+  .info-label {
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--warm-mid); white-space: nowrap;
+    padding-top: 2px; min-width: 80px;
+  }
+
+  /* MAP */
+  .map-section { margin-bottom: 80px; }
+  .map-wrap {
+    width: 100%;
+    aspect-ratio: 16/7;
+    overflow: hidden;
+    border: 1px solid rgba(14,12,10,0.08);
+  }
+  .map-wrap iframe {
+    width: 100%; height: 100%;
+    border: 0; display: block;
+  }
+
+  /* CTA */
+  .cta-section { background: var(--warm-light); padding: 100px 52px; text-align: center; }
+  .cta-text { font-weight: 200; font-size: 14px; letter-spacing: 0.2em; color: rgba(14,12,10,0.5); margin-bottom: 48px; }
+  .cta-btn {
+    display: inline-block; padding: 20px 64px;
+    background: var(--ink); color: var(--cream);
+    font-weight: 300; font-size: 14px; letter-spacing: 0.22em;
+    text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s;
+  }
+  .cta-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--warm-mid); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s ease;
+  }
+  .cta-btn:hover::before { transform: scaleX(1); }
+  .cta-btn span { position: relative; z-index: 1; }
+
+  /* FOOTER */
   footer {
     background: var(--ink); color: rgba(244,239,230,0.4);
     padding: 64px 52px; display: flex;
@@ -142,9 +238,9 @@
     .hamburger { display: block; }
     .page-header { padding: 120px 24px 60px; }
     .content { padding: 0 24px 80px; }
-    table, tbody, tr, td { display: block; }
-    td:first-child { width: 100%; padding-right: 0; padding-bottom: 4px; border-bottom: none; }
-    td:last-child { padding-top: 0; }
+    .campus-grid { grid-template-columns: 1fr; }
+    .map-wrap { aspect-ratio: 4/3; }
+    .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
 </style>
@@ -179,58 +275,86 @@
 </div>
 
 <div class="page-header">
-  <div class="page-label">Legal</div>
-  <h1 class="page-title">特定商取引法に基づく表記</h1>
+  <div class="page-label">Facility & Access</div>
+  <h1 class="page-title">施設・アクセス</h1>
 </div>
 
 <div class="content">
-  <table>
-    <tr>
-      <td>販売業者</td>
-      <td>犬山数学理科特化塾</td>
-    </tr>
-    <tr>
-      <td>運営責任者</td>
-      <td>高橋 祐一郎</td>
-    </tr>
-    <tr>
-      <td>所在地</td>
-      <td>愛知県犬山市犬山東古券423-8</td>
-    </tr>
-    <tr>
-      <td>電話番号</td>
-      <td>070-9151-4306</td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td>inuyama@suritokka.com</td>
-    </tr>
-    <tr>
-      <td>サービス内容</td>
-      <td>学習塾（数学・理科・英語）授業、自習室利用、LINEでの質問対応</td>
-    </tr>
-    <tr>
-      <td>料金</td>
-      <td>
-        基本料金：20,000円 / 月（自習室・LINE質問対応含む）<br>
-        授業：1講座 10,000円 / 月<br>
-        入塾金：11,000円（2026年6月より）<br>
-        英語コース授業準備費：3,000円（初回のみ）
-      </td>
-    </tr>
-    <tr>
-      <td>支払い方法</td>
-      <td>クレジットカード、口座振替</td>
-    </tr>
-    <tr>
-      <td>サービス提供時期</td>
-      <td>入塾手続き完了後、すぐにご利用いただけます。</td>
-    </tr>
-    <tr>
-      <td>解約・キャンセル</td>
-      <td>退塾をご希望の場合は、前月15日までにご連絡ください。翌月より停止いたします。</td>
-    </tr>
-  </table>
+
+  <!-- 校舎情報 -->
+  <div class="campus-section">
+    <div class="section-label">Campus</div>
+    <!-- 犬山校 -->
+    <div style="margin-bottom: 2px;">
+      <div class="campus-card">
+        <div class="campus-badge">Inuyama</div>
+        <div class="campus-name">犬山校</div>
+        <ul class="campus-info">
+          <li>
+            <span class="info-label">住所</span>
+            <span>愛知県犬山市犬山東古券423-8</span>
+          </li>
+          <li>
+            <span class="info-label">自習室</span>
+            <span>
+              毎日 8:00〜22:00<br>
+              <span style="font-size:12px; opacity:0.6;">※ 高3・既卒生は23:00まで</span>
+            </span>
+          </li>
+          <li>
+            <span class="info-label">電話</span>
+            <span>070-9151-4306</span>
+          </li>
+        </ul>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26023.391162926746!2d136.95057920000002!3d35.38234349999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60030ff75f20e129%3A0x7f1b31fba440626a!2z54qs5bGx5pWw5a2m55CG56eR54m55YyW5aG-!5e0!3m2!1sja!2sjp!4v1775545324588!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <!-- 岩倉校 -->
+    <div style="margin-top: 80px;">
+      <div class="campus-card coming">
+        <div class="campus-badge">
+          Iwakura
+          <span class="coming-soon-tag">2026.6.1 Open</span>
+        </div>
+        <div class="campus-name">岩倉校</div>
+        <ul class="campus-info">
+          <li>
+            <span class="info-label">開講</span>
+            <span>2026年6月1日</span>
+          </li>
+          <li>
+            <span class="info-label">自習室</span>
+            <span>
+              毎日 8:00〜22:00<br>
+              <span style="font-size:12px; opacity:0.6;">※ 高3・既卒生は23:00まで</span>
+            </span>
+          </li>
+          <li>
+            <span class="info-label">アクセス</span>
+            <span>岩倉駅から徒歩1分</span>
+          </li>
+          <li>
+            <span class="info-label">授業</span>
+            <span>授業は犬山校にて受講</span>
+          </li>
+        </ul>
+      </div>
+      <div class="map-coming" style="margin-top: 24px;">
+        <p class="map-coming-text">地図は正式発表後に公開いたします。</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p class="cta-text">まずは、雰囲気を感じてみてください。</p>
+  <a href="/booking.html" class="cta-btn"><span>無料体験を予約する</span></a>
 </div>
 
 <footer>
