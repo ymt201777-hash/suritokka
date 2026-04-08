@@ -117,12 +117,12 @@
 
   .gallery-group { margin-bottom: 64px; }
   .gallery-group-label {
-    font-family: var(--serif-en); font-size: 10px;
-    letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--warm-mid); margin-bottom: 16px;
+    font-family: var(--serif-jp); font-size: 15px;
+    letter-spacing: 0.16em;
+    color: var(--ink); margin-bottom: 16px; font-weight: 400;
     display: flex; align-items: center; gap: 16px;
   }
-  .gallery-group-label::after { content: ''; flex: 1; height: 1px; background: rgba(14,12,10,0.08); }
+  .gallery-group-label::after { content: ''; flex: 1; height: 1px; background: rgba(14,12,10,0.15); }
 
   .gallery-grid {
     display: grid;
@@ -132,6 +132,9 @@
   .gallery-grid img {
     width: 100%; aspect-ratio: 4/3;
     object-fit: cover; display: block;
+  }
+  .gallery-grid img.pos-bottom {
+    object-position: center 70%;
   }
 
   .cta-section { background: var(--warm-light); padding: 100px 52px; text-align: center; }
@@ -210,7 +213,7 @@
     <div class="gallery-group-label">外観</div>
     <div class="gallery-grid">
       <img src="photo_exterior_2.jpg" alt="外観">
-      <img src="photo_exterior_1.jpg" alt="看板">
+      <img src="photo_exterior_1.jpg" alt="看板" class="pos-bottom">
     </div>
   </div>
 
