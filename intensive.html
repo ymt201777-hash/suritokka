@@ -254,6 +254,36 @@
     line-height: 2.4; color: rgba(14, 12, 10, 0.85);
   }
 
+  /* APPLY */
+  .apply-section {
+    text-align: center;
+    margin-bottom: 64px;
+    padding: 56px 0;
+    border-top: 1px solid rgba(14, 12, 10, 0.08);
+    border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+  }
+  .apply-text {
+    font-size: 14px; letter-spacing: 0.1em;
+    color: rgba(14, 12, 10, 0.75);
+    margin-bottom: 28px; line-height: 2;
+  }
+  .apply-btn {
+    display: inline-block;
+    padding: 18px 56px;
+    background: var(--ink); color: var(--cream);
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 14px; letter-spacing: 0.2em;
+    position: relative; overflow: hidden;
+    transition: opacity 0.3s;
+  }
+  .apply-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--warm-mid); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.45s ease;
+  }
+  .apply-btn:hover::before { transform: scaleX(1); }
+  .apply-btn span { position: relative; z-index: 1; }
+
   .note-section {
     background: rgba(200,184,154,0.15);
     padding: 28px 36px;
@@ -501,11 +531,16 @@
     </div>
   </div>
 
+  <!-- 申込 -->
+  <div class="apply-section">
+    <p class="apply-text">お申し込みは、下記のGoogleフォームからご入力ください。</p>
+    <a href="https://forms.gle/3mw7WEoWPArsnTnM7" target="_blank" rel="noopener" class="apply-btn"><span>講習に申し込む</span></a>
+  </div>
+
   <!-- 注意事項 -->
   <div class="note-section">
     <p>
-      ・講習授業のお申し込みは体験予約フォームまたはLINEよりご連絡ください。<br>
-      ・定員になり次第、受付を終了いたします。お早めにご連絡ください。
+      ・定員になり次第、受付を終了いたします。お早めにお申し込みください。
     </p>
   </div>
 
