@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:suritokka.vercel.app)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/japog/Desktop/suritokka/**)",
+      "Bash(done)",
+      "Bash(do sed:*)",
+      "WebFetch(domain:docs.web3forms.com)"
+    ]
+  }
+}
