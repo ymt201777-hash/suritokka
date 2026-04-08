@@ -216,6 +216,44 @@
   .legend-dot { width: 12px; height: 12px; border-radius: 1px; flex-shrink: 0; }
 
   /* NOTE */
+  /* COURSE DETAIL */
+  .course-detail-section { margin-bottom: 80px; }
+  .course-detail {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+  }
+  .course-detail:first-of-type {
+    border-top: 1px solid rgba(14, 12, 10, 0.08);
+  }
+  .course-detail-header {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .course-detail-title {
+    font-weight: 400; font-size: clamp(17px, 2.2vw, 22px);
+    letter-spacing: 0.08em;
+  }
+  .course-detail-meta {
+    font-size: 12px; letter-spacing: 0.1em;
+    color: rgba(14, 12, 10, 0.55);
+  }
+  .course-detail-instructor {
+    font-size: 12.5px; letter-spacing: 0.1em;
+    color: var(--warm-mid); margin-bottom: 16px;
+  }
+  .course-detail-material {
+    font-size: 12.5px; letter-spacing: 0.06em;
+    line-height: 2; color: rgba(14, 12, 10, 0.7);
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: rgba(200, 184, 154, 0.1);
+    border-left: 3px solid var(--warm-mid);
+  }
+  .course-detail-desc {
+    font-size: 13.5px; letter-spacing: 0.06em;
+    line-height: 2.4; color: rgba(14, 12, 10, 0.85);
+  }
+
   .note-section {
     background: rgba(200,184,154,0.15);
     padding: 28px 36px;
@@ -394,6 +432,41 @@
     </div>
   </div>
   <!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
+
+  <!-- 講座案内 -->
+  <div class="course-detail-section">
+    <div class="section-label">Course Details</div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">高３物理　力学</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">担当講師　杉村</p>
+      <div class="course-detail-material">購入必要教材　河合塾『良問の風 物理 頻出・標準 入試問題集 三訂版』</div>
+      <p class="course-detail-desc">『物理』を選択する理系学生向けに、力学分野のうち「円運動」及び「単振動」の基礎を、講義と問題演習を通して養成する講座。分野にまたがって応用される円運動や単振動をポイントを抑えて理解することを目標にします。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">高３化学　熱化学</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">担当講師　杉村</p>
+      <div class="course-detail-material">購入必要教材　旺文社『大学入試全レベル問題集　化学 3　私大標準・国公立大レベル』</div>
+      <p class="course-detail-desc">『化学』を選択する理系学生向けに、「理論」分野のうち「化学反応とエネルギー」とその周辺知識の基礎を講義と問題演習を通して学ぶ講座。抽象的な反応エンタルピーの概念を体系的に理解することを目標にします。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト リスニング対策</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">担当講師　富田</p>
+      <div class="course-detail-material">購入必要教材　不要</div>
+      <p class="course-detail-desc">受験生が最も苦戦する「1回読み」と「複数人の対話」に特化、本番形式の演習と解説を繰り返すことで、反射的に正解を選べる「実戦力」を養います。</p>
+    </div>
+  </div>
 
   <!-- 料金 -->
   <div class="pricing-section">
