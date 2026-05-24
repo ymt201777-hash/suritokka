@@ -290,17 +290,49 @@
     color: rgba(14, 12, 10, 0.75);
     margin-bottom: 28px; line-height: 2;
   }
-  .apply-pending {
+  .apply-btn {
     display: inline-block;
     padding: 18px 56px;
-    border: 1px solid var(--warm-mid);
+    background: var(--ink); color: var(--cream);
     font-family: var(--serif-jp); font-weight: 300;
     font-size: 14px; letter-spacing: 0.2em;
-    color: rgba(14,12,10,0.75);
+    position: relative; overflow: hidden;
+    transition: opacity 0.3s;
+  }
+  .apply-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--warm-mid); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.45s ease;
+  }
+  .apply-btn:hover::before { transform: scaleX(1); }
+  .apply-btn span { position: relative; z-index: 1; }
+  .apply-pending {
+    display: inline-block; text-align: left;
+    padding: 22px 40px;
+    border: 1px solid var(--warm-mid);
     background: rgba(200,184,154,0.08);
   }
-  .apply-pending strong {
-    font-weight: 400; color: var(--ink);
+  .apply-pending .ap-row {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 6px 0;
+  }
+  .apply-pending .ap-row + .ap-row {
+    border-top: 1px dashed rgba(14,12,10,0.1);
+    margin-top: 4px; padding-top: 12px;
+  }
+  .apply-pending .ap-label {
+    font-size: 11.5px; letter-spacing: 0.18em;
+    color: rgba(14,12,10,0.55);
+    min-width: 80px;
+  }
+  .apply-pending .ap-date {
+    font-weight: 400; font-size: 14px;
+    letter-spacing: 0.1em; color: var(--ink);
+  }
+  .apply-note {
+    font-size: 11.5px; letter-spacing: 0.06em;
+    color: rgba(14,12,10,0.5);
+    margin-top: 16px; line-height: 1.7;
   }
 
   .note-section {
@@ -359,7 +391,11 @@
     .lesson .lesson-time { font-size: 7px; }
     .legend { gap: 10px; }
     .legend-item { font-size: 10px; }
-    .apply-pending { padding: 14px 28px; font-size: 12.5px; letter-spacing: 0.12em; }
+    .apply-btn { padding: 14px 36px; font-size: 13px; letter-spacing: 0.15em; }
+    .apply-pending { padding: 18px 24px; }
+    .apply-pending .ap-row { gap: 16px; }
+    .apply-pending .ap-label { min-width: 64px; font-size: 10.5px; letter-spacing: 0.14em; }
+    .apply-pending .ap-date { font-size: 13px; }
     .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
@@ -992,8 +1028,14 @@
 
   <!-- 申込 -->
   <div class="apply-section">
-    <p class="apply-text">お申し込みは、Googleフォームより受付いたします。</p>
-    <div class="apply-pending"><strong>申込開始</strong>　2026年5月23日（土）</div>
+    <p class="apply-text" id="applyIntro">申込開始日</p>
+    <div id="applyContent">
+      <div class="apply-pending">
+        <div class="ap-row"><span class="ap-label">塾　生</span><span class="ap-date">2026年5月26日（火）</span></div>
+        <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年6月1日（月）</span></div>
+      </div>
+    </div>
+    <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
   </div>
 
   <!-- 注意事項 -->
@@ -1011,6 +1053,24 @@
 </footer>
 
 <script>
+/* 申込開始日による表示切替（日付到来でJSが自動的に申込ボタンに差し替える） */
+(function () {
+  const memberOpen = new Date('2026-05-26T00:00:00+09:00');
+  const publicOpen = new Date('2026-06-01T00:00:00+09:00');
+  const now = new Date();
+  if (now < memberOpen) return;
+  const applyIntro = document.getElementById('applyIntro');
+  const applyContent = document.getElementById('applyContent');
+  const applyNote = document.getElementById('applyNote');
+  applyIntro.textContent = '下記より、お申し込みいただけます。';
+  applyContent.innerHTML = '<a href="/apply" class="apply-btn"><span>申込フォームへ進む</span></a>';
+  if (now < publicOpen) {
+    applyNote.textContent = '※ 塾生以外の方の受付開始は 6月1日（月）より承ります。';
+  } else {
+    applyNote.style.display = 'none';
+  }
+})();
+
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);

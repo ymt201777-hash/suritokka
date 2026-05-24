@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>夏期講習 申込フォーム | 犬山数学理科特化塾</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --cream: #f4efe6;
+    --warm-mid: #c8b89a;
+    --warm-light: #e8dfd0;
+    --serif-jp: 'Noto Serif JP', 'ヒラギノ明朝 ProN', serif;
+    --serif-en: 'Cormorant Garamond', Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--serif-jp); font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 52px; height: 72px;
+    background: rgba(244, 239, 230, 0);
+    backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(244, 239, 230, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom-color: rgba(14, 12, 10, 0.07);
+  }
+  .nav-logo {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 12px; letter-spacing: 0.2em;
+    opacity: 0.85; position: relative; z-index: 101; cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; pointer-events: none; }
+  .nav-links li { pointer-events: auto; }
+  .nav-links a {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 11.5px; letter-spacing: 0.14em;
+    opacity: 0.5; transition: opacity 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    opacity: 0.85 !important;
+    padding: 6px 18px;
+    border: 1px solid var(--ink);
+    transition: background 0.3s, color 0.3s, opacity 0.3s;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover {
+    background: var(--ink); color: var(--cream); opacity: 1 !important;
+  }
+
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px; position: relative; z-index: 110;
+  }
+  .hamburger span {
+    display: block; width: 100%; height: 1px; background: var(--ink);
+    position: absolute; left: 0; transition: all 0.35s;
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 50%; }
+  .hamburger span:nth-child(3) { top: 100%; }
+  .hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 105;
+    background: var(--cream);
+    flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 15px; letter-spacing: 0.18em;
+    opacity: 0.7; transition: opacity 0.3s;
+  }
+  .mobile-menu a:hover { opacity: 1; }
+  .mobile-menu .mobile-cta {
+    margin-top: 12px;
+    padding: 12px 36px;
+    border: 1px solid var(--ink);
+    opacity: 1;
+    transition: background 0.3s, color 0.3s;
+  }
+  .mobile-menu .mobile-cta:hover {
+    background: var(--ink); color: var(--cream);
+  }
+
+  /* PAGE HEADER */
+  .page-header { padding: 160px 52px 60px; max-width: 1100px; margin: 0 auto; }
+  .page-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
+  }
+  .page-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
+  .session-name {
+    font-weight: 200; font-size: clamp(28px, 4vw, 52px);
+    letter-spacing: 0.1em; margin-bottom: 12px;
+  }
+  .session-period {
+    font-weight: 200; font-size: 13px; letter-spacing: 0.15em;
+    color: rgba(14,12,10,0.45);
+  }
+
+  /* CONTENT */
+  .content { max-width: 880px; margin: 0 auto; padding: 0 52px 120px; }
+
+  .section-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 24px; display: flex; align-items: center; gap: 20px;
+  }
+  .section-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
+
+  /* FORM */
+  .form-section { margin-bottom: 60px; }
+  .form-section-title {
+    font-weight: 300; font-size: 18px; letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .form-section-desc {
+    font-size: 12.5px; letter-spacing: 0.06em; line-height: 2;
+    color: rgba(14,12,10,0.6); margin-bottom: 28px;
+  }
+
+  .field { margin-bottom: 22px; }
+  .field label {
+    display: block; font-size: 12px; letter-spacing: 0.1em;
+    color: rgba(14,12,10,0.7); margin-bottom: 8px;
+  }
+  .field label .req {
+    color: #a85555; margin-left: 6px; font-size: 10px;
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field select,
+  .field textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid rgba(14,12,10,0.15);
+    background: rgba(255,255,255,0.5);
+    font-family: var(--serif-jp); font-weight: 300; font-size: 14px;
+    letter-spacing: 0.04em; color: var(--ink);
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--ink);
+    background: #fff;
+  }
+  .field-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+
+  /* RADIO TYPE */
+  .radio-group {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .radio-card {
+    position: relative;
+    padding: 22px 20px;
+    border: 1px solid rgba(14,12,10,0.18);
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s;
+    text-align: center;
+  }
+  .radio-card input { position: absolute; opacity: 0; pointer-events: none; }
+  .radio-card .rc-title {
+    font-size: 14px; letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .radio-card .rc-desc {
+    font-size: 11px; letter-spacing: 0.04em;
+    color: rgba(14,12,10,0.5);
+  }
+  .radio-card.checked {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .radio-card.checked .rc-desc { color: rgba(244,239,230,0.55); }
+
+  /* COURSE CARDS */
+  .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .course-card {
+    position: relative;
+    padding: 20px 22px 22px;
+    border: 1px solid rgba(14,12,10,0.15);
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .course-card:hover { border-color: rgba(14,12,10,0.4); }
+  .course-card.selected {
+    border-color: var(--ink);
+    background: rgba(255,255,255,0.85);
+  }
+  .course-card input { position: absolute; opacity: 0; pointer-events: none; }
+  .course-card-check {
+    position: absolute; top: 14px; right: 14px;
+    width: 18px; height: 18px;
+    border: 1px solid rgba(14,12,10,0.3);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+  }
+  .course-card.selected .course-card-check {
+    background: var(--ink); border-color: var(--ink);
+  }
+  .course-card-check::after {
+    content: ''; opacity: 0;
+    width: 9px; height: 5px;
+    border-left: 1.5px solid var(--cream);
+    border-bottom: 1.5px solid var(--cream);
+    transform: rotate(-45deg) translateY(-1px);
+    transition: opacity 0.2s;
+  }
+  .course-card.selected .course-card-check::after { opacity: 1; }
+  .cc-name {
+    font-weight: 400; font-size: 14.5px;
+    letter-spacing: 0.06em; margin-right: 32px;
+    margin-bottom: 4px;
+  }
+  .cc-meta {
+    font-size: 11px; letter-spacing: 0.08em;
+    color: rgba(14,12,10,0.5); margin-bottom: 14px;
+  }
+  .cc-meta .cc-price {
+    color: var(--ink); font-weight: 400; margin-left: 8px;
+  }
+  .cc-slots {
+    display: flex; flex-wrap: wrap; gap: 4px;
+  }
+  .cc-slot {
+    font-size: 10.5px; letter-spacing: 0.04em;
+    padding: 3px 8px;
+    background: rgba(14,12,10,0.05);
+    border-radius: 2px;
+    color: rgba(14,12,10,0.65);
+  }
+  .course-card.selected .cc-slot {
+    background: rgba(200,184,154,0.25);
+    color: rgba(14,12,10,0.85);
+  }
+
+  /* SUMMARY */
+  .selection-summary {
+    margin-top: 28px;
+    padding: 22px 26px;
+    background: var(--ink); color: var(--cream);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .ss-label {
+    font-family: var(--serif-en); font-size: 11px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(244,239,230,0.55);
+  }
+  .ss-count {
+    font-weight: 300; font-size: 13.5px;
+    letter-spacing: 0.1em; margin-top: 4px;
+  }
+  .ss-total {
+    font-family: var(--serif-en); font-size: 28px;
+    letter-spacing: -0.01em; font-weight: 300;
+  }
+  .ss-total .yen {
+    font-size: 13px; letter-spacing: 0.1em;
+    margin-left: 6px; opacity: 0.6;
+  }
+
+  /* AGREEMENT */
+  .agreement-box {
+    padding: 22px 26px;
+    background: rgba(200,184,154,0.12);
+    border-left: 3px solid var(--warm-mid);
+    margin-bottom: 24px;
+  }
+  .agreement-box h4 {
+    font-weight: 400; font-size: 13px; letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .agreement-box ul {
+    list-style: none; padding: 0;
+  }
+  .agreement-box li {
+    font-size: 12.5px; letter-spacing: 0.04em;
+    line-height: 2; color: rgba(14,12,10,0.75);
+    padding-left: 16px; position: relative;
+  }
+  .agreement-box li::before {
+    content: '・'; position: absolute; left: 0;
+  }
+
+  .checkbox-field {
+    display: flex; align-items: flex-start; gap: 12px;
+    cursor: pointer;
+    padding: 4px 0;
+  }
+  .checkbox-field input { position: absolute; opacity: 0; pointer-events: none; }
+  .checkbox-box {
+    flex-shrink: 0;
+    width: 18px; height: 18px; margin-top: 1px;
+    border: 1px solid rgba(14,12,10,0.4);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+  }
+  .checkbox-field.checked .checkbox-box {
+    background: var(--ink); border-color: var(--ink);
+  }
+  .checkbox-box::after {
+    content: ''; opacity: 0;
+    width: 9px; height: 5px;
+    border-left: 1.5px solid var(--cream);
+    border-bottom: 1.5px solid var(--cream);
+    transform: rotate(-45deg) translateY(-1px);
+    transition: opacity 0.2s;
+  }
+  .checkbox-field.checked .checkbox-box::after { opacity: 1; }
+  .checkbox-label {
+    font-size: 13px; letter-spacing: 0.06em;
+    line-height: 1.7; color: rgba(14,12,10,0.85);
+  }
+
+  /* SUBMIT */
+  .submit-section { text-align: center; margin-top: 48px; }
+  .submit-btn {
+    display: inline-block;
+    padding: 18px 72px;
+    background: var(--ink); color: var(--cream);
+    border: none; cursor: pointer;
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 14px; letter-spacing: 0.22em;
+    position: relative; overflow: hidden;
+    transition: opacity 0.3s;
+  }
+  .submit-btn::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--warm-mid); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.45s ease;
+  }
+  .submit-btn:not(:disabled):hover::before { transform: scaleX(1); }
+  .submit-btn span { position: relative; z-index: 1; }
+  .submit-btn:disabled {
+    cursor: not-allowed; opacity: 0.4;
+  }
+
+  .form-status {
+    margin-top: 24px;
+    padding: 18px 24px;
+    font-size: 13px; letter-spacing: 0.04em;
+    line-height: 1.8;
+    display: none;
+  }
+  .form-status.show { display: block; }
+  .form-status.success {
+    background: rgba(85, 119, 85, 0.1);
+    border-left: 3px solid #557755;
+    color: #2a4a2a;
+  }
+  .form-status.error {
+    background: rgba(168, 85, 85, 0.1);
+    border-left: 3px solid #a85555;
+    color: #5a2a2a;
+  }
+
+  .honeypot {
+    position: absolute; left: -9999px; width: 1px; height: 1px;
+    opacity: 0; pointer-events: none;
+  }
+
+  /* Conditional show/hide */
+  .conditional { display: none; }
+  .conditional.show { display: block; }
+
+  /* GATE — 申込開始前 */
+  #formView { display: none; }
+  #formView.show { display: block; }
+  #comingSoonView { display: none; }
+  #comingSoonView.show { display: block; }
+
+  .gate-card {
+    padding: 56px 48px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(14,12,10,0.12);
+    text-align: center;
+  }
+  .gate-card h2 {
+    font-weight: 300; font-size: 20px;
+    letter-spacing: 0.12em; margin-bottom: 32px;
+  }
+  .gate-rows {
+    display: inline-block; text-align: left;
+    margin-bottom: 32px;
+  }
+  .gate-row {
+    display: flex; align-items: baseline; gap: 28px;
+    padding: 14px 0;
+  }
+  .gate-row + .gate-row {
+    border-top: 1px dashed rgba(14,12,10,0.12);
+  }
+  .gate-label {
+    font-size: 12px; letter-spacing: 0.2em;
+    color: rgba(14,12,10,0.55);
+    min-width: 90px;
+  }
+  .gate-date {
+    font-weight: 400; font-size: 16px;
+    letter-spacing: 0.1em; color: var(--ink);
+  }
+  .gate-note {
+    font-size: 12.5px; letter-spacing: 0.06em;
+    line-height: 2; color: rgba(14,12,10,0.6);
+    margin-bottom: 32px;
+  }
+  .gate-link {
+    display: inline-block; padding: 12px 36px;
+    border: 1px solid var(--ink); color: var(--ink);
+    font-size: 12.5px; letter-spacing: 0.18em;
+    transition: background 0.3s, color 0.3s;
+  }
+  .gate-link:hover {
+    background: var(--ink); color: var(--cream);
+  }
+
+  /* Member-only state */
+  .radio-card.locked {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    position: relative;
+  }
+  .radio-card.locked .rc-lock {
+    display: block;
+    margin-top: 6px;
+    font-size: 10.5px; letter-spacing: 0.12em;
+    color: rgba(14,12,10,0.6);
+  }
+  .rc-lock { display: none; }
+  .gate-banner {
+    background: rgba(200,184,154,0.18);
+    border-left: 3px solid var(--warm-mid);
+    padding: 14px 22px;
+    margin-bottom: 36px;
+    font-size: 12.5px; letter-spacing: 0.06em;
+    line-height: 1.8; color: rgba(14,12,10,0.8);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(244,239,230,0.4);
+    padding: 64px 52px; display: flex;
+    justify-content: center; align-items: center;
+    font-weight: 200; font-size: 11px; letter-spacing: 0.15em;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; height: 60px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .page-header { padding: 120px 24px 40px; }
+    .content { padding: 0 24px 80px; }
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+    .radio-group { grid-template-columns: 1fr; }
+    .course-list { grid-template-columns: 1fr; }
+    .submit-btn { padding: 16px 48px; font-size: 13px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="/">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="/instructors">講師紹介</a></li>
+    <li><a href="/results">合格実績</a></li>
+    <li><a href="/courses">コース・料金</a></li>
+    <li><a href="/intensive">季節講習</a></li>
+    <li><a href="/access">アクセス</a></li>
+    <li><a href="/gallery">塾内写真</a></li>
+    <li><a href="/legal">特商法</a></li>
+    <li><a href="/booking" class="nav-cta">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">トップ</a>
+  <a href="/instructors">講師紹介</a>
+  <a href="/results">合格実績</a>
+  <a href="/courses">コース・料金</a>
+  <a href="/intensive">季節講習</a>
+  <a href="/access">アクセス</a>
+  <a href="/gallery">塾内写真</a>
+  <a href="/legal">特商法</a>
+  <a href="/booking" class="mobile-cta">体験予約</a>
+</div>
+
+<!-- ↓↓↓ ここを毎回書き換える ↓↓↓ -->
+<div class="page-header">
+  <div class="page-label">Application</div>
+  <h1 class="session-name">夏期講習　申込フォーム</h1>
+  <p class="session-period">2026年7月18日（土）〜 8月23日（日）</p>
+</div>
+<!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
+
+<div class="content">
+
+  <!-- 申込開始前 -->
+  <div id="comingSoonView">
+    <div class="section-label">Application</div>
+    <div class="gate-card">
+      <h2>お申し込み受付開始日</h2>
+      <div class="gate-rows">
+        <div class="gate-row">
+          <span class="gate-label">塾　生</span>
+          <span class="gate-date">2026年5月26日（火）</span>
+        </div>
+        <div class="gate-row">
+          <span class="gate-label">塾生以外</span>
+          <span class="gate-date">2026年6月1日（月）</span>
+        </div>
+      </div>
+      <p class="gate-note">
+        受付開始日以降、このページからお申し込みいただけます。<br>
+        講習内容の詳細は下記よりご確認ください。
+      </p>
+      <a href="/intensive" class="gate-link">講習内容を見る</a>
+    </div>
+  </div>
+
+  <!-- 申込フォーム -->
+  <div id="formView">
+
+  <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
+    現在、塾生の方の受付期間です。<span style="white-space:nowrap;">塾生以外の方の受付開始は <strong>6月1日（月）</strong> より承ります。</span>
+  </div>
+
+  <form id="applyForm" novalidate>
+
+    <!-- 受講者区分 -->
+    <div class="form-section">
+      <div class="section-label">Student Type</div>
+      <h2 class="form-section-title">受講者区分</h2>
+      <p class="form-section-desc">当塾に在籍されているかどうかをお選びください。</p>
+      <div class="radio-group" id="studentTypeGroup">
+        <label class="radio-card">
+          <input type="radio" name="studentType" value="塾生" required>
+          <div class="rc-title">塾　生</div>
+          <div class="rc-desc">現在、当塾に通塾中</div>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="studentType" value="塾生以外" required>
+          <div class="rc-title">塾生以外</div>
+          <div class="rc-desc">外部から受講希望</div>
+        </label>
+      </div>
+    </div>
+
+    <!-- 連絡先 -->
+    <div class="form-section">
+      <div class="section-label">Contact</div>
+      <h2 class="form-section-title">ご連絡先</h2>
+      <p class="form-section-desc">確認メールをお送りします。</p>
+
+      <div class="field">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" name="email" required autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label>生徒氏名<span class="req">必須</span></label>
+        <input type="text" name="studentName" required autocomplete="name">
+      </div>
+
+      <!-- 塾生以外のみ -->
+      <div class="conditional" id="nonMemberFields">
+        <div class="field-row">
+          <div class="field">
+            <label>在籍中学／高校<span class="req">必須</span></label>
+            <input type="text" name="school" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label>学年<span class="req">必須</span></label>
+            <select name="grade">
+              <option value="">選択してください</option>
+              <option>中学1年</option>
+              <option>中学2年</option>
+              <option>中学3年</option>
+              <option>高校1年</option>
+              <option>高校2年</option>
+              <option>高校3年</option>
+              <option>既卒</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>保護者氏名<span class="req">必須</span></label>
+          <input type="text" name="parentName">
+        </div>
+        <div class="field">
+          <label>緊急連絡先（保護者の電話番号）<span class="req">必須</span></label>
+          <input type="tel" name="parentPhone" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+    <!-- 講座選択 -->
+    <div class="form-section">
+      <div class="section-label">Course Selection</div>
+      <h2 class="form-section-title">受講希望講座</h2>
+      <p class="form-section-desc">
+        ご希望の講座をお選びください（1講座 = 4回セット ¥20,000）。<br>
+        時間割の詳細は <a href="/intensive" target="_blank" style="text-decoration:underline;">季節講習ページ</a> をご確認ください。
+      </p>
+
+      <div class="course-list" id="courseList"><!-- rendered by JS --></div>
+
+      <div class="selection-summary">
+        <div>
+          <div class="ss-label">Selected</div>
+          <div class="ss-count"><span id="ssCount">0</span> 講座</div>
+        </div>
+        <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
+      </div>
+    </div>
+
+    <!-- 同意 -->
+    <div class="form-section">
+      <div class="section-label">Agreement</div>
+      <h2 class="form-section-title">お支払いについて</h2>
+
+      <div class="agreement-box">
+        <h4>お支払い条件</h4>
+        <ul>
+          <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
+          <li>お支払いは、講習初回開始日までに、塾窓口または指定口座へお振込みください。</li>
+          <li>お申し込み後、ご連絡なくキャンセルされた場合は受講料を申し受けます。</li>
+          <li>講座開始3日前以降のキャンセルはご返金致しかねます。</li>
+        </ul>
+      </div>
+
+      <label class="checkbox-field" id="agreeField">
+        <input type="checkbox" name="agree" required>
+        <span class="checkbox-box"></span>
+        <span class="checkbox-label">上記のお支払い条件に同意します。<span class="req">必須</span></span>
+      </label>
+    </div>
+
+    <!-- Honeypot for spam -->
+    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+
+    <div class="submit-section">
+      <button type="submit" class="submit-btn" id="submitBtn"><span>申し込みを送信する</span></button>
+      <div class="form-status" id="formStatus"></div>
+    </div>
+
+  </form>
+
+  </div><!-- /#formView -->
+
+</div>
+
+<footer>
+  <span>&copy; 2024 犬山数学理科特化塾</span>
+</footer>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+/* ============================================================
+   設定（EmailJSとGASのデプロイ後、ここを書き換えてください）
+   ============================================================ */
+const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
+const EMAILJS_TEMPLATE_OWNER = 'YOUR_TEMPLATE_ID_OWNER';    // 塾長宛
+const EMAILJS_TEMPLATE_USER  = 'YOUR_TEMPLATE_ID_USER';     // 申込者宛 自動返信
+const GAS_WEBAPP_URL         = 'YOUR_GAS_WEBAPP_URL';       // スプレッドシート記録用
+
+/* ============================================================
+   講座データ（季節講習ごとに書き換え）
+   ============================================================ */
+const PERIOD_TIMES = {
+  1: '9:30-10:40', 2: '10:50-12:10', 3: '13:00-14:10', 4: '14:20-15:30',
+  5: '16:30-17:40', 6: '18:00-19:10', 7: '19:20-20:30', 8: '20:40-21:50',
+};
+
+const COURSES = [
+  { id: 'gendaibun',     name: '共通テスト　現代文',     instructor: '匠',     price: 20000,
+    slots: [{d:'7/18',p:1},{d:'7/19',p:1},{d:'7/20',p:1},{d:'7/20',p:2}] },
+  { id: 'kobun',         name: '共通テスト　古文漢文',   instructor: '匠',     price: 20000,
+    slots: [{d:'7/18',p:4},{d:'7/19',p:4},{d:'7/19',p:5},{d:'7/20',p:3}] },
+  { id: 'kagaku-kiso',   name: '化学基礎',               instructor: '杉村',   price: 20000,
+    slots: [{d:'7/18',p:2},{d:'7/18',p:3},{d:'7/19',p:2},{d:'7/19',p:3}] },
+  { id: 'jhs-eigo',      name: '高校受験英語',           instructor: '匠',     price: 20000,
+    slots: [{d:'7/26',p:2},{d:'7/26',p:3},{d:'8/1',p:1},{d:'8/1',p:2}] },
+  { id: 'jhs-kokugo',    name: '高校受験国語',           instructor: '匠',     price: 20000,
+    slots: [{d:'7/26',p:6},{d:'7/26',p:7},{d:'8/1',p:3},{d:'8/1',p:4}] },
+  { id: 'eigo-r',        name: '共通テスト　英語リーディング', instructor: '匠', price: 20000,
+    slots: [{d:'8/10',p:1},{d:'8/10',p:2},{d:'8/15',p:3},{d:'8/15',p:4}] },
+  { id: 'eigo-l',        name: '共通テスト　英語リスニング',   instructor: '匠', price: 20000,
+    slots: [{d:'8/10',p:5},{d:'8/11',p:5},{d:'8/12',p:5},{d:'8/13',p:5}] },
+  { id: 'butsuri-h',     name: '物理　高3ハイレベル',     instructor: '杉村',   price: 20000,
+    slots: [{d:'8/11',p:1},{d:'8/11',p:2},{d:'8/16',p:1},{d:'8/16',p:2}] },
+  { id: 'kagaku-h',      name: '化学　高3ハイレベル',     instructor: '杉村',   price: 20000,
+    slots: [{d:'8/11',p:3},{d:'8/11',p:4},{d:'8/16',p:3},{d:'8/16',p:4}] },
+  { id: 'eibun-kaishaku', name: '英文解釈特訓',           instructor: '匠',     price: 20000,
+    slots: [{d:'8/13',p:1},{d:'8/13',p:2},{d:'8/14',p:1},{d:'8/14',p:2}] },
+  { id: 'kakuritsu-h',   name: '確率　ハイレベル',        instructor: '祐一郎', price: 20000,
+    slots: [{d:'8/10',p:3},{d:'8/10',p:4},{d:'8/13',p:3},{d:'8/13',p:4}] },
+  { id: 'kakuritsu-m',   name: '確率　ミドル',            instructor: '祐一郎', price: 20000,
+    slots: [{d:'8/12',p:3},{d:'8/12',p:4},{d:'8/14',p:3},{d:'8/14',p:4}] },
+  { id: 'seisu-h',       name: '整数問題　ハイレベル',    instructor: '祐一郎', price: 20000,
+    slots: [{d:'8/12',p:1},{d:'8/12',p:2},{d:'8/15',p:1},{d:'8/15',p:2}] },
+];
+
+const SESSION_LABEL = '夏期講習 2026';
+
+/* 申込受付開始日（JST） */
+const OPEN_DATES = {
+  member: new Date('2026-05-26T00:00:00+09:00'),
+  public: new Date('2026-06-01T00:00:00+09:00'),
+};
+
+function getGateState() {
+  const now = new Date();
+  if (now < OPEN_DATES.member) return 'closed';
+  if (now < OPEN_DATES.public) return 'member-only';
+  return 'open';
+}
+
+/* ============================================================
+   描画
+   ============================================================ */
+function renderCourses() {
+  const list = document.getElementById('courseList');
+  const periodSym = (p) => ['①','②','③','④','⑤','⑥','⑦','⑧'][p-1];
+  list.innerHTML = COURSES.map(c => `
+    <label class="course-card" data-course-id="${c.id}">
+      <input type="checkbox" name="courses" value="${c.id}">
+      <div class="course-card-check"></div>
+      <div class="cc-name">${c.name}</div>
+      <div class="cc-meta">担当 ${c.instructor}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
+      <div class="cc-slots">
+        ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
+      </div>
+    </label>
+  `).join('');
+}
+
+/* ============================================================
+   状態管理
+   ============================================================ */
+function updateSummary() {
+  const checked = document.querySelectorAll('input[name="courses"]:checked');
+  const count = checked.length;
+  const total = Array.from(checked).reduce((sum, el) => {
+    const course = COURSES.find(c => c.id === el.value);
+    return sum + (course ? course.price : 0);
+  }, 0);
+  document.getElementById('ssCount').textContent = count;
+  document.getElementById('ssTotal').textContent = total.toLocaleString();
+}
+
+function setupRadioCards() {
+  const cards = document.querySelectorAll('#studentTypeGroup .radio-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('checked'));
+      card.classList.add('checked');
+      const input = card.querySelector('input');
+      input.checked = true;
+      toggleNonMemberFields(input.value === '塾生以外');
+    });
+  });
+}
+
+function toggleNonMemberFields(show) {
+  const el = document.getElementById('nonMemberFields');
+  el.classList.toggle('show', show);
+  // require/unrequire fields
+  el.querySelectorAll('input, select').forEach(f => {
+    f.required = show;
+    if (!show) f.value = '';
+  });
+}
+
+function setupCourseCards() {
+  document.querySelectorAll('.course-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const input = card.querySelector('input');
+      input.checked = !input.checked;
+      card.classList.toggle('selected', input.checked);
+      updateSummary();
+    });
+  });
+}
+
+function setupCheckbox(fieldEl) {
+  const input = fieldEl.querySelector('input[type="checkbox"]');
+  fieldEl.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') return;
+    e.preventDefault();
+    input.checked = !input.checked;
+    fieldEl.classList.toggle('checked', input.checked);
+  });
+}
+
+/* ============================================================
+   送信
+   ============================================================ */
+function getFormData() {
+  const f = document.getElementById('applyForm');
+  const fd = new FormData(f);
+  const selectedIds = fd.getAll('courses');
+  const selectedCourses = selectedIds.map(id => COURSES.find(c => c.id === id)).filter(Boolean);
+  const periodSym = (p) => ['①','②','③','④','⑤','⑥','⑦','⑧'][p-1];
+
+  const courseLines = selectedCourses.map(c => {
+    const slots = c.slots.map(s => `${s.d} ${periodSym(s.p)} (${PERIOD_TIMES[s.p]})`).join(' / ');
+    return `・${c.name}（担当: ${c.instructor}）\n  ${slots}`;
+  }).join('\n\n');
+
+  const total = selectedCourses.reduce((s, c) => s + c.price, 0);
+
+  const studentType = fd.get('studentType') || '';
+  const data = {
+    session_label: SESSION_LABEL,
+    student_type: studentType,
+    email: (fd.get('email') || '').trim(),
+    student_name: (fd.get('studentName') || '').trim(),
+    school: (fd.get('school') || '').trim(),
+    grade: (fd.get('grade') || '').trim(),
+    parent_name: (fd.get('parentName') || '').trim(),
+    parent_phone: (fd.get('parentPhone') || '').trim(),
+    course_count: selectedCourses.length,
+    course_list: courseLines || '（選択なし）',
+    course_ids: selectedIds.join(','),
+    total_price: total.toLocaleString() + '円',
+    total_price_num: total,
+    submitted_at: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
+    honeypot: fd.get('website') || '',
+  };
+  return data;
+}
+
+function validate(data) {
+  if (data.honeypot) return 'スパム判定: 送信をブロックしました。';
+  if (!data.student_type) return '受講者区分を選択してください。';
+  if (!data.email) return 'メールアドレスを入力してください。';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'メールアドレスの形式をご確認ください。';
+  if (!data.student_name) return '生徒氏名を入力してください。';
+  if (data.student_type === '塾生以外') {
+    if (!data.school) return '在籍中学／高校を入力してください。';
+    if (!data.grade) return '学年を選択してください。';
+    if (!data.parent_name) return '保護者氏名を入力してください。';
+    if (!data.parent_phone) return '保護者の電話番号を入力してください。';
+  }
+  if (data.course_count === 0) return '受講希望講座を1つ以上お選びください。';
+  const agree = document.querySelector('input[name="agree"]');
+  if (!agree.checked) return 'お支払い条件への同意が必要です。';
+  return null;
+}
+
+function showStatus(type, msg) {
+  const s = document.getElementById('formStatus');
+  s.className = 'form-status show ' + type;
+  s.textContent = msg;
+}
+
+async function sendToGAS(data) {
+  if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.startsWith('YOUR_')) {
+    console.warn('GAS_WEBAPP_URL is not configured');
+    return { skipped: true };
+  }
+  // text/plain でCORSプリフライトを回避。GAS側でJSON.parse(e.postData.contents)。
+  return fetch(GAS_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data),
+  });
+}
+
+async function sendEmails(data) {
+  if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY.startsWith('YOUR_')) {
+    console.warn('EmailJS is not configured');
+    return { skipped: true };
+  }
+  const ownerSend = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_OWNER, data);
+  const userSend  = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_USER,  data);
+  return Promise.all([ownerSend, userSend]);
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  // ゲート二重チェック: 受付外なら送信させない
+  if (getGateState() === 'closed') {
+    showStatus('error', 'お申し込み受付期間外です。');
+    return;
+  }
+  const data = getFormData();
+  // 塾生以外受付前に塾生以外を送信されたらブロック
+  if (getGateState() === 'member-only' && data.student_type === '塾生以外') {
+    showStatus('error', '塾生以外の方の受付開始は 6月1日（月）です。');
+    return;
+  }
+  const err = validate(data);
+  if (err) {
+    showStatus('error', err);
+    return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = '送信中...';
+  showStatus('', '');
+
+  try {
+    // Email送信とSheets記録を並行実行。Sheetsが失敗してもEmailが届けば申込は成立とみなす。
+    const [emailResult, gasResult] = await Promise.allSettled([
+      sendEmails(data),
+      sendToGAS(data),
+    ]);
+
+    if (emailResult.status === 'rejected') {
+      throw new Error('メール送信に失敗しました。時間をおいて再度お試しください。');
+    }
+    if (gasResult.status === 'rejected') {
+      console.error('GAS記録失敗:', gasResult.reason);
+      // メールは届いているので成功扱い
+    }
+
+    showStatus('success', 'お申し込みを受け付けました。確認メールをお送りしましたのでご確認ください。');
+    document.getElementById('applyForm').reset();
+    document.querySelectorAll('.radio-card.checked, .course-card.selected, .checkbox-field.checked').forEach(el => {
+      el.classList.remove('checked', 'selected');
+    });
+    toggleNonMemberFields(false);
+    updateSummary();
+    btn.querySelector('span').textContent = '申し込みを送信する';
+  } catch (err) {
+    console.error(err);
+    showStatus('error', err.message || '送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+    btn.disabled = false;
+    btn.querySelector('span').textContent = '申し込みを送信する';
+  }
+}
+
+/* ============================================================
+   ゲート適用
+   ============================================================ */
+function applyGate() {
+  const state = getGateState();
+  const comingSoon = document.getElementById('comingSoonView');
+  const formView = document.getElementById('formView');
+  if (state === 'closed') {
+    comingSoon.classList.add('show');
+    return false;
+  }
+  formView.classList.add('show');
+  if (state === 'member-only') {
+    // 塾生以外のラジオをロック
+    document.getElementById('memberOnlyBanner').style.display = 'block';
+    const nonMemberCard = document.querySelector('.radio-card input[value="塾生以外"]').closest('.radio-card');
+    nonMemberCard.classList.add('locked');
+    const lock = document.createElement('div');
+    lock.className = 'rc-lock';
+    lock.textContent = '受付開始: 6/1（月）';
+    nonMemberCard.appendChild(lock);
+  }
+  return true;
+}
+
+/* ============================================================
+   初期化
+   ============================================================ */
+const formActive = applyGate();
+
+if (formActive) {
+  if (typeof emailjs !== 'undefined' && EMAILJS_PUBLIC_KEY && !EMAILJS_PUBLIC_KEY.startsWith('YOUR_')) {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  renderCourses();
+  setupRadioCards();
+  setupCourseCards();
+  setupCheckbox(document.getElementById('agreeField'));
+  document.getElementById('applyForm').addEventListener('submit', handleSubmit);
+}
+
+/* NAV */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+</script>
+
+</body>
+</html>
