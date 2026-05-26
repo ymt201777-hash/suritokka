@@ -359,6 +359,25 @@
     line-height: 2.4; color: rgba(14,12,10,0.75);
   }
 
+  /* INFO (deadline & payment) */
+  .info-section { margin-bottom: 64px; }
+  .info-grid { border-top: 1px solid rgba(14, 12, 10, 0.08); }
+  .info-item {
+    display: flex; align-items: baseline; gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+  }
+  .info-label {
+    font-size: 11.5px; letter-spacing: 0.18em;
+    color: rgba(14,12,10,0.55);
+    min-width: 180px;
+  }
+  .info-value {
+    font-weight: 400; font-size: 14px;
+    letter-spacing: 0.08em; color: var(--ink);
+    line-height: 1.8;
+  }
+
   /* CTA */
   .cta-section { background: var(--warm-light); padding: 100px 52px; text-align: center; }
   .cta-text { font-weight: 200; font-size: 14px; letter-spacing: 0.2em; color: rgba(14,12,10,0.5); margin-bottom: 48px; }
@@ -409,6 +428,9 @@
     .apply-pending .ap-row { gap: 16px; }
     .apply-pending .ap-label { min-width: 64px; font-size: 10.5px; letter-spacing: 0.14em; }
     .apply-pending .ap-date { font-size: 13px; }
+    .info-item { flex-direction: column; gap: 6px; padding: 14px 0; }
+    .info-label { min-width: 0; font-size: 11px; letter-spacing: 0.14em; }
+    .info-value { font-size: 13px; }
     .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
@@ -1062,10 +1084,14 @@
         </div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-card-label">Note</div>
-        <div class="pricing-card-title">受講に関して</div>
-        <div class="pricing-desc" style="opacity:0.8; font-size:13px; line-height:2.8;">
-          講習期間中も通常授業を行います。<br>塾生以外が受講の場合はお問い合わせください。
+        <div class="pricing-card-label">For Non-Students</div>
+        <div class="pricing-card-title">塾生以外 基本サービス料</div>
+        <div class="pricing-amount">
+          <span class="pricing-num">+20,000</span>
+          <span class="pricing-unit">円</span>
+        </div>
+        <div class="pricing-desc" style="opacity:0.8; font-size:12.5px; line-height:2.2;">
+          7/18（土）〜 8/16（日）の自習室利用・LINEでの質問対応など、講習期間中の塾基本サービス利用料として、講習代に加えてお支払いいただきます。
         </div>
       </div>
     </div>
@@ -1083,11 +1109,31 @@
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
   </div>
 
+  <!-- 申込期限・お支払い -->
+  <div class="info-section">
+    <div class="section-label">Deadline &amp; Payment</div>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">申込期限</span>
+        <span class="info-value">2026年7月10日（金）</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">塾生 お支払い</span>
+        <span class="info-value">7月27日のお支払いに追加でご請求</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">塾生以外 お支払い</span>
+        <span class="info-value">7月17日（金）までに指定口座へお振込</span>
+      </div>
+    </div>
+  </div>
+
   <!-- 注意事項 -->
   <div class="note-section">
     <p>
       ・各講座 定員12名となります。<br>
-      ・定員になり次第、受付を終了いたします。お早めにお申し込みください。
+      ・定員になり次第、受付を終了いたします。お早めにお申し込みください。<br>
+      ・講習期間中も通常授業を行います。
     </p>
   </div>
 
