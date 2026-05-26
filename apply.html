@@ -547,7 +547,7 @@
         </div>
         <div class="gate-row">
           <span class="gate-label">塾生以外</span>
-          <span class="gate-date">2026年6月1日（月）</span>
+          <span class="gate-date">2026年6月3日（水）</span>
         </div>
       </div>
       <p class="gate-note">
@@ -566,7 +566,7 @@
   </div>
 
   <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
-    現在、塾生の方の受付期間です。<span style="white-space:nowrap;">塾生以外の方の受付開始は <strong>6月1日（月）</strong> より承ります。</span>
+    現在、塾生の方の受付期間です。<span style="white-space:nowrap;">塾生以外の方の受付開始は <strong>6月3日（水）</strong> より承ります。</span>
   </div>
 
   <form id="applyForm" novalidate>
@@ -675,7 +675,7 @@
       <h2 class="form-section-title">お支払いについて</h2>
 
       <div class="agreement-box">
-        <h4>お支払い条件</h4>
+        <h4>お支払いについて</h4>
         <ul>
           <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
           <li>全県模試は岐阜 4,400円 / 愛知 4,200円（全教科解説込）です。</li>
@@ -688,7 +688,7 @@
       <label class="checkbox-field" id="agreeField">
         <input type="checkbox" name="agree" required>
         <span class="checkbox-box"></span>
-        <span class="checkbox-label">上記のお支払い条件に同意します。<span class="req">必須</span></span>
+        <span class="checkbox-label">上記のお支払いについて同意します。<span class="req">必須</span></span>
       </label>
     </div>
 
@@ -777,7 +777,7 @@ const SESSION_LABEL = '夏期講習 2026';
 const MANUAL_OPEN = false;
 const OPEN_DATES = {
   member: new Date('2026-05-27T00:00:00+09:00'),
-  public: new Date('2026-06-01T00:00:00+09:00'),
+  public: new Date('2026-06-03T00:00:00+09:00'),
 };
 
 const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
@@ -964,7 +964,7 @@ function validate(data) {
   }
   if (data.course_count === 0 && data.mock_count === 0) return '受講希望講座または全県模試を1つ以上お選びください。';
   const agree = document.querySelector('input[name="agree"]');
-  if (!agree.checked) return 'お支払い条件への同意が必要です。';
+  if (!agree.checked) return 'お支払いについての同意が必要です。';
   return null;
 }
 
@@ -1007,7 +1007,7 @@ async function handleSubmit(e) {
   const data = getFormData();
   // 塾生以外受付前に塾生以外を送信されたらブロック
   if (getGateState() === 'member-only' && data.student_type === '塾生以外') {
-    showStatus('error', '塾生以外の方の受付開始は 6月1日（月）です。');
+    showStatus('error', '塾生以外の方の受付開始は 6月3日（水）です。');
     return;
   }
   const err = validate(data);
@@ -1071,7 +1071,7 @@ function applyGate() {
     nonMemberCard.classList.add('locked');
     const lock = document.createElement('div');
     lock.className = 'rc-lock';
-    lock.textContent = '受付開始: 6/1（月）';
+    lock.textContent = '受付開始: 6/3（水）';
     nonMemberCard.appendChild(lock);
   }
   return true;

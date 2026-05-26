@@ -1129,7 +1129,7 @@
     <div id="applyContent">
       <div class="apply-pending">
         <div class="ap-row"><span class="ap-label">塾　生</span><span class="ap-date">2026年5月27日（水）</span></div>
-        <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年6月1日（月）</span></div>
+        <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年6月3日（水）</span></div>
       </div>
     </div>
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
@@ -1175,7 +1175,7 @@
 (function () {
   const MANUAL_OPEN = false;
   const memberOpen = new Date('2026-05-27T00:00:00+09:00');
-  const publicOpen = new Date('2026-06-01T00:00:00+09:00');
+  const publicOpen = new Date('2026-06-03T00:00:00+09:00');
   const now = new Date();
   if (!MANUAL_OPEN || now < memberOpen) return;
   const applyIntro = document.getElementById('applyIntro');
@@ -1184,7 +1184,7 @@
   applyIntro.textContent = '下記より、お申し込みいただけます。';
   applyContent.innerHTML = '<a href="/apply" class="apply-btn"><span>申込フォームへ進む</span></a>';
   if (now < publicOpen) {
-    applyNote.textContent = '※ 塾生以外の方の受付開始は 6月1日（月）より承ります。';
+    applyNote.textContent = '※ 塾生以外の方の受付開始は 6月3日（水）より承ります。';
   } else {
     applyNote.style.display = 'none';
   }
