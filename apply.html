@@ -561,6 +561,10 @@
   <!-- 申込フォーム -->
   <div id="formView">
 
+  <div class="gate-banner" id="previewBanner" style="display:none; background: rgba(200,80,80,0.12); border-left-color:#c85050;">
+    <strong>プレビューモード</strong>　公開前のチェック用表示です。送信しても申込データは保存されません（EmailJS / GAS 未接続）。
+  </div>
+
   <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
     現在、塾生の方の受付期間です。<span style="white-space:nowrap;">塾生以外の方の受付開始は <strong>6月1日（月）</strong> より承ります。</span>
   </div>
@@ -749,14 +753,18 @@ const COURSES = [
 const SESSION_LABEL = '夏期講習 2026';
 
 /* 申込受付開始日（JST）
-   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示） */
+   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示）
+   ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
 const MANUAL_OPEN = false;
 const OPEN_DATES = {
   member: new Date('2026-05-27T00:00:00+09:00'),
   public: new Date('2026-06-01T00:00:00+09:00'),
 };
 
+const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
+
 function getGateState() {
+  if (IS_PREVIEW) return 'open';
   if (!MANUAL_OPEN) return 'closed';
   const now = new Date();
   if (now < OPEN_DATES.member) return 'closed';
@@ -993,6 +1001,9 @@ function applyGate() {
     return false;
   }
   formView.classList.add('show');
+  if (IS_PREVIEW) {
+    document.getElementById('previewBanner').style.display = 'block';
+  }
   if (state === 'member-only') {
     // 塾生以外のラジオをロック
     document.getElementById('memberOnlyBanner').style.display = 'block';
