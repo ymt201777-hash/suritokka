@@ -211,22 +211,10 @@
     border-radius: 2px; padding: 7px 5px;
     font-size: 11px; line-height: 1.55; letter-spacing: 0.02em;
   }
-  .lesson.math       { background: #d4dff0; color: #2a3a5a; }
-  .lesson.math.light { background: #e4eaf5; }
-  .lesson.math.dark  { background: #bcceea; }
-
-  .lesson.science       { background: #e8d4f0; color: #3a2a5a; }
-  .lesson.science.light { background: #f0e2f7; }
-  .lesson.science.dark  { background: #d8b8e8; }
-
-  .lesson.japanese       { background: #f0e4d4; color: #5a3a1a; }
-  .lesson.japanese.light { background: #f5ecdf; }
-  .lesson.japanese.dark  { background: #e8d2b3; }
-
-  .lesson.english        { background: #f0d6dc; color: #5a2a3a; }
-  .lesson.english.light  { background: #f7e6ea; }
-  .lesson.english.dark   { background: #e6bbc6; }
-  .lesson.english.darker { background: #d8a3b0; }
+  .lesson.math    { background: #d4dff0; color: #2a3a5a; }
+  .lesson.science { background: #e8d4f0; color: #3a2a5a; }
+  .lesson.japanese{ background: #f0e4d4; color: #5a3a1a; }
+  .lesson.english { background: #f0d6dc; color: #5a2a3a; }
 
   .lesson.mock { background: #d8cfba; color: #3a3225; }
   .lesson.regular {
@@ -357,6 +345,32 @@
   .note-section p {
     font-weight: 200; font-size: 13px; letter-spacing: 0.08em;
     line-height: 2.4; color: rgba(14,12,10,0.75);
+  }
+
+  /* MOCK EXAM PRICING (add-ons under main pricing box) */
+  .mock-pricing { margin-top: 24px; }
+  .mock-pricing-label {
+    font-family: var(--serif-en); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--warm-mid); margin-bottom: 14px;
+  }
+  .mock-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+    gap: 16px;
+  }
+  .mock-row:first-of-type { border-top: 1px solid rgba(14, 12, 10, 0.08); }
+  .mock-name {
+    font-weight: 400; font-size: 14px; letter-spacing: 0.08em;
+  }
+  .mock-price {
+    font-size: 13px; letter-spacing: 0.06em;
+    color: rgba(14,12,10,0.75); text-align: right;
+  }
+  .mock-price strong {
+    font-family: var(--serif-en); font-weight: 400; font-size: 16px;
+    color: var(--ink); margin-right: 4px;
   }
 
   /* INFO (deadline & payment) */
@@ -966,7 +980,7 @@
         <span class="course-detail-meta">70分 × 4回</span>
       </div>
       <p class="course-detail-instructor">担当講師　匠</p>
-      <div class="course-detail-material">購入必要教材　匠先生オリジナル教材（別途 教材費 3,000円）</div>
+      <div class="course-detail-material">購入必要教材　『2026年受験用 全国高校入試問題正解 分野別過去問 366題 英語 長文読解・英作文・リスニング』</div>
       <p class="course-detail-desc">高校入試で出題される「長文読解」「文法問題」「英作文」の3つの柱をバランスよく強化する講座。入試頻出の文法パターンの総整理と、長文を論理的に読み解くアプローチをポイントを抑えて理解することを目標にします。</p>
     </div>
 
@@ -976,7 +990,7 @@
         <span class="course-detail-meta">70分 × 4回</span>
       </div>
       <p class="course-detail-instructor">担当講師　匠</p>
-      <div class="course-detail-material">購入必要教材　匠先生オリジナル教材（別途 教材費 3,000円）</div>
+      <div class="course-detail-material">購入必要教材　『2026年受験用 全国高校入試問題正解 分野別過去問 465題 国語 現代文・古文・漢文』</div>
       <p class="course-detail-desc">高校入試における現代文の読解ルールと、古文・文法の基礎を体系的に学ぶ講座。志望校合格に向けて、記述問題の部分点の取り方や、初見の文章でも得点できる応用力の土台をポイントを抑えて理解することを目標にします。</p>
     </div>
 
@@ -1093,6 +1107,18 @@
         <div class="pricing-desc" style="opacity:0.8; font-size:12.5px; line-height:2.2;">
           7/18（土）〜 8/16（日）の自習室利用・LINEでの質問対応など、講習期間中の塾基本サービス利用料として、講習代に加えてお支払いいただきます。
         </div>
+      </div>
+    </div>
+
+    <div class="mock-pricing">
+      <div class="mock-pricing-label">Mock Exams</div>
+      <div class="mock-row">
+        <span class="mock-name">岐阜全県模試</span>
+        <span class="mock-price"><strong>4,400</strong>円（全教科解説込）</span>
+      </div>
+      <div class="mock-row">
+        <span class="mock-name">愛知全県模試</span>
+        <span class="mock-price"><strong>4,200</strong>円（全教科解説込）</span>
       </div>
     </div>
   </div>
