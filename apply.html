@@ -648,11 +648,22 @@
       </p>
 
       <div class="course-list" id="courseList"><!-- rendered by JS --></div>
+    </div>
+
+    <!-- 全県模試 -->
+    <div class="form-section">
+      <div class="section-label">Mock Exams</div>
+      <h2 class="form-section-title">全県模試（任意）</h2>
+      <p class="form-section-desc">
+        全教科解説込みの料金です。ご希望の方のみお選びください。
+      </p>
+
+      <div class="course-list" id="mockExamList"><!-- rendered by JS --></div>
 
       <div class="selection-summary">
         <div>
           <div class="ss-label">Selected</div>
-          <div class="ss-count"><span id="ssCount">0</span> 講座</div>
+          <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
         </div>
         <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
       </div>
@@ -667,6 +678,7 @@
         <h4>お支払い条件</h4>
         <ul>
           <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
+          <li>全県模試は岐阜 4,400円 / 愛知 4,200円（全教科解説込）です。</li>
           <li>お支払いは、講習初回開始日までに、塾窓口または指定口座へお振込みください。</li>
           <li>お申し込み後、ご連絡なくキャンセルされた場合は受講料を申し受けます。</li>
           <li>講座開始3日前以降のキャンセルはご返金致しかねます。</li>
@@ -750,6 +762,13 @@ const COURSES = [
     slots: [{d:'7/28',p:5},{d:'7/29',p:5},{d:'7/30',p:5},{d:'7/31',p:5}] },
 ];
 
+const MOCK_EXAMS = [
+  { id: 'mock-gifu',  name: '岐阜全県模試', price: 4400,
+    slots: [{d:'8/8',  label:'テスト'},{d:'8/9',  label:'解説'}] },
+  { id: 'mock-aichi', name: '愛知全県模試', price: 4200,
+    slots: [{d:'8/22', label:'テスト'},{d:'8/23', label:'解説'}] },
+];
+
 const SESSION_LABEL = '夏期講習 2026';
 
 /* 申込受付開始日（JST）
@@ -791,18 +810,46 @@ function renderCourses() {
   `).join('');
 }
 
+function renderMockExams() {
+  const list = document.getElementById('mockExamList');
+  list.innerHTML = MOCK_EXAMS.map(m => `
+    <label class="course-card" data-mock-id="${m.id}">
+      <input type="checkbox" name="mocks" value="${m.id}">
+      <div class="course-card-check"></div>
+      <div class="cc-name">${m.name}</div>
+      <div class="cc-meta">全教科解説込<span class="cc-price">¥${m.price.toLocaleString()}</span></div>
+      <div class="cc-slots">
+        ${m.slots.map(s => `<span class="cc-slot">${s.d} ${s.label}</span>`).join('')}
+      </div>
+    </label>
+  `).join('');
+}
+
 /* ============================================================
    状態管理
    ============================================================ */
 function updateSummary() {
   const checked = document.querySelectorAll('input[name="courses"]:checked');
+  const checkedMocks = document.querySelectorAll('input[name="mocks"]:checked');
   const count = checked.length;
+  const mockCount = checkedMocks.length;
+  const mockTotal = Array.from(checkedMocks).reduce((sum, el) => {
+    const mock = MOCK_EXAMS.find(m => m.id === el.value);
+    return sum + (mock ? mock.price : 0);
+  }, 0);
+  const mockBadge = document.getElementById('ssMockBadge');
+  if (mockCount > 0) {
+    mockBadge.style.display = 'inline';
+    document.getElementById('ssMockCount').textContent = mockCount;
+  } else {
+    mockBadge.style.display = 'none';
+  }
   const total = Array.from(checked).reduce((sum, el) => {
     const course = COURSES.find(c => c.id === el.value);
     return sum + (course ? course.price : 0);
   }, 0);
   document.getElementById('ssCount').textContent = count;
-  document.getElementById('ssTotal').textContent = total.toLocaleString();
+  document.getElementById('ssTotal').textContent = (total + mockTotal).toLocaleString();
 }
 
 function setupRadioCards() {
@@ -865,7 +912,17 @@ function getFormData() {
     return `・${c.name}（担当: ${c.instructor}）\n  ${slots}`;
   }).join('\n\n');
 
-  const total = selectedCourses.reduce((s, c) => s + c.price, 0);
+  const courseTotal = selectedCourses.reduce((s, c) => s + c.price, 0);
+
+  const selectedMockIds = fd.getAll('mocks');
+  const selectedMocks = selectedMockIds.map(id => MOCK_EXAMS.find(m => m.id === id)).filter(Boolean);
+  const mockLines = selectedMocks.map(m => {
+    const dates = m.slots.map(s => `${s.d}（${s.label}）`).join(' / ');
+    return `・${m.name}（全教科解説込・¥${m.price.toLocaleString()}）\n  ${dates}`;
+  }).join('\n\n');
+  const mockTotal = selectedMocks.reduce((s, m) => s + m.price, 0);
+
+  const total = courseTotal + mockTotal;
 
   const studentType = fd.get('studentType') || '';
   const data = {
@@ -880,6 +937,9 @@ function getFormData() {
     course_count: selectedCourses.length,
     course_list: courseLines || '（選択なし）',
     course_ids: selectedIds.join(','),
+    mock_count: selectedMocks.length,
+    mock_list: mockLines || '（選択なし）',
+    mock_ids: selectedMockIds.join(','),
     total_price: total.toLocaleString() + '円',
     total_price_num: total,
     submitted_at: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
@@ -900,7 +960,7 @@ function validate(data) {
     if (!data.parent_name) return '保護者氏名を入力してください。';
     if (!data.parent_phone) return '保護者の電話番号を入力してください。';
   }
-  if (data.course_count === 0) return '受講希望講座を1つ以上お選びください。';
+  if (data.course_count === 0 && data.mock_count === 0) return '受講希望講座または全県模試を1つ以上お選びください。';
   const agree = document.querySelector('input[name="agree"]');
   if (!agree.checked) return 'お支払い条件への同意が必要です。';
   return null;
@@ -1028,6 +1088,7 @@ if (formActive) {
   }
 
   renderCourses();
+  renderMockExams();
   setupRadioCards();
   setupCourseCards();
   setupCheckbox(document.getElementById('agreeField'));
