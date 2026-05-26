@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>お申し込み完了 | 犬山数学理科特化塾</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --cream: #f4efe6;
+    --warm-mid: #c8b89a;
+    --warm-light: #e8dfd0;
+    --serif-jp: 'Noto Serif JP', 'ヒラギノ明朝 ProN', serif;
+    --serif-en: 'Cormorant Garamond', Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--serif-jp); font-weight: 300; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 52px; height: 72px;
+    background: rgba(244, 239, 230, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(14, 12, 10, 0.07);
+  }
+  .nav-logo {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 12px; letter-spacing: 0.2em;
+    opacity: 0.85; position: relative; z-index: 101; cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; pointer-events: none; }
+  .nav-links li { pointer-events: auto; }
+  .nav-links a {
+    font-family: var(--serif-jp); font-weight: 200;
+    font-size: 11.5px; letter-spacing: 0.14em;
+    opacity: 0.5; transition: opacity 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    opacity: 0.85 !important;
+    padding: 6px 18px;
+    border: 1px solid var(--ink);
+    transition: background 0.3s, color 0.3s, opacity 0.3s;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover {
+    background: var(--ink); color: var(--cream); opacity: 1 !important;
+  }
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 28px; height: 20px; position: relative; z-index: 110;
+  }
+  .hamburger span {
+    display: block; width: 100%; height: 1px; background: var(--ink);
+    position: absolute; left: 0; transition: all 0.35s;
+  }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 50%; }
+  .hamburger span:nth-child(3) { top: 100%; }
+  .hamburger.open span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { top: 50%; transform: rotate(-45deg); }
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 105;
+    background: var(--cream);
+    flex-direction: column; justify-content: center; align-items: center; gap: 36px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 15px; letter-spacing: 0.18em;
+    opacity: 0.7; transition: opacity 0.3s;
+  }
+  .mobile-menu a:hover { opacity: 1; }
+  .mobile-menu .mobile-cta {
+    margin-top: 12px;
+    padding: 12px 36px;
+    border: 1px solid var(--ink);
+    opacity: 1;
+    transition: background 0.3s, color 0.3s;
+  }
+  .mobile-menu .mobile-cta:hover {
+    background: var(--ink); color: var(--cream);
+  }
+
+  /* MAIN */
+  main {
+    flex: 1;
+    padding: 160px 52px 80px;
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .page-label {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 28px; display: flex; align-items: center; gap: 20px;
+    justify-content: center;
+  }
+  .page-label::before, .page-label::after {
+    content: ''; width: 48px; height: 1px; background: var(--warm-mid);
+  }
+
+  .check-mark {
+    font-family: var(--serif-en);
+    font-size: 64px;
+    color: var(--warm-mid);
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  h1 {
+    font-weight: 200;
+    font-size: clamp(24px, 3.5vw, 36px);
+    letter-spacing: 0.12em;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .intro {
+    font-size: 14px;
+    line-height: 2.4;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: rgba(14, 12, 10, 0.75);
+    margin-bottom: 56px;
+  }
+
+  /* SUMMARY */
+  .summary {
+    border-top: 1px solid rgba(14, 12, 10, 0.1);
+    border-bottom: 1px solid rgba(14, 12, 10, 0.1);
+    padding: 32px 0;
+    margin-bottom: 48px;
+    display: none;
+  }
+  .summary.show { display: block; }
+  .summary-label {
+    font-family: var(--serif-en); font-size: 10px;
+    letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--warm-mid); margin-bottom: 18px; text-align: center;
+  }
+  .summary-row {
+    display: flex; gap: 24px; padding: 12px 0;
+    border-bottom: 1px dashed rgba(14, 12, 10, 0.08);
+    font-size: 13px; letter-spacing: 0.06em;
+    line-height: 1.8;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row-label {
+    flex-shrink: 0;
+    min-width: 100px;
+    color: rgba(14, 12, 10, 0.55);
+    letter-spacing: 0.14em;
+  }
+  .summary-row-value {
+    color: var(--ink);
+    white-space: pre-line;
+  }
+  .summary-total {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(14, 12, 10, 0.12);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .summary-total-label {
+    font-size: 12px; letter-spacing: 0.18em;
+    color: rgba(14, 12, 10, 0.6);
+  }
+  .summary-total-value {
+    font-family: var(--serif-en); font-weight: 400;
+    font-size: 28px;
+  }
+  .summary-total-value .yen {
+    font-family: var(--serif-jp); font-size: 13px;
+    margin-left: 6px; color: rgba(14, 12, 10, 0.6);
+  }
+
+  /* NEXT STEPS */
+  .next-steps {
+    background: rgba(200,184,154,0.12);
+    border-left: 3px solid var(--warm-mid);
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+  .next-steps h3 {
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .next-steps ul {
+    list-style: none;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    line-height: 2.2;
+    color: rgba(14, 12, 10, 0.75);
+  }
+  .next-steps ul li {
+    padding-left: 18px;
+    position: relative;
+  }
+  .next-steps ul li::before {
+    content: '・';
+    position: absolute;
+    left: 0;
+    color: var(--warm-mid);
+  }
+
+  /* ACTIONS */
+  .actions {
+    display: flex; gap: 16px; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .action-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    font-family: var(--serif-jp); font-weight: 300;
+    font-size: 13px; letter-spacing: 0.18em;
+    transition: all 0.3s;
+    border: 1px solid var(--ink);
+  }
+  .action-btn.primary {
+    background: var(--ink); color: var(--cream);
+  }
+  .action-btn.primary:hover { opacity: 0.85; }
+  .action-btn.secondary {
+    background: transparent; color: var(--ink);
+  }
+  .action-btn.secondary:hover {
+    background: var(--ink); color: var(--cream);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink); color: rgba(244,239,230,0.4);
+    padding: 48px 52px; display: flex;
+    justify-content: center; align-items: center;
+    font-weight: 200; font-size: 11px; letter-spacing: 0.15em;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; height: 60px; }
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    main { padding: 120px 24px 60px; }
+    .check-mark { font-size: 48px; }
+    .summary-row { flex-direction: column; gap: 6px; }
+    .summary-row-label { min-width: 0; font-size: 11px; }
+    .next-steps { padding: 20px 22px; }
+    .actions { flex-direction: column; }
+    .action-btn { width: 100%; text-align: center; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="/">犬山数学理科特化塾</a>
+  <ul class="nav-links">
+    <li><a href="/instructors">講師紹介</a></li>
+    <li><a href="/results">合格実績</a></li>
+    <li><a href="/courses">コース・料金</a></li>
+    <li><a href="/intensive">季節講習</a></li>
+    <li><a href="/access">アクセス</a></li>
+    <li><a href="/gallery">塾内写真</a></li>
+    <li><a href="/legal">特商法</a></li>
+    <li><a href="/booking" class="nav-cta">体験予約</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">トップ</a>
+  <a href="/instructors">講師紹介</a>
+  <a href="/results">合格実績</a>
+  <a href="/courses">コース・料金</a>
+  <a href="/intensive">季節講習</a>
+  <a href="/access">アクセス</a>
+  <a href="/gallery">塾内写真</a>
+  <a href="/legal">特商法</a>
+  <a href="/booking" class="mobile-cta">体験予約</a>
+</div>
+
+<main>
+  <div id="previewBanner" style="display:none; background: rgba(200,80,80,0.12); border-left: 3px solid #c85050; padding: 14px 22px; margin-bottom: 36px; font-size: 12.5px; letter-spacing: 0.06em; line-height: 1.8;">
+    <strong>プレビューモード</strong>　公開前のチェック用表示です。実際の申込データは保存されていません。
+  </div>
+
+  <div class="page-label">Application Complete</div>
+  <div class="check-mark">✦</div>
+  <h1>お申し込みを受け付けました</h1>
+  <p class="intro">
+    この度はお申し込みいただきありがとうございます。<br>
+    ご登録のメールアドレスへ確認メールをお送りしましたのでご確認ください。
+  </p>
+
+  <div class="summary" id="summary">
+    <div class="summary-label">Your Application</div>
+    <div id="summaryRows"></div>
+    <div class="summary-total">
+      <span class="summary-total-label">合計</span>
+      <span class="summary-total-value"><span id="summaryTotal">0</span><span class="yen">円</span></span>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <h3>このあとのご案内</h3>
+    <ul>
+      <li>確認メールが届かない場合は、迷惑メールフォルダをご確認ください。</li>
+      <li>塾生の方は、7月27日のお支払いに今回の受講料を追加でご請求いたします。</li>
+      <li>塾生以外の方は、7月17日（金）までに指定口座へお振込みください（追って詳細をご案内いたします）。</li>
+      <li>各講座定員12名のため、定員に達した場合は別途ご連絡いたします。</li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <a href="/intensive" class="action-btn secondary">季節講習ページへ戻る</a>
+    <a href="/" class="action-btn primary">トップへ</a>
+  </div>
+</main>
+
+<footer>
+  <span>&copy; 2024 犬山数学理科特化塾</span>
+</footer>
+
+<script>
+  // Nav hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Preview banner
+  if (new URLSearchParams(location.search).has('preview')) {
+    document.getElementById('previewBanner').style.display = 'block';
+  }
+
+  // Display submitted data from sessionStorage
+  try {
+    const raw = sessionStorage.getItem('applyResult');
+    if (raw) {
+      const data = JSON.parse(raw);
+      const summary = document.getElementById('summary');
+      const rows = document.getElementById('summaryRows');
+
+      const escape = (s) => String(s).replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[c]));
+
+      const addRow = (label, value) => {
+        if (!value) return;
+        const row = document.createElement('div');
+        row.className = 'summary-row';
+        row.innerHTML = `<div class="summary-row-label">${escape(label)}</div><div class="summary-row-value">${escape(value)}</div>`;
+        rows.appendChild(row);
+      };
+
+      addRow('受講者区分', data.student_type);
+      addRow('生徒氏名', data.student_name);
+      if (data.course_count > 0) addRow('受講講座', data.course_list);
+      if (data.mock_count > 0) addRow('全県模試', data.mock_list);
+      document.getElementById('summaryTotal').textContent = (data.total_price_num || 0).toLocaleString();
+
+      summary.classList.add('show');
+      // 一度表示したらクリア（リロードで再表示されない）
+      sessionStorage.removeItem('applyResult');
+    }
+  } catch (err) {
+    console.error('summary render failed', err);
+  }
+</script>
+
+</body>
+</html>

@@ -1033,14 +1033,12 @@ async function handleSubmit(e) {
       // メールは届いているので成功扱い
     }
 
-    showStatus('success', 'お申し込みを受け付けました。確認メールをお送りしましたのでご確認ください。');
-    document.getElementById('applyForm').reset();
-    document.querySelectorAll('.radio-card.checked, .course-card.selected, .checkbox-field.checked').forEach(el => {
-      el.classList.remove('checked', 'selected');
-    });
-    toggleNonMemberFields(false);
-    updateSummary();
+    try {
+      sessionStorage.setItem('applyResult', JSON.stringify(data));
+    } catch (_) {}
     btn.querySelector('span').textContent = '申し込みを送信する';
+    location.href = IS_PREVIEW ? '/apply-complete?preview=1' : '/apply-complete';
+    return;
   } catch (err) {
     console.error(err);
     showStatus('error', err.message || '送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
