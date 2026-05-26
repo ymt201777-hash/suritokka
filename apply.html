@@ -679,9 +679,9 @@
         <ul>
           <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
           <li>全県模試は岐阜 4,400円 / 愛知 4,200円（全教科解説込）です。</li>
-          <li>お支払いは、講習初回開始日までに、塾窓口または指定口座へお振込みください。</li>
-          <li>お申し込み後、ご連絡なくキャンセルされた場合は受講料を申し受けます。</li>
-          <li>講座開始3日前以降のキャンセルはご返金致しかねます。</li>
+          <li><strong>塾生の方</strong>：通常授業のお支払い方法に、7月27日のご請求へ追加でご請求いたします。</li>
+          <li><strong>塾生以外の方</strong>：7月17日（金）までに指定口座へお振込みください。お振込先はお申し込み後の自動返信メールにてご案内いたします。</li>
+          <li>キャンセルは <strong>7月7日（火）まで</strong> 受け付けます。7/7（火）以降のキャンセルはご返金しかねます。</li>
         </ul>
       </div>
 
@@ -717,10 +717,10 @@
 /* ============================================================
    設定（EmailJSとGASのデプロイ後、ここを書き換えてください）
    ============================================================ */
-const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
-const EMAILJS_TEMPLATE_OWNER = 'YOUR_TEMPLATE_ID_OWNER';    // 塾長宛
-const EMAILJS_TEMPLATE_USER  = 'YOUR_TEMPLATE_ID_USER';     // 申込者宛 自動返信
+const EMAILJS_PUBLIC_KEY = 'LI36yHTHbw37mvKeA';
+const EMAILJS_SERVICE_ID = 'service_64j7iqj';
+const EMAILJS_TEMPLATE_OWNER = 'template_e6nv6f4';          // 塾長宛
+const EMAILJS_TEMPLATE_USER  = 'template_x1xi9dh';          // 申込者宛 自動返信
 const GAS_WEBAPP_URL         = 'YOUR_GAS_WEBAPP_URL';       // スプレッドシート記録用
 
 /* ============================================================
@@ -928,6 +928,8 @@ function getFormData() {
   const data = {
     session_label: SESSION_LABEL,
     student_type: studentType,
+    is_member: studentType === '塾生' ? 'true' : '',
+    is_non_member: studentType === '塾生以外' ? 'true' : '',
     email: (fd.get('email') || '').trim(),
     student_name: (fd.get('studentName') || '').trim(),
     school: (fd.get('school') || '').trim(),
