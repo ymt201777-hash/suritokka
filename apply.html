@@ -664,6 +664,7 @@
         <div>
           <div class="ss-label">Selected</div>
           <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
+          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料 ¥20,000</div>
         </div>
         <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
       </div>
@@ -679,6 +680,7 @@
         <ul>
           <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
           <li>全県模試は岐阜 4,400円 / 愛知 4,200円（全教科解説込）です。</li>
+          <li>塾生以外の方は、上記の受講料に加えて <strong>基本サービス料 20,000円</strong>（7/18〜8/16の自習室利用・LINEでの質問対応など）が必要です。</li>
           <li><strong>塾生の方</strong>：通常授業のお支払い方法に、7月27日のご請求へ追加でご請求いたします。</li>
           <li><strong>塾生以外の方</strong>：7月17日（金）までに指定口座へお振込みください。お振込先はお申し込み後の自動返信メールにてご案内いたします。</li>
           <li>キャンセルは <strong>7月7日（火）まで</strong> 受け付けます。7/7（火）以降のキャンセルはご返金しかねます。</li>
@@ -770,6 +772,8 @@ const MOCK_EXAMS = [
     slots: [{d:'8/22', label:'テスト'},{d:'8/23', label:'解説'}] },
 ];
 
+const NON_MEMBER_FEE = 20000;
+
 const SESSION_LABEL = '夏期講習 2026';
 
 /* 申込受付開始日（JST）
@@ -849,8 +853,11 @@ function updateSummary() {
     const course = COURSES.find(c => c.id === el.value);
     return sum + (course ? course.price : 0);
   }, 0);
+  const studentTypeEl = document.querySelector('input[name="studentType"]:checked');
+  const nonMemberFee = (studentTypeEl && studentTypeEl.value === '塾生以外') ? NON_MEMBER_FEE : 0;
+  document.getElementById('ssNonMemberBadge').style.display = nonMemberFee > 0 ? 'block' : 'none';
   document.getElementById('ssCount').textContent = count;
-  document.getElementById('ssTotal').textContent = (total + mockTotal).toLocaleString();
+  document.getElementById('ssTotal').textContent = (total + mockTotal + nonMemberFee).toLocaleString();
 }
 
 function setupRadioCards() {
@@ -862,6 +869,7 @@ function setupRadioCards() {
       const input = card.querySelector('input');
       input.checked = true;
       toggleNonMemberFields(input.value === '塾生以外');
+      updateSummary();
     });
   });
 }
@@ -923,14 +931,17 @@ function getFormData() {
   }).join('\n\n');
   const mockTotal = selectedMocks.reduce((s, m) => s + m.price, 0);
 
-  const total = courseTotal + mockTotal;
-
   const studentType = fd.get('studentType') || '';
+  const nonMemberFee = studentType === '塾生以外' ? NON_MEMBER_FEE : 0;
+  const total = courseTotal + mockTotal + nonMemberFee;
+
   const data = {
     session_label: SESSION_LABEL,
     student_type: studentType,
     is_member: studentType === '塾生' ? 'true' : '',
     is_non_member: studentType === '塾生以外' ? 'true' : '',
+    non_member_fee: nonMemberFee,
+    non_member_fee_text: nonMemberFee > 0 ? nonMemberFee.toLocaleString() + '円' : '',
     email: (fd.get('email') || '').trim(),
     student_name: (fd.get('studentName') || '').trim(),
     school: (fd.get('school') || '').trim(),

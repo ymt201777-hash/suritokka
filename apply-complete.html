@@ -389,6 +389,7 @@
       addRow('生徒氏名', data.student_name);
       if (data.course_count > 0) addRow('受講講座', data.course_list);
       if (data.mock_count > 0) addRow('全県模試', data.mock_list);
+      if (data.non_member_fee > 0) addRow('塾生以外 基本サービス料', '¥' + data.non_member_fee.toLocaleString());
       document.getElementById('summaryTotal').textContent = (data.total_price_num || 0).toLocaleString();
 
       summary.classList.add('show');
