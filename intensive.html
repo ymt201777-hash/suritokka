@@ -1128,7 +1128,7 @@
     <p class="apply-text" id="applyIntro">申込開始日</p>
     <div id="applyContent">
       <div class="apply-pending">
-        <div class="ap-row"><span class="ap-label">塾　生</span><span class="ap-date">2026年5月26日（火）</span></div>
+        <div class="ap-row"><span class="ap-label">塾　生</span><span class="ap-date">2026年5月27日（水）</span></div>
         <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年6月1日（月）</span></div>
       </div>
     </div>
@@ -1170,12 +1170,14 @@
 </footer>
 
 <script>
-/* 申込開始日による表示切替（日付到来でJSが自動的に申込ボタンに差し替える） */
+/* 申込開始日による表示切替（日付到来でJSが自動的に申込ボタンに差し替える）
+   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく申込ボタン非表示） */
 (function () {
-  const memberOpen = new Date('2026-05-26T00:00:00+09:00');
+  const MANUAL_OPEN = false;
+  const memberOpen = new Date('2026-05-27T00:00:00+09:00');
   const publicOpen = new Date('2026-06-01T00:00:00+09:00');
   const now = new Date();
-  if (now < memberOpen) return;
+  if (!MANUAL_OPEN || now < memberOpen) return;
   const applyIntro = document.getElementById('applyIntro');
   const applyContent = document.getElementById('applyContent');
   const applyNote = document.getElementById('applyNote');

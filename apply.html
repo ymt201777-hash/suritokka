@@ -543,7 +543,7 @@
       <div class="gate-rows">
         <div class="gate-row">
           <span class="gate-label">塾　生</span>
-          <span class="gate-date">2026年5月26日（火）</span>
+          <span class="gate-date">2026年5月27日（水）</span>
         </div>
         <div class="gate-row">
           <span class="gate-label">塾生以外</span>
@@ -748,13 +748,16 @@ const COURSES = [
 
 const SESSION_LABEL = '夏期講習 2026';
 
-/* 申込受付開始日（JST） */
+/* 申込受付開始日（JST）
+   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示） */
+const MANUAL_OPEN = false;
 const OPEN_DATES = {
-  member: new Date('2026-05-26T00:00:00+09:00'),
+  member: new Date('2026-05-27T00:00:00+09:00'),
   public: new Date('2026-06-01T00:00:00+09:00'),
 };
 
 function getGateState() {
+  if (!MANUAL_OPEN) return 'closed';
   const now = new Date();
   if (now < OPEN_DATES.member) return 'closed';
   if (now < OPEN_DATES.public) return 'member-only';
