@@ -963,7 +963,8 @@ function getFormData() {
 }
 
 function validate(data) {
-  if (data.honeypot) return 'スパム判定: 送信をブロックしました。';
+  // honeypot に値があっても弾かない（オートフィルで誤ブロックされないように）。
+  // 実害があるbot判定はGAS側で skipped: 'spam' として記録回避する。
   if (!data.student_type) return '受講者区分を選択してください。';
   if (!data.email) return 'メールアドレスを入力してください。';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'メールアドレスの形式をご確認ください。';
