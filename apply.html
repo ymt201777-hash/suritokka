@@ -695,8 +695,8 @@
       </label>
     </div>
 
-    <!-- Honeypot for spam -->
-    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+    <!-- Honeypot for spam (do not fill — hidden from real users; named obscurely to dodge autofill) -->
+    <input type="text" name="hp_field_x7" class="honeypot" tabindex="-1" autocomplete="new-password" aria-hidden="true" inputmode="none">
 
     <div class="submit-section">
       <button type="submit" class="submit-btn" id="submitBtn"><span>申し込みを送信する</span></button>
@@ -957,7 +957,7 @@ function getFormData() {
     total_price: total.toLocaleString() + '円',
     total_price_num: total,
     submitted_at: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
-    honeypot: fd.get('website') || '',
+    honeypot: fd.get('hp_field_x7') || '',
   };
   return data;
 }
