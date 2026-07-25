@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLJQ87F61R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TLJQ87F61R');
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>夏期講習 申込フォーム | 犬山数学理科特化塾</title>
@@ -964,7 +973,7 @@ function getFormData() {
 
 function validate(data) {
   // honeypot に値があっても弾かない（オートフィルで誤ブロックされないように）。
-  // 実害があるbot判定はGAS側で skipped: 'spam' として記録回避する。
+  // honeypot付きの申込もGAS側で記録した上で「スパム疑い」フラグを立てる（破棄はしない）。
   if (!data.student_type) return '受講者区分を選択してください。';
   if (!data.email) return 'メールアドレスを入力してください。';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'メールアドレスの形式をご確認ください。';
