@@ -316,6 +316,13 @@
   }
   .apply-btn:hover::before { transform: scaleX(1); }
   .apply-btn span { position: relative; z-index: 1; }
+  /* 受付終了時の表示（クリック不可） */
+  .apply-btn.is-closed {
+    background: rgba(14, 12, 10, 0.3);
+    cursor: default; pointer-events: none;
+    max-width: 100%;
+  }
+  .apply-btn.is-closed::before { display: none; }
   .apply-pending {
     display: inline-block; text-align: left;
     padding: 22px 40px;
@@ -447,6 +454,7 @@
     .legend { gap: 10px; }
     .legend-item { font-size: 10px; }
     .apply-btn { padding: 14px 36px; font-size: 13px; letter-spacing: 0.15em; }
+    .apply-btn.is-closed { padding: 14px 20px; font-size: 12px; letter-spacing: 0.08em; }
     .apply-pending { padding: 18px 24px; }
     .apply-pending .ap-row { gap: 16px; }
     .apply-pending .ap-label { min-width: 64px; font-size: 10.5px; letter-spacing: 0.14em; }
@@ -1181,9 +1189,11 @@
 
 <script>
 /* 申込開始日による表示切替（日付到来でJSが自動的に申込ボタンに差し替える）
-   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく申込ボタン非表示） */
+   MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく申込ボタン非表示）
+   CLOSED: 受付終了後は true にする（クリック不可の終了表示に差し替わる） */
 (function () {
   const MANUAL_OPEN = true;
+  const CLOSED = true;
   const memberOpen = new Date('2026-05-27T00:00:00+09:00');
   const publicOpen = new Date('2026-06-03T00:00:00+09:00');
   const now = new Date();
@@ -1191,6 +1201,12 @@
   const applyIntro = document.getElementById('applyIntro');
   const applyContent = document.getElementById('applyContent');
   const applyNote = document.getElementById('applyNote');
+  if (CLOSED) {
+    applyIntro.style.display = 'none';
+    applyContent.innerHTML = '<span class="apply-btn is-closed"><span>夏期講習の申込は終了しました。</span></span>';
+    applyNote.style.display = 'none';
+    return;
+  }
   applyIntro.textContent = '下記より、お申し込みいただけます。';
   applyContent.innerHTML = '<a href="/apply" class="apply-btn"><span>申込フォームへ進む</span></a>';
   if (now < publicOpen) {
