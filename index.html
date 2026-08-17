@@ -324,6 +324,60 @@ nav.scrolled {
 .cta-btn span { position: relative; z-index: 1; }
 
 /* ============================================
+   Contact (LINE)
+   ============================================ */
+.contact {
+  padding: 120px 52px;
+  border-top: 1px solid rgba(14, 12, 10, 0.08);
+  text-align: center;
+}
+.contact-inner {
+  max-width: 720px; margin: 0 auto;
+}
+.contact-label {
+  font-family: var(--en); font-weight: 300;
+  font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--warm); margin-bottom: 28px;
+}
+.contact-title {
+  font-weight: 300; font-size: clamp(22px, 3.4vw, 32px);
+  letter-spacing: 0.08em; line-height: 1.7;
+  margin-bottom: 24px;
+}
+.contact-title em {
+  font-style: normal; color: #06c755;
+}
+.contact-desc {
+  font-size: 14px; letter-spacing: 0.06em; line-height: 2.2;
+  color: var(--text-sub); margin-bottom: 44px;
+}
+.line-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  padding: 20px 52px;
+  background: #06c755; color: #fff;
+  font-family: var(--jp); font-weight: 400;
+  font-size: 15px; letter-spacing: 0.14em;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.24);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.line-btn:hover {
+  background: #05b34c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(6, 199, 85, 0.3);
+}
+.line-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
+.contact-note {
+  margin-top: 28px;
+  font-size: 12.5px; letter-spacing: 0.06em; line-height: 2;
+  color: var(--text-sub);
+}
+.contact-note a {
+  border-bottom: 1px solid var(--warm);
+  padding-bottom: 2px;
+}
+
+/* ============================================
    Story
    ============================================ */
 .story {
@@ -427,6 +481,13 @@ footer {
   .cta { padding: 80px 24px; }
   .cta-btn { padding: 18px 48px; font-size: 13px; }
 
+  .contact { padding: 80px 24px; }
+  .contact-desc { margin-bottom: 36px; }
+  .line-btn {
+    width: 100%; max-width: 340px;
+    padding: 18px 24px; font-size: 14px; letter-spacing: 0.1em;
+  }
+
   .story { padding: 80px 24px; }
   .story-inner {
     grid-template-columns: 1fr; gap: 28px;
@@ -450,7 +511,7 @@ footer {
   <ul class="nav-links">
     <li><a href="/instructors">講師紹介</a></li>
     <li><a href="/results">合格実績</a></li>
-    <li><a href="/courses">コース・料金</a></li>
+    <li><a href="/courses">通常授業</a></li>
     <li><a href="/intensive">季節講習</a></li>
     <li><a href="/access">アクセス</a></li>
     <li><a href="/gallery">塾内写真</a></li>
@@ -466,7 +527,7 @@ footer {
   <a href="/">トップ</a>
   <a href="/instructors">講師紹介</a>
   <a href="/results">合格実績</a>
-  <a href="/courses">コース・料金</a>
+  <a href="/courses">通常授業</a>
   <a href="/intensive">季節講習</a>
   <a href="/access">アクセス</a>
   <a href="/gallery">塾内写真</a>
@@ -544,6 +605,27 @@ footer {
 <section class="cta">
   <p class="cta-text fade-up">まずは、雰囲気を感じてみてください。</p>
   <a href="/booking" class="cta-btn fade-up"><span>無料体験を予約する</span></a>
+</section>
+
+<!-- ========== Contact (LINE) ========== -->
+<section class="contact">
+  <div class="contact-inner fade-up">
+    <div class="contact-label">Contact</div>
+    <h2 class="contact-title">お問い合わせは<br>公式<em>LINE</em>から</h2>
+    <p class="contact-desc">
+      ご質問・ご相談は、公式LINEにお気軽にメッセージください。<br>
+      友だち追加して、トークからお送りください。
+    </p>
+    <a href="https://lin.ee/5OTmMP9" target="_blank" rel="noopener" class="line-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="shape-rendering: geometricPrecision;">
+        <path d="M12 2C6.48 2 2 5.82 2 10.5c0 4.21 3.74 7.74 8.8 8.4.34.07.81.23.92.52.1.26.07.68.03.95l-.15.88c-.05.26-.21 1.05.92.57 1.13-.48 6.1-3.59 8.32-6.15C22.77 13.47 22 11.54 22 10.5 22 5.82 17.52 2 12 2zm-3.2 11.5H7.13c-.27 0-.48-.22-.48-.48V8.98c0-.27.22-.48.48-.48.27 0 .48.22.48.48v3.55h1.19c.27 0 .48.22.48.48 0 .27-.22.49-.48.49zm1.84-.48c0 .27-.22.48-.48.48-.27 0-.48-.22-.48-.48V8.98c0-.27.22-.48.48-.48.27 0 .48.22.48.48v4.04zm4.26 0c0 .2-.13.39-.31.46-.05.02-.1.03-.16.03-.16 0-.3-.07-.39-.19l-1.88-2.56v2.26c0 .27-.22.48-.48.48-.27 0-.48-.22-.48-.48V8.98c0-.2.13-.39.31-.46.05-.02.1-.03.16-.03.15 0 .29.08.38.2l1.88 2.56V8.98c0-.27.22-.48.48-.48.27 0 .48.22.48.48v4.04zm2.75-2.46c.27 0 .48.22.48.48 0 .27-.22.48-.48.48H16.4v.87h1.25c.27 0 .48.22.48.48 0 .27-.22.48-.48.48h-1.73c-.27 0-.48-.22-.48-.48V8.98c0-.27.22-.48.48-.48h1.73c.27 0 .48.22.48.48 0 .27-.22.48-.48.48H16.4v.87h1.25z"/>
+      </svg>
+      <span>公式LINEで問い合わせる</span>
+    </a>
+    <p class="contact-note">
+      無料体験のご予約は<a href="/booking">予約フォーム</a>から承っています。
+    </p>
+  </div>
 </section>
 
 <!-- ========== Story ========== -->

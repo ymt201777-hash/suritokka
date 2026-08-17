@@ -22,7 +22,7 @@ master ブランチに push すると Vercel が自動デプロイします。�
 | `index.html` | トップ |
 | `instructors.html` | 講師紹介 |
 | `results.html` | 合格実績・体験記 |
-| `courses.html` | コース・料金 |
+| `courses.html` | 通常授業 |
 | `intensive.html` | 季節講習 |
 | `gallery.html` | 塾内写真 |
 | `access.html` | アクセス |
