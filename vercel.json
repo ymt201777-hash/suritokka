@@ -1,3 +1,15 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/access",
+      "destination": "/inuyama",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/inuyama",
+      "permanent": true
+    }
+  ]
 }

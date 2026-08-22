@@ -15,6 +15,18 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>夏期講習 | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾の季節講習。開講講座・日程・料金と、お申し込み方法をご案内します。塾生以外の方もご参加いただけます。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="犬山数学理科特化塾">
+<meta property="og:title" content="夏期講習 | 犬山数学理科特化塾">
+<meta property="og:description" content="犬山数学理科特化塾の季節講習。開講講座・日程・料金と、お申し込み方法をご案内します。塾生以外の方もご参加いただけます。">
+<meta property="og:url" content="https://www.suritokka.com/intensive">
+<meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.suritokka.com/intensive">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -139,11 +151,11 @@
   .content { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
 
   .section-label {
-    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
-    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    font-family: var(--serif-jp); font-weight: 300; font-size: 12.5px;
+    letter-spacing: 0.16em; color: rgba(14, 12, 10, 0.55);
     margin-bottom: 40px; display: flex; align-items: center; gap: 20px;
   }
-  .section-label::after { content: ''; width: 48px; height: 1px; background: var(--warm-mid); }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(14,12,10,0.08); }
 
   /* PRICING */
   .pricing-section { margin-bottom: 80px; }
@@ -429,10 +441,12 @@
   footer {
     background: var(--ink); color: rgba(244,239,230,0.4);
     padding: 64px 52px; display: flex;
-    justify-content: center; align-items: center;
+    justify-content: center; align-items: center; gap: 32px;
     font-weight: 200; font-size: 11px; letter-spacing: 0.15em;
   }
 
+  footer a { transition: color 0.3s; }
+  footer a:hover { color: rgba(244,239,230,0.75); }
   @media (max-width: 768px) {
     nav { padding: 0 24px; height: 60px; }
     .nav-links { display: none; }
@@ -476,9 +490,8 @@
     <li><a href="/results">合格実績</a></li>
     <li><a href="/courses">通常授業</a></li>
     <li><a href="/intensive">季節講習</a></li>
-    <li><a href="/access">アクセス</a></li>
-    <li><a href="/gallery">塾内写真</a></li>
-    <li><a href="/legal">特商法</a></li>
+    <li><a href="/inuyama">犬山校</a></li>
+    <li><a href="/iwakura">岩倉校</a></li>
     <li><a href="/booking" class="nav-cta">体験予約</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="メニュー">
@@ -492,9 +505,8 @@
   <a href="/results">合格実績</a>
   <a href="/courses">通常授業</a>
   <a href="/intensive">季節講習</a>
-  <a href="/access">アクセス</a>
-  <a href="/gallery">塾内写真</a>
-  <a href="/legal">特商法</a>
+  <a href="/inuyama">犬山校</a>
+  <a href="/iwakura">岩倉校</a>
   <a href="/booking" class="mobile-cta">体験予約</a>
 </div>
 
@@ -510,7 +522,7 @@
 
   <!-- 時間割 -->
   <div class="schedule-section">
-    <div class="section-label">Schedule</div>
+    <div class="section-label">日程</div>
 
     <h3 class="month-label">July</h3>
     <div class="schedule-outer">
@@ -959,7 +971,7 @@
 
   <!-- 講座一覧 -->
   <div class="course-detail-section">
-    <div class="section-label">Course Details</div>
+    <div class="section-label">講座詳細</div>
 
     <div class="course-detail">
       <div class="course-detail-header">
@@ -1104,7 +1116,7 @@
 
   <!-- 料金 -->
   <div class="pricing-section">
-    <div class="section-label">Pricing</div>
+    <div class="section-label">料金</div>
     <div class="pricing-box">
       <div class="pricing-card featured">
         <div class="pricing-card-label">Per Course</div>
@@ -1154,7 +1166,7 @@
 
   <!-- 申込期限・お支払い -->
   <div class="info-section">
-    <div class="section-label">Deadline &amp; Payment</div>
+    <div class="section-label">申込期限・お支払い</div>
     <div class="info-grid">
       <div class="info-item">
         <span class="info-label">申込期限</span>
@@ -1185,6 +1197,7 @@
 
 <footer>
   <span>&copy; 2024 犬山数学理科特化塾</span>
+  <a href="/legal">特定商取引法に基づく表記</a>
 </footer>
 
 <script>

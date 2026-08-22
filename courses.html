@@ -15,6 +15,18 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>通常授業 | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾の通常授業。時間割・講座一覧・料金をご案内します。基本料金20,000円／月に、受講する講座を1つ10,000円／月で追加する明朗な料金体系です。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="犬山数学理科特化塾">
+<meta property="og:title" content="通常授業 | 犬山数学理科特化塾">
+<meta property="og:description" content="犬山数学理科特化塾の通常授業。時間割・講座一覧・料金をご案内します。基本料金20,000円／月に、受講する講座を1つ10,000円／月で追加する明朗な料金体系です。">
+<meta property="og:url" content="https://www.suritokka.com/courses">
+<meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.suritokka.com/courses">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -134,11 +146,11 @@
   .content { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
 
   .section-label {
-    font-family: var(--serif-en); font-weight: 400; font-size: 13px;
-    letter-spacing: 0.38em; text-transform: uppercase; color: var(--ink);
+    font-family: var(--serif-jp); font-weight: 300; font-size: 12.5px;
+    letter-spacing: 0.16em; color: rgba(14, 12, 10, 0.55);
     margin-bottom: 40px; display: flex; align-items: center; gap: 20px;
   }
-  .section-label::after { content: ''; width: 48px; height: 1px; background: rgba(14,12,10,0.3); }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(14,12,10,0.08); }
 
   /* PRICING CARDS */
   .pricing-section { margin-bottom: 80px; }
@@ -329,10 +341,12 @@
   footer {
     background: var(--ink); color: rgba(244,239,230,0.4);
     padding: 64px 52px; display: flex;
-    justify-content: center; align-items: center;
+    justify-content: center; align-items: center; gap: 32px;
     font-weight: 200; font-size: 11px; letter-spacing: 0.15em;
   }
 
+  footer a { transition: color 0.3s; }
+  footer a:hover { color: rgba(244,239,230,0.75); }
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
     nav { padding: 0 24px; height: 60px; }
@@ -357,9 +371,8 @@
     <li><a href="/results">合格実績</a></li>
     <li><a href="/courses">通常授業</a></li>
     <li><a href="/intensive">季節講習</a></li>
-    <li><a href="/access">アクセス</a></li>
-    <li><a href="/gallery">塾内写真</a></li>
-    <li><a href="/legal">特商法</a></li>
+    <li><a href="/inuyama">犬山校</a></li>
+    <li><a href="/iwakura">岩倉校</a></li>
     <li><a href="/booking" class="nav-cta">体験予約</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="メニュー">
@@ -373,9 +386,8 @@
   <a href="/results">合格実績</a>
   <a href="/courses">通常授業</a>
   <a href="/intensive">季節講習</a>
-  <a href="/access">アクセス</a>
-  <a href="/gallery">塾内写真</a>
-  <a href="/legal">特商法</a>
+  <a href="/inuyama">犬山校</a>
+  <a href="/iwakura">岩倉校</a>
   <a href="/booking" class="mobile-cta">体験予約</a>
 </div>
 
@@ -388,7 +400,7 @@
 
   <!-- 時間割 -->
   <div class="schedule-section">
-    <div class="section-label">Schedule</div>
+    <div class="section-label">時間割</div>
     <div class="schedule-img">
       <img src="schedule.png" alt="時間割">
     </div>
@@ -396,7 +408,7 @@
 
   <!-- 講座一覧 -->
   <div class="courses-section">
-    <div class="section-label">Course Lineup</div>
+    <div class="section-label">講座一覧</div>
     <div class="courses-grid">
 
       <div class="course-group">
@@ -443,7 +455,7 @@
 
   <!-- 基本料金 -->
   <div class="pricing-section">
-    <div class="section-label">Pricing</div>
+    <div class="section-label">料金</div>
     <div class="pricing-cards">
 
       <div class="pricing-card">
@@ -487,7 +499,7 @@
 
   <!-- その他費用 -->
   <div class="fees-section">
-    <div class="section-label">Other Fees</div>
+    <div class="section-label">その他の費用</div>
     <table class="fees-table">
       <tr>
         <td>入塾金</td>
@@ -514,7 +526,7 @@
 
   <!-- 支払い方法 -->
   <div class="payment-section">
-    <div class="section-label">Payment</div>
+    <div class="section-label">お支払い</div>
     <div class="payment-cards">
       <div class="payment-card">
         <div class="payment-card-icon">Card</div>
@@ -539,6 +551,7 @@
 
 <footer>
   <span>&copy; 2024 犬山数学理科特化塾</span>
+  <a href="/legal">特定商取引法に基づく表記</a>
 </footer>
 
 <script>

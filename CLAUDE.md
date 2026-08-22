@@ -15,6 +15,12 @@ master ブランチに push すると Vercel が自動デプロイします。�
 
 `vercel.json` で `cleanUrls: true` にしているため、**内部リンクは `.html` を付けずに書きます**（`/courses`、`/booking` など）。
 
+旧 `/access` と `/gallery` は `vercel.json` の redirects で `/inuyama` に 301 転送しています。
+
+校舎ページは `inuyama.html` と `iwakura.html` の2枚構成で、互いのページ末尾からリンクし合っています。片方を編集したらもう片方のナビ・共通CSSも揃えてください。
+
+校舎ページには講師セクションがあります（犬山校は3名を薄く、岩倉校は室長を厚めに）。**正式なプロフィールは `instructors.html` に一本化**し、校舎ページ側は肩書と1〜2行に留めてください。学歴や実績を更新するときは `instructors.html` が正、校舎ページは要約です。
+
 ## ページ構成
 
 | ファイル | 内容 |
@@ -24,8 +30,8 @@ master ブランチに push すると Vercel が自動デプロイします。�
 | `results.html` | 合格実績・体験記 |
 | `courses.html` | 通常授業 |
 | `intensive.html` | 季節講習 |
-| `gallery.html` | 塾内写真 |
-| `access.html` | アクセス |
+| `inuyama.html` | 犬山校（授業と自習の拠点。写真・住所・地図） |
+| `iwakura.html` | 岩倉校（超集中自習室。写真・住所・地図） |
 | `legal.html` | 特定商取引法表記 |
 | `booking.html` | 無料体験予約フォーム |
 | `apply.html` | 季節講習 申込フォーム |
@@ -57,6 +63,26 @@ master ブランチに push すると Vercel が自動デプロイします。�
 
 - `MANUAL_OPEN` — 申込ボタンを表示するかどうか
 - `CLOSED` — `true` にすると「◯◯講習の申込は終了しました。」というクリック不可の表示に差し替わる
+
+## SEO / OGP
+
+全ページの `<head>` に以下を入れています。**新しいページを作るときは忘れずに追加してください。**
+
+- `meta name="description"`
+- OGP（`og:title` `og:description` `og:url` `og:image` ほか）と `twitter:card`
+- `link rel="canonical"`
+
+URL は `https://www.suritokka.com` を基準に、`.html` なしの絶対URLで書きます。OGP画像は全ページ共通で `/ogp.jpg`（1200×630）です。
+
+`index.html` `inuyama.html` `iwakura.html` には JSON-LD の構造化データ（`EducationalOrganization`）が入っています。住所・電話・営業時間を変更したら、ページ本文と構造化データの両方を直してください。
+
+`apply-complete.html` は検索結果に出す必要がないので `noindex` を付けています。
+
+## 画像
+
+写真は **幅900px / JPEG品質88** に統一しています（表示は最大400px幅なので、高解像度ディスプレイでも十分）。新しい写真を追加するときも同じ条件に落としてから置いてください。
+
+1枚目以外の `<img>` には `loading="lazy" decoding="async"` を付けます。
 
 ## アナリティクス
 
