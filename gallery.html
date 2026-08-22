@@ -126,6 +126,23 @@
 
   .content { max-width: 1100px; margin: 0 auto; padding: 0 52px 120px; }
 
+  .campus-section { margin-bottom: 72px; }
+  .campus-section .gallery-group:last-child { margin-bottom: 0; }
+  .campus-section:last-child { margin-bottom: 0; }
+  .campus-section + .campus-section {
+    padding-top: 72px;
+    border-top: 1px solid rgba(14, 12, 10, 0.12);
+  }
+  .campus-en {
+    font-family: var(--serif-en); font-weight: 300; font-size: 11px;
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--warm-mid);
+    margin-bottom: 14px;
+  }
+  .campus-name {
+    font-weight: 200; font-size: clamp(20px, 2.6vw, 28px);
+    letter-spacing: 0.14em; margin-bottom: 44px;
+  }
+
   .gallery-group { margin-bottom: 64px; }
   .gallery-group-label {
     font-family: var(--serif-jp); font-size: 15px;
@@ -220,36 +237,56 @@
 
 <div class="content">
 
-  <div class="gallery-group">
-    <div class="gallery-group-label">外観</div>
-    <div class="gallery-grid">
-      <img src="photo_exterior_2.jpg" alt="外観">
-      <img src="photo_exterior_1.jpg" alt="看板" class="pos-bottom">
+  <div class="campus-section">
+    <div class="campus-en">Inuyama</div>
+    <h2 class="campus-name">犬山校</h2>
+
+    <div class="gallery-group">
+      <div class="gallery-group-label">外観</div>
+      <div class="gallery-grid">
+        <img src="photo_exterior_2.jpg" alt="外観">
+        <img src="photo_exterior_1.jpg" alt="看板" class="pos-bottom">
+      </div>
     </div>
+
+    <div class="gallery-group">
+      <div class="gallery-group-label">教室</div>
+      <div class="gallery-grid">
+        <img src="photo_classroom_1.jpg" alt="教室">
+        <img src="photo_classroom_2.jpg" alt="教室">
+      </div>
+    </div>
+
+    <div class="gallery-group">
+      <div class="gallery-group-label">自習室 1F</div>
+      <div class="gallery-grid">
+        <img src="photo_study1f_1.jpg" alt="自習室1F">
+        <img src="photo_study1f_2.jpg" alt="自習室1F">
+      </div>
+    </div>
+
+    <div class="gallery-group">
+      <div class="gallery-group-label">自習室 2F — 私語厳禁スペース</div>
+      <div class="gallery-grid">
+        <img src="photo_study2f_1.jpg" alt="自習室2F">
+        <img src="photo_study2f_2.jpg" alt="自習室2F">
+      </div>
+    </div>
+
   </div>
 
-  <div class="gallery-group">
-    <div class="gallery-group-label">教室</div>
-    <div class="gallery-grid">
-      <img src="photo_classroom_1.jpg" alt="教室">
-      <img src="photo_classroom_2.jpg" alt="教室">
-    </div>
-  </div>
+  <div class="campus-section">
+    <div class="campus-en">Iwakura</div>
+    <h2 class="campus-name">岩倉校</h2>
 
-  <div class="gallery-group">
-    <div class="gallery-group-label">自習室 1F</div>
-    <div class="gallery-grid">
-      <img src="photo_study1f_1.jpg" alt="自習室1F">
-      <img src="photo_study1f_2.jpg" alt="自習室1F">
+    <div class="gallery-group">
+      <div class="gallery-group-label">教室・自習スペース</div>
+      <div class="gallery-grid">
+        <img src="photo_iwakura_1.jpg" alt="岩倉校 教室">
+        <img src="photo_iwakura_2.jpg" alt="岩倉校 自習スペース">
+      </div>
     </div>
-  </div>
 
-  <div class="gallery-group">
-    <div class="gallery-group-label">自習室 2F — 私語厳禁スペース</div>
-    <div class="gallery-grid">
-      <img src="photo_study2f_1.jpg" alt="自習室2F">
-      <img src="photo_study2f_2.jpg" alt="自習室2F">
-    </div>
   </div>
 
 </div>
