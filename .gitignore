@@ -2,3 +2,6 @@ intensive-template.html
 gas-script.gs
 .vscode/
 .claude/settings.local.json
+schedule_src.png
+schedule_new.png
+crop_schedule.ps1
