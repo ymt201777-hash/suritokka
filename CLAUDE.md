@@ -56,13 +56,36 @@ master ブランチに push すると Vercel が自動デプロイします。�
 季節講習は毎回同じフォーマットです。
 
 1. `intensive-template.html` をベースに `intensive.html` を作る
-2. 開講していない期間は Coming Soon 版に差し替える
-3. `apply.html` の `COURSES` 配列を、その講習の講座一覧に書き換える
+2. `apply.html` の `COURSES` 配列を、その講習の講座一覧に書き換える
 
 `intensive.html` 末尾の JS に運用フラグが2つあります。
 
 - `MANUAL_OPEN` — 申込ボタンを表示するかどうか
 - `CLOSED` — `true` にすると「◯◯講習の申込は終了しました。」というクリック不可の表示に差し替わる
+
+### 開講していない期間（現在この状態）
+
+講習が終わったら、ページは残したまま**到達できない状態**にします。
+
+- `vercel.json` の redirects で `/intensive` と `/apply` をトップへ一時転送（`permanent: false`）
+- 全ページのナビから「季節講習」を外す
+
+ファイルは消しません。次の講習で中身を書き換えて再公開します。
+
+### 再公開の手順
+
+1. `vercel.json` の redirects から `/intensive` と `/apply` の2行を削除
+2. 全ページのナビに「季節講習」を戻す（PC・スマホの2箇所ずつ）
+
+```html
+<!-- nav-links の中、「通常授業」の次 -->
+    <li><a href="/intensive">季節講習</a></li>
+
+<!-- mobile-menu の中、「通常授業」の次 -->
+  <a href="/intensive">季節講習</a>
+```
+
+3. `intensive.html` の中身を新しい講習に更新し、`CLOSED` を `false` に戻す
 
 ## SEO / OGP
 
