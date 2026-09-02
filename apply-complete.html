@@ -346,12 +346,9 @@
 
   <div class="next-steps">
     <h3>このあとのご案内</h3>
-    <ul>
-      <li>確認メールが届かない場合は、迷惑メールフォルダをご確認ください。お支払いの詳細（塾生以外の方の振込口座を含む）は確認メールに記載しています。</li>
-      <li>塾生の方：通常授業のお支払い方法に、7月27日のご請求へ追加でご請求いたします。</li>
-      <li>塾生以外の方：7月17日（金）までに指定口座へお振込みください。</li>
-      <li>各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。</li>
-      <li>購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までにご自身でご準備ください。</li>
+    <ul id="nextSteps">
+      <li>確認メールが届かない場合は、迷惑メールフォルダをご確認ください。お支払いの詳細は確認メールに記載しています。</li>
+      <li id="nsMaterial">購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までにご自身でご準備ください。</li>
     </ul>
   </div>
 
@@ -414,6 +411,17 @@
       if (data.mock_count > 0) addRow('全県模試', data.mock_list);
       if (data.non_member_fee > 0) addRow('塾生以外 基本サービス料', '¥' + data.non_member_fee.toLocaleString());
       document.getElementById('summaryTotal').textContent = (data.total_price_num || 0).toLocaleString();
+
+      // 講習ごとの案内文は申込時のデータから差し込む（apply.html の MAIL_TEXT が出どころ）
+      const steps = document.getElementById('nextSteps');
+      const material = document.getElementById('nsMaterial');
+      [data.meeting_text, data.payment_text, data.capacity_text, data.cancel_text]
+        .filter(Boolean)
+        .forEach(text => {
+          const li = document.createElement('li');
+          li.textContent = text;
+          steps.insertBefore(li, material);
+        });
 
       summary.classList.add('show');
       // 一度表示したらクリア（リロードで再表示されない）
