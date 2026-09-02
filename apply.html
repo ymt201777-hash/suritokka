@@ -14,12 +14,12 @@
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>夏期講習 申込フォーム | 犬山数学理科特化塾</title>
-<meta name="description" content="犬山数学理科特化塾 季節講習のお申し込みフォーム。受講する講座を選んでお申し込みください。">
+<title>シルバーウィーク講習 申込フォーム | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾 シルバーウィーク講習のお申し込みフォーム。共通テスト数学I・A／Ⅱ・B の対策講座から、受講する講座を選んでお申し込みください。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="犬山数学理科特化塾">
-<meta property="og:title" content="夏期講習 申込フォーム | 犬山数学理科特化塾">
-<meta property="og:description" content="犬山数学理科特化塾 季節講習のお申し込みフォーム。受講する講座を選んでお申し込みください。">
+<meta property="og:title" content="シルバーウィーク講習 申込フォーム | 犬山数学理科特化塾">
+<meta property="og:description" content="犬山数学理科特化塾 シルバーウィーク講習のお申し込みフォーム。共通テスト数学I・A／Ⅱ・B の対策講座から、受講する講座を選んでお申し込みください。">
 <meta property="og:url" content="https://www.suritokka.com/apply">
 <meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -525,6 +525,7 @@
     <li><a href="/instructors">講師紹介</a></li>
     <li><a href="/results">合格実績</a></li>
     <li><a href="/courses">通常授業</a></li>
+    <li><a href="/intensive">季節講習</a></li>
     <li><a href="/inuyama">犬山校</a></li>
     <li><a href="/iwakura">岩倉校</a></li>
     <li><a href="/booking" class="nav-cta">体験予約</a></li>
@@ -539,6 +540,7 @@
   <a href="/instructors">講師紹介</a>
   <a href="/results">合格実績</a>
   <a href="/courses">通常授業</a>
+  <a href="/intensive">季節講習</a>
   <a href="/inuyama">犬山校</a>
   <a href="/iwakura">岩倉校</a>
   <a href="/booking" class="mobile-cta">体験予約</a>
@@ -547,8 +549,8 @@
 <!-- ↓↓↓ ここを毎回書き換える ↓↓↓ -->
 <div class="page-header">
   <div class="page-label">Application</div>
-  <h1 class="session-name">夏期講習　申込フォーム</h1>
-  <p class="session-period">2026年7月18日（土）〜 8月23日（日）</p>
+  <h1 class="session-name">シルバーウィーク講習　申込フォーム</h1>
+  <p class="session-period">2026年9月21日（月）〜 9月23日（水）</p>
 </div>
 <!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
 
@@ -561,12 +563,8 @@
       <h2>お申し込み受付開始日</h2>
       <div class="gate-rows">
         <div class="gate-row">
-          <span class="gate-label">塾　生</span>
-          <span class="gate-date">2026年5月27日（水）</span>
-        </div>
-        <div class="gate-row">
-          <span class="gate-label">塾生以外</span>
-          <span class="gate-date">2026年6月3日（水）</span>
+          <span class="gate-label">受付開始</span>
+          <span class="gate-date">2026年9月1日（火）</span>
         </div>
       </div>
       <p class="gate-note">
@@ -585,7 +583,7 @@
   </div>
 
   <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
-    現在、塾生の方の受付期間です。<span style="white-space:nowrap;">塾生以外の方の受付開始は <strong>6月3日（水）</strong> より承ります。</span>
+    今回のシルバーウィーク講習は、<strong>塾生の方のみ</strong>のお申し込みとなります。
   </div>
 
   <form id="applyForm" novalidate>
@@ -669,8 +667,8 @@
       <div class="course-list" id="courseList"><!-- rendered by JS --></div>
     </div>
 
-    <!-- 全県模試 -->
-    <div class="form-section">
+    <!-- 全県模試（今回は実施なし。次回復活させる場合は style を外す） -->
+    <div class="form-section" style="display:none;">
       <div class="section-label">Mock Exams</div>
       <h2 class="form-section-title">高校受験　全県模試</h2>
       <p class="form-section-desc">
@@ -683,7 +681,7 @@
         <div>
           <div class="ss-label">Selected</div>
           <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
-          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料 ¥20,000</div>
+          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料</div>
         </div>
         <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
       </div>
@@ -697,12 +695,10 @@
       <div class="agreement-box">
         <h4>お支払いについて</h4>
         <ul>
-          <li>受講料は1講座（4回セット）につき 20,000円 です。</li>
-          <li>全県模試は岐阜 4,400円 / 愛知 4,200円（全教科解説込）です。</li>
-          <li>塾生以外の方は、上記の受講料に加えて <strong>基本サービス料 20,000円</strong>（7/18〜8/16の自習室利用・LINEでの質問対応など）が必要です。</li>
-          <li><strong>塾生の方</strong>：通常授業のお支払い方法に、7月27日のご請求へ追加でご請求いたします。</li>
-          <li><strong>塾生以外の方</strong>：7月17日（金）までに指定口座へお振込みください。お振込先はお申し込み後の自動返信メールにてご案内いたします。</li>
-          <li>キャンセルは <strong>7月7日（火）まで</strong> 受け付けます。7/7（火）以降のキャンセルはご返金しかねます。</li>
+          <li>受講料は1講座（4回セット）につき 20,000円 です。対策面談の費用は受講料に含まれます。</li>
+          <li>受講される方は全員、<strong>9月21日（月）13:00〜16:00</strong> の対策面談にご参加いただきます（お一人20〜30分ほど）。</li>
+          <li>受講料は通常授業のお支払い方法に、10月27日のご請求へ追加でご請求いたします。</li>
+          <li>キャンセルは <strong>9月18日（金）まで</strong> 受け付けます。9/18（金）以降のキャンセルはご返金しかねます。</li>
           <li>購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までには、ご自身でご準備くださいますようよろしくお願いいたします。</li>
         </ul>
       </div>
@@ -749,60 +745,46 @@ const GAS_WEBAPP_URL         = 'https://script.google.com/macros/s/AKfycbz1AhTLY
 /* ============================================================
    講座データ（季節講習ごとに書き換え）
    ============================================================ */
+/* 全講座共通。受講者は全員この面談を受ける */
+const MEETING_SLOT = { d: '9/21', label: '対策面談', time: '13:00-16:00' };
+
 const PERIOD_TIMES = {
-  1: '9:30-10:40', 2: '10:50-12:10', 3: '13:00-14:10', 4: '14:20-15:30',
+  1: '9:30-10:40', 2: '10:50-12:00', 3: '13:00-14:10', 4: '14:20-15:30',
   5: '16:30-17:40', 6: '18:00-19:10', 7: '19:20-20:30', 8: '20:40-21:50',
 };
 
 const COURSES = [
-  { id: 'gendaibun',     name: '共通テスト　現代文',     instructor: '匠',     price: 20000,
-    slots: [{d:'7/18',p:1},{d:'7/19',p:1},{d:'7/20',p:1},{d:'7/20',p:2}] },
-  { id: 'kobun',         name: '共通テスト　古文漢文',   instructor: '匠',     price: 20000,
-    slots: [{d:'7/18',p:4},{d:'7/19',p:4},{d:'7/19',p:5},{d:'7/20',p:3}] },
-  { id: 'kagaku-kiso',   name: '化学基礎',               instructor: '杉村',   price: 20000,
-    slots: [{d:'7/18',p:2},{d:'7/18',p:3},{d:'7/19',p:2},{d:'7/19',p:3}] },
-  { id: 'jhs-eigo',      name: '高校受験英語',           instructor: '匠',     price: 20000,
-    slots: [{d:'7/26',p:2},{d:'7/26',p:3},{d:'8/1',p:1},{d:'8/1',p:2}] },
-  { id: 'jhs-kokugo',    name: '高校受験国語',           instructor: '匠',     price: 20000,
-    slots: [{d:'7/26',p:6},{d:'7/26',p:7},{d:'8/1',p:3},{d:'8/1',p:4}] },
-  { id: 'eigo-r',        name: '共通テスト　英語リーディング', instructor: '匠', price: 20000,
-    slots: [{d:'8/10',p:1},{d:'8/10',p:2},{d:'8/15',p:3},{d:'8/15',p:4}] },
-  { id: 'eigo-l',        name: '共通テスト　英語リスニング',   instructor: '匠', price: 20000,
-    slots: [{d:'8/10',p:5},{d:'8/11',p:5},{d:'8/12',p:5},{d:'8/13',p:5}] },
-  { id: 'butsuri-h',     name: '物理　高3ハイレベル',     instructor: '杉村',   price: 20000,
-    slots: [{d:'8/11',p:1},{d:'8/11',p:2},{d:'8/16',p:1},{d:'8/16',p:2}] },
-  { id: 'kagaku-h',      name: '化学　高3ハイレベル',     instructor: '杉村',   price: 20000,
-    slots: [{d:'8/11',p:3},{d:'8/11',p:4},{d:'8/16',p:3},{d:'8/16',p:4}] },
-  { id: 'eibun-kaishaku', name: '英文解釈特訓',           instructor: '匠',     price: 20000,
-    slots: [{d:'8/13',p:1},{d:'8/13',p:2},{d:'8/14',p:1},{d:'8/14',p:2}] },
-  { id: 'kakuritsu-h',   name: '確率　ハイレベル',        instructor: '祐一郎', price: 20000,
-    slots: [{d:'8/10',p:3},{d:'8/10',p:4},{d:'8/13',p:3},{d:'8/13',p:4}] },
-  { id: 'kakuritsu-m',   name: '確率　ミドル',            instructor: '祐一郎', price: 20000,
-    slots: [{d:'8/12',p:3},{d:'8/12',p:4},{d:'8/14',p:3},{d:'8/14',p:4}] },
-  { id: 'seisu-h',       name: '整数問題　ハイレベル',    instructor: '祐一郎', price: 20000,
-    slots: [{d:'8/12',p:1},{d:'8/12',p:2},{d:'8/15',p:1},{d:'8/15',p:2}] },
-  { id: 'junior-math-olympia', name: 'ジュニア数学オリンピック対策', instructor: '祐一郎', price: 20000,
-    slots: [{d:'8/18',p:5},{d:'8/19',p:5},{d:'8/20',p:5},{d:'8/21',p:5}] },
+  { id: 'kyotsu-ia',  name: '共通テスト　数学I・A 対策', instructor: '祐一郎', price: 20000,
+    slots: [{d:'9/21',p:1},{d:'9/22',p:1},{d:'9/23',p:1},{d:'9/23',p:2}] },
+  { id: 'kyotsu-iib', name: '共通テスト　数学Ⅱ・B 対策', instructor: '祐一郎', price: 20000,
+    slots: [{d:'9/21',p:2},{d:'9/22',p:2},{d:'9/23',p:3},{d:'9/23',p:4}] },
 ];
 
 const MOCK_EXAMS = [
-  { id: 'mock-gifu',  name: '岐阜全県模試', price: 4400,
-    slots: [{d:'8/8',  label:'テスト'},{d:'8/9',  label:'解説'}] },
-  { id: 'mock-aichi', name: '愛知全県模試', price: 4200,
-    slots: [{d:'8/22', label:'テスト'},{d:'8/23', label:'解説'}] },
 ];
 
-const NON_MEMBER_FEE = 20000;
+const NON_MEMBER_FEE = 0;
 
-const SESSION_LABEL = '夏期講習 2026';
+const SESSION_LABEL = 'シルバーウィーク講習 2026';
+
+/* 自動返信メールに差し込む文言。講習ごとにここだけ書き換えれば
+   EmailJS のテンプレートは触らなくてよい */
+const MAIL_TEXT = {
+  payment: '通常授業のお支払い方法に、10月27日のご請求へ追加でご請求いたします。',
+  transfer_deadline: '',   // 塾生以外の受付がある回のみ記入（例: '9月18日（金）'）
+  cancel: 'キャンセルは 9月18日（金）まで 受け付けます。9/18（金）以降のキャンセルはご返金しかねます。',
+  meeting: '受講される方は全員、9月21日（月）13:00〜16:00 の対策面談にご参加いただきます（お一人20〜30分ほど）。',
+  capacity: '各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。',
+};
 
 /* 申込受付開始日（JST）
    MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示）
    ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
 const MANUAL_OPEN = true;
 const OPEN_DATES = {
-  member: new Date('2026-05-27T00:00:00+09:00'),
-  public: new Date('2026-06-03T00:00:00+09:00'),
+  member: new Date('2026-09-01T00:00:00+09:00'),
+  /* 今回は塾生限定。到達しない日付を入れて member-only 状態を維持する */
+  public: new Date('2099-01-01T00:00:00+09:00'),
 };
 
 const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
@@ -830,6 +812,7 @@ function renderCourses() {
       <div class="cc-meta">担当 ${c.instructor}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
       <div class="cc-slots">
         ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
+        <span class="cc-slot">${MEETING_SLOT.d} ${MEETING_SLOT.label}</span>
       </div>
     </label>
   `).join('');
@@ -938,7 +921,8 @@ function getFormData() {
 
   const courseLines = selectedCourses.map(c => {
     const slots = c.slots.map(s => `${s.d} ${periodSym(s.p)} (${PERIOD_TIMES[s.p]})`).join(' / ');
-    return `・${c.name}（担当: ${c.instructor}）\n  ${slots}`;
+    const withMeeting = slots + ` / ${MEETING_SLOT.d} ${MEETING_SLOT.label} (${MEETING_SLOT.time})`;
+    return `・${c.name}（担当: ${c.instructor}）\n  ${withMeeting}`;
   }).join('\n\n');
 
   const courseTotal = selectedCourses.reduce((s, c) => s + c.price, 0);
@@ -971,7 +955,12 @@ function getFormData() {
     course_count: selectedCourses.length,
     course_list: courseLines || '（選択なし）',
     course_ids: selectedIds.join(','),
-    mock_count: selectedMocks.length,
+    mock_count: selectedMocks.length || '',
+    payment_text: MAIL_TEXT.payment,
+    transfer_deadline: MAIL_TEXT.transfer_deadline,
+    cancel_text: MAIL_TEXT.cancel,
+    meeting_text: MAIL_TEXT.meeting,
+    capacity_text: MAIL_TEXT.capacity,
     mock_list: mockLines || '（選択なし）',
     mock_ids: selectedMockIds.join(','),
     total_price: total.toLocaleString() + '円',
@@ -995,7 +984,7 @@ function validate(data) {
     if (!data.parent_name) return '保護者氏名を入力してください。';
     if (!data.parent_phone) return '保護者の電話番号を入力してください。';
   }
-  if (data.course_count === 0 && data.mock_count === 0) return '受講希望講座または全県模試を1つ以上お選びください。';
+  if (data.course_count === 0) return '受講希望講座を1つ以上お選びください。';
   const agree = document.querySelector('input[name="agree"]');
   if (!agree.checked) return 'お支払いについての同意が必要です。';
   return null;
@@ -1040,7 +1029,7 @@ async function handleSubmit(e) {
   const data = getFormData();
   // 塾生以外受付前に塾生以外を送信されたらブロック
   if (getGateState() === 'member-only' && data.student_type === '塾生以外') {
-    showStatus('error', '塾生以外の方の受付開始は 6月3日（水）です。');
+    showStatus('error', '現在は塾生の方のみの受付期間です。');
     return;
   }
   const err = validate(data);
@@ -1104,7 +1093,7 @@ function applyGate() {
     nonMemberCard.classList.add('locked');
     const lock = document.createElement('div');
     lock.className = 'rc-lock';
-    lock.textContent = '受付開始: 6/3（水）';
+    lock.textContent = '今回は塾生のみになります。';
     nonMemberCard.appendChild(lock);
   }
   return true;
