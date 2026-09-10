@@ -253,6 +253,17 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     transition: border-color 0.25s, background 0.25s, transform 0.25s;
   }
   .course-card:hover { border-color: rgba(14,12,10,0.4); }
+  .course-card.is-full {
+    opacity: 0.55; cursor: not-allowed;
+    background: rgba(14,12,10,0.03);
+  }
+  .course-card.is-full:hover { border-color: rgba(14,12,10,0.15); }
+  .cc-full {
+    display: inline-block; margin-left: 10px;
+    padding: 2px 10px; font-size: 11px; letter-spacing: 0.1em;
+    border: 1px solid rgba(14,12,10,0.3); color: rgba(14,12,10,0.6);
+    white-space: nowrap;
+  }
   .course-card.selected {
     border-color: var(--ink);
     background: rgba(255,255,255,0.85);
@@ -771,7 +782,7 @@ const PERIOD_TIMES = {
 };
 
 const COURSES = [
-  { id: 'kyotsu-ia',  name: '共通テスト　数学I・A 対策', instructor: '祐一郎', price: 20000,
+  { id: 'kyotsu-ia',  name: '共通テスト　数学I・A 対策', instructor: '祐一郎', price: 20000, full: true,
     slots: [{d:'9/21',p:1},{d:'9/22',p:1},{d:'9/23',p:1},{d:'9/23',p:2}] },
   { id: 'kyotsu-iib', name: '共通テスト　数学Ⅱ・B・C 対策', instructor: '祐一郎', price: 20000,
     slots: [{d:'9/21',p:2},{d:'9/22',p:2},{d:'9/23',p:3},{d:'9/23',p:4}] },
@@ -822,10 +833,10 @@ function renderCourses() {
   const list = document.getElementById('courseList');
   const periodSym = (p) => ['①','②','③','④','⑤','⑥','⑦','⑧'][p-1];
   list.innerHTML = COURSES.map(c => `
-    <label class="course-card" data-course-id="${c.id}">
-      <input type="checkbox" name="courses" value="${c.id}">
+    <label class="course-card ${c.full ? 'is-full' : ''}" data-course-id="${c.id}">
+      <input type="checkbox" name="courses" value="${c.id}" ${c.full ? 'disabled' : ''}>
       <div class="course-card-check"></div>
-      <div class="cc-name">${c.name}</div>
+      <div class="cc-name">${c.name}${c.full ? '<span class="cc-full">満席・受付終了</span>' : ''}</div>
       <div class="cc-meta">担当 ${c.instructor}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
       <div class="cc-slots">
         ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
