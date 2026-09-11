@@ -256,9 +256,21 @@ nav.scrolled {
    ============================================ */
 .features {
   padding: 120px 52px;
+  background: var(--ink); color: var(--cream);
 }
 .features-inner {
   max-width: 960px; margin: 0 auto;
+}
+.features-headline {
+  text-align: center;
+  margin-bottom: 88px;
+  font-weight: 400;
+  font-size: clamp(38px, 9vw, 96px);
+  letter-spacing: 0.06em; line-height: 1.2;
+}
+.features-headline em {
+  font-style: normal;
+  color: var(--warm);
 }
 .section-label {
   font-family: var(--en); font-weight: 300;
@@ -271,20 +283,27 @@ nav.scrolled {
   background: var(--warm-faint);
 }
 .feature-item {
-  display: grid; grid-template-columns: 56px 1fr;
-  gap: 0 32px; margin-bottom: 64px;
-  padding-bottom: 64px;
-  border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 0 36px; margin-bottom: 56px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(244, 239, 230, 0.14);
 }
 .feature-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .feature-num {
-  font-family: var(--en); font-weight: 300;
-  font-size: 13px; letter-spacing: 0.15em;
-  color: var(--warm); padding-top: 4px;
+  grid-row: span 3;
+  font-family: var(--en); font-weight: 400;
+  font-size: clamp(56px, 9vw, 96px);
+  line-height: 0.85; letter-spacing: 0.02em;
+  color: var(--warm);
+  display: block;
 }
 .feature-title {
-  font-weight: 400; font-size: clamp(17px, 2.2vw, 22px);
-  letter-spacing: 0.08em; margin-bottom: 16px;
+  font-weight: 400; font-size: clamp(22px, 3.4vw, 34px);
+  letter-spacing: 0.06em; line-height: 1.55; margin-bottom: 16px;
+}
+.feature-title .hl {
+  border-bottom: 2px solid var(--warm);
+  padding-bottom: 2px;
 }
 .feature-link {
   grid-column: 2;
@@ -292,17 +311,17 @@ nav.scrolled {
   margin-top: 24px;
   padding: 14px 36px;
   font-size: 14px; letter-spacing: 0.14em;
-  color: var(--ink);
+  color: var(--cream);
   border: 1px solid var(--ink);
   transition: background 0.4s, color 0.4s;
 }
 .feature-link:hover {
-  background: var(--ink); color: var(--cream);
+  background: var(--cream); color: var(--ink);
 }
 .feature-desc {
-  grid-column: 2; font-size: 13.5px;
-  letter-spacing: 0.06em; line-height: 2.3;
-  color: var(--text-sub);
+  grid-column: 2; font-size: 14px;
+  letter-spacing: 0.06em; line-height: 2.2;
+  color: rgba(244,239,230,0.6);
 }
 
 
@@ -480,7 +499,10 @@ footer {
     grid-template-columns: 1fr; gap: 8px;
     margin-bottom: 48px; padding-bottom: 48px;
   }
-  .feature-num { margin-bottom: 4px; }
+  .feature-num {
+    grid-row: auto;
+    font-size: 52px; margin-bottom: 10px;
+  }
   .feature-desc { grid-column: 1; }
   .feature-link { grid-column: 1; }
 
@@ -579,6 +601,42 @@ footer {
   </div>
 </section>
 
+<!-- ========== Features ========== -->
+<section class="features">
+  <div class="features-inner">
+
+    <h2 class="features-headline fade-up">最強の<em>学習環境</em></h2>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">01</span>
+      <h3 class="feature-title">毎日 <span class="hl">8:00〜22:00</span> まで使える！</h3>
+      <p class="feature-desc">
+        年中無休。高3・既卒生は23時まで。<br>
+        「勉強する場所がない」が、なくなります。
+      </p>
+    </div>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">02</span>
+      <h3 class="feature-title"><span class="hl">いつでもLINE</span>で質問できる！</h3>
+      <p class="feature-desc">
+        夜でも早朝でも、LINEで送れます。答えるのは講師3人。<br>
+        どの教科でも質問できます。
+      </p>
+    </div>
+
+    <div class="feature-item fade-up">
+      <span class="feature-num">03</span>
+      <h3 class="feature-title"><span class="hl">プロ</span>にいつでも学習・受験相談できる！</h3>
+      <p class="feature-desc">
+        全国最優秀賞の数学。東大卒の理科。全統1位の英語。
+      </p>
+      <a href="/instructors" class="feature-link">講師紹介を見る&nbsp;&rarr;</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- ========== Results ========== -->
 <section class="results">
   <div class="results-inner">
@@ -592,41 +650,6 @@ footer {
     <a href="/results" class="results-link fade-up">
       合格実績・体験記を見る<span class="arrow">&nbsp;&rarr;</span>
     </a>
-  </div>
-</section>
-
-<!-- ========== Features ========== -->
-<section class="features">
-  <div class="features-inner">
-    <div class="section-label fade-up">Features</div>
-
-    <div class="feature-item fade-up">
-      <span class="feature-num">01</span>
-      <h3 class="feature-title">圧倒的な講師陣</h3>
-      <p class="feature-desc">
-        全国大会で最優秀賞を獲った数学、東京大学・企業での研究経験をもつ理科。<br>
-        本物のプロが、目の前で教える。
-      </p>
-      <a href="/instructors" class="feature-link">講師紹介を見る&nbsp;&rarr;</a>
-    </div>
-
-    <div class="feature-item fade-up">
-      <span class="feature-num">02</span>
-      <h3 class="feature-title">自習室　毎日 8:00〜22:00（高３生は23時まで）</h3>
-      <p class="feature-desc">
-        塾生はいつでも使える自習室。<br>
-        朝から夜まで、集中できる場所が毎日開いている。
-      </p>
-    </div>
-
-    <div class="feature-item fade-up">
-      <span class="feature-num">03</span>
-      <h3 class="feature-title">LINEでいつでも質問</h3>
-      <p class="feature-desc">
-        授業外でも講師に質問できる環境。<br>
-        わからないまま次の日を迎えることがなくなる。
-      </p>
-    </div>
   </div>
 </section>
 
