@@ -399,6 +399,57 @@ nav.scrolled {
 .cta-btn span { position: relative; z-index: 1; }
 
 /* ============================================
+   Campuses
+   ============================================ */
+.campuses {
+  padding: 120px 52px;
+  border-top: 1px solid rgba(14, 12, 10, 0.08);
+}
+.campuses-inner { max-width: 1000px; margin: 0 auto; }
+.campuses-headline {
+  text-align: center; margin-bottom: 12px;
+  font-weight: 300; font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: 0.1em;
+}
+.campuses-sub {
+  text-align: center; margin-bottom: 72px;
+  font-weight: 200; font-size: 13.5px;
+  letter-spacing: 0.16em; color: var(--text-sub);
+}
+.campus-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+}
+.campus-card { display: block; }
+.campus-photo {
+  overflow: hidden; margin-bottom: 28px;
+}
+.campus-photo img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover; display: block;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.campus-card:hover .campus-photo img { transform: scale(1.04); }
+.campus-card-name {
+  font-weight: 300; font-size: 15px;
+  letter-spacing: 0.22em; color: var(--warm);
+  margin-bottom: 14px;
+}
+.campus-card-tag {
+  font-weight: 300;
+  font-size: clamp(26px, 4.2vw, 44px);
+  letter-spacing: 0.08em; line-height: 1.4;
+  margin-bottom: 28px;
+}
+.campus-card-more {
+  display: inline-block;
+  font-size: 13px; letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--warm);
+  padding-bottom: 3px;
+  transition: opacity 0.3s;
+}
+.campus-card:hover .campus-card-more { opacity: 0.6; }
+
+/* ============================================
    Contact (LINE)
    ============================================ */
 .contact {
@@ -558,6 +609,8 @@ footer {
   .cta { padding: 80px 24px; }
   .cta-btn { padding: 18px 48px; font-size: 13px; }
 
+  .campuses { padding: 80px 24px; }
+  .campus-grid { grid-template-columns: 1fr; gap: 56px; }
   .contact { padding: 80px 24px; }
   .contact-desc { margin-bottom: 36px; }
   .line-btn {
@@ -715,6 +768,34 @@ footer {
     <a href="/results" class="results-link fade-up">
       合格実績・体験記を見る<span class="arrow">&nbsp;&rarr;</span>
     </a>
+  </div>
+</section>
+
+<!-- ========== Campuses ========== -->
+<section class="campuses">
+  <div class="campuses-inner">
+    <h2 class="campuses-headline fade-up">犬山校 ｜ 岩倉校</h2>
+    <p class="campuses-sub fade-up">どちらも、すべての塾生が使えます。</p>
+
+    <div class="campus-grid">
+      <a href="/inuyama" class="campus-card fade-up">
+        <div class="campus-photo">
+          <img src="photo_exterior_2.jpg" alt="犬山校 外観" loading="lazy" decoding="async">
+        </div>
+        <div class="campus-card-name">犬山校</div>
+        <div class="campus-card-tag">授業と自習の拠点</div>
+        <span class="campus-card-more">犬山校を見る&nbsp;&rarr;</span>
+      </a>
+
+      <a href="/iwakura" class="campus-card fade-up">
+        <div class="campus-photo">
+          <img src="photo_iwakura_1.jpg" alt="岩倉校 自習室" loading="lazy" decoding="async">
+        </div>
+        <div class="campus-card-name">岩倉校</div>
+        <div class="campus-card-tag">超集中自習室</div>
+        <span class="campus-card-more">岩倉校を見る&nbsp;&rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
