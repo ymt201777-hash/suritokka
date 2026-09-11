@@ -291,9 +291,9 @@ nav.scrolled {
 .feature-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .feature-num {
   grid-row: span 3;
-  font-family: var(--en); font-weight: 400;
-  font-size: clamp(56px, 9vw, 96px);
-  line-height: 0.85; letter-spacing: 0.02em;
+  font-family: var(--jp); font-weight: 300;
+  font-size: clamp(48px, 7.5vw, 80px);
+  line-height: 1; letter-spacing: 0;
   color: var(--warm);
   display: block;
 }
@@ -324,6 +324,48 @@ nav.scrolled {
   color: rgba(244,239,230,0.6);
 }
 
+
+/* ============================================
+   Diagnose
+   ============================================ */
+.diagnose {
+  background: var(--warm-light);
+  padding: 110px 52px;
+}
+.diagnose-inner {
+  max-width: 760px; margin: 0 auto; text-align: center;
+}
+.diagnose-title {
+  font-weight: 300; font-size: clamp(22px, 3.6vw, 36px);
+  letter-spacing: 0.08em; line-height: 1.7;
+  margin-bottom: 28px;
+}
+.diagnose-lead {
+  font-size: 14.5px; letter-spacing: 0.06em; line-height: 2.4;
+  color: var(--text-sub); margin-bottom: 44px;
+}
+.diagnose-list {
+  list-style: none;
+  display: inline-block; text-align: left;
+  margin-bottom: 48px;
+}
+.diagnose-list li {
+  position: relative;
+  padding: 14px 0 14px 30px;
+  font-size: 14.5px; letter-spacing: 0.06em; line-height: 1.9;
+  border-bottom: 1px solid rgba(14, 12, 10, 0.1);
+}
+.diagnose-list li:last-child { border-bottom: none; }
+.diagnose-list li::before {
+  content: ''; position: absolute;
+  left: 4px; top: 23px;
+  width: 12px; height: 1px; background: var(--warm);
+}
+.diagnose-note {
+  margin-top: 24px;
+  font-size: 12.5px; letter-spacing: 0.06em;
+  color: var(--text-sub);
+}
 
 /* ============================================
    CTA
@@ -501,7 +543,7 @@ footer {
   }
   .feature-num {
     grid-row: auto;
-    font-size: 52px; margin-bottom: 10px;
+    font-size: 46px; margin-bottom: 10px;
   }
   .feature-desc { grid-column: 1; }
   .feature-link { grid-column: 1; }
@@ -608,7 +650,7 @@ footer {
     <h2 class="features-headline fade-up">最強の<em>学習環境</em></h2>
 
     <div class="feature-item fade-up">
-      <span class="feature-num">01</span>
+      <span class="feature-num">①</span>
       <h3 class="feature-title">毎日 <span class="hl">8:00〜22:00</span> まで使える！</h3>
       <p class="feature-desc">
         年中無休。高3・既卒生は23時まで。<br>
@@ -617,7 +659,7 @@ footer {
     </div>
 
     <div class="feature-item fade-up">
-      <span class="feature-num">02</span>
+      <span class="feature-num">②</span>
       <h3 class="feature-title"><span class="hl">いつでもLINE</span>で質問できる！</h3>
       <p class="feature-desc">
         夜でも早朝でも、LINEで送れます。答えるのは講師3人。<br>
@@ -626,7 +668,7 @@ footer {
     </div>
 
     <div class="feature-item fade-up">
-      <span class="feature-num">03</span>
+      <span class="feature-num">③</span>
       <h3 class="feature-title"><span class="hl">プロ</span>にいつでも学習・受験相談できる！</h3>
       <p class="feature-desc">
         全国最優秀賞の数学。東大卒の理科。全統1位の英語。
@@ -634,6 +676,29 @@ footer {
       <a href="/instructors" class="feature-link">講師紹介を見る&nbsp;&rarr;</a>
     </div>
 
+  </div>
+</section>
+
+<!-- ========== Diagnose ========== -->
+<section class="diagnose">
+  <div class="diagnose-inner">
+    <h2 class="diagnose-title fade-up">まず、いまの状況を<br>一緒に分析しませんか。</h2>
+    <p class="diagnose-lead fade-up">
+      直近の成績表、もしくは模試の結果をお持ちください。<br>
+      いまどこにいて、あと何が足りないのかを、その場で整理します。
+    </p>
+    <ul class="diagnose-list fade-up">
+      <li>いまの学力と、志望校とのギャップ</li>
+      <li>残りの期間で、何をどの順番で進めるか</li>
+      <li>そのうえで、うちが合うかどうか</li>
+    </ul>
+    <div class="fade-up">
+      <a href="/booking" class="cta-btn"><span>無料で相談する</span></a>
+      <p class="diagnose-note">
+        入塾される方には必ず行っている面談です。先に受けていただけます。<br>
+        体験授業もあわせてご予約いただけます。
+      </p>
+    </div>
   </div>
 </section>
 
@@ -651,12 +716,6 @@ footer {
       合格実績・体験記を見る<span class="arrow">&nbsp;&rarr;</span>
     </a>
   </div>
-</section>
-
-<!-- ========== CTA ========== -->
-<section class="cta">
-  <p class="cta-text fade-up">まずは、雰囲気を感じてみてください。</p>
-  <a href="/booking" class="cta-btn fade-up"><span>無料体験を予約する</span></a>
 </section>
 
 <!-- ========== Contact (LINE) ========== -->
