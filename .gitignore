@@ -1,5 +1,6 @@
 intensive-template.html
 gas-script.gs
+sw-mendan-gas.gs
 .vscode/
 .claude/settings.local.json
 schedule_src.png
