@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLJQ87F61R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TLJQ87F61R');
+</script>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>対策面談の予約が完了しました | 犬山数学理科特化塾</title>
+<meta name="description" content="シルバーウイーク講習 対策面談の予約完了ページです。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="犬山数学理科特化塾">
+<meta property="og:title" content="対策面談の予約が完了しました">
+<meta property="og:description" content="シルバーウイーク講習 対策面談の予約完了ページです。">
+<meta property="og:url" content="https://www.suritokka.com/sw-mendan-complete">
+<meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.suritokka.com/sw-mendan-complete">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0c0a;
+    --cream: #f4efe6;
+    --warm-light: #e8dfd0;
+    --serif-jp: 'Noto Serif JP', 'ヒラギノ明朝 ProN', serif;
+    --serif-en: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif-jp);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  .school {
+    font-weight: 200; font-size: 12px; letter-spacing: 0.2em;
+    opacity: 0.7;
+  }
+  .label-en {
+    font-family: var(--serif-en); font-style: italic; font-weight: 300;
+    font-size: 14px; letter-spacing: 0.08em; opacity: 0.55;
+    margin-top: 40px;
+  }
+  h1 {
+    font-weight: 300; font-size: 24px; letter-spacing: 0.08em; line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .card {
+    margin-top: 32px; padding: 32px 24px;
+    background: #fff; border: 1px solid rgba(14, 12, 10, 0.15);
+    text-align: center; line-height: 2;
+  }
+  .card .caption { font-size: 12px; letter-spacing: 0.14em; opacity: 0.55; }
+  .card .slot { font-size: 20px; font-weight: 400; letter-spacing: 0.06em; }
+  .card .name { font-size: 15px; }
+
+  .notes {
+    margin-top: 32px; padding-left: 1.2em;
+    font-size: 14px; line-height: 2;
+  }
+  .notes li + li { margin-top: 4px; }
+
+  .shot {
+    margin-top: 28px; padding: 14px 16px;
+    background: var(--warm-light);
+    font-size: 13px; line-height: 1.8; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <p class="school">犬山数学理科特化塾</p>
+  <p class="label-en">Reservation Complete</p>
+  <h1>対策面談の予約が<br>完了しました</h1>
+
+  <div class="card" id="card" hidden>
+    <p class="caption">予約した時間</p>
+    <p class="slot" id="slot"></p>
+    <p class="name" id="name"></p>
+  </div>
+
+  <p class="shot" id="shot" hidden>この画面をスクリーンショットで残しておくと安心です。</p>
+
+  <ul class="notes">
+    <li>シルバーウイーク講習の対策面談です。1枠30分です。</li>
+    <li>時間の少し前に来てください。</li>
+    <li>時間を変更したいとき、来られなくなったときは、塾に直接連絡してください。</li>
+  </ul>
+</main>
+
+<script>
+try {
+  const data = JSON.parse(sessionStorage.getItem('sw-mendan') || 'null');
+  if (data && data.slot) {
+    document.getElementById('slot').textContent = data.slot;
+    document.getElementById('name').textContent = data.name ? data.name + ' さん' : '';
+    document.getElementById('card').hidden = false;
+    document.getElementById('shot').hidden = false;
+  }
+} catch (e) {}
+</script>
+
+</body>
+</html>

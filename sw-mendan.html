@@ -123,14 +123,6 @@
     transition: opacity 0.2s;
   }
   .submit:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .done {
-    margin-top: 44px; padding: 32px 24px;
-    background: #fff; border: 1px solid rgba(14, 12, 10, 0.15);
-    text-align: center; line-height: 2;
-  }
-  .done .big { font-size: 20px; font-weight: 400; letter-spacing: 0.06em; }
-  .done p { font-size: 14px; }
 </style>
 </head>
 <body>
@@ -152,13 +144,6 @@
     <p id="error" class="error" hidden></p>
 
     <button id="submit" class="submit" type="button" disabled>この時間で予約する</button>
-  </section>
-
-  <section id="done" class="done" hidden>
-    <p>予約が完了しました</p>
-    <p class="big" id="done-slot"></p>
-    <p id="done-name"></p>
-    <p style="margin-top:16px; opacity:0.6;">時間を変更したいときは、塾に直接連絡してください。</p>
   </section>
 </main>
 
@@ -238,10 +223,11 @@ async function submit() {
     const data = await res.json();
 
     if (data.ok) {
-      document.getElementById('form-area').hidden = true;
-      document.getElementById('done-slot').textContent = DATE_LABEL + ' ' + slot.label;
-      document.getElementById('done-name').textContent = name + ' さん';
-      document.getElementById('done').hidden = false;
+      // 完了ページで表示するため、URL ではなく sessionStorage で渡す
+      try {
+        sessionStorage.setItem('sw-mendan', JSON.stringify({ slot: DATE_LABEL + ' ' + slot.label, name: name }));
+      } catch (e) {}
+      location.href = '/sw-mendan-complete';
       return;
     }
 
