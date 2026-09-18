@@ -356,8 +356,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     <div class="summary-label">Your Application</div>
     <div id="summaryRows"></div>
     <div class="summary-total">
-      <span class="summary-total-label">合計</span>
-      <span class="summary-total-value"><span id="summaryTotal">0</span><span class="yen">円</span></span>
+      <span class="summary-total-label" id="summaryTotalLabel">合計</span>
+      <span class="summary-total-value" id="summaryTotalValue"><span id="summaryTotal">0</span><span class="yen">円</span></span>
     </div>
   </div>
 
@@ -370,7 +370,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   </div>
 
   <div class="actions">
-    <a href="/intensive" class="action-btn secondary">季節講習ページへ戻る</a>
+    <a href="/intensive" class="action-btn secondary" id="backLink">季節講習ページへ戻る</a>
     <a href="/" class="action-btn primary">トップへ</a>
   </div>
 </main>
@@ -427,11 +427,25 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       if (data.course_count > 0) addRow('受講講座', data.course_list);
       if (data.mock_count > 0) addRow('全県模試', data.mock_list);
       if (data.non_member_fee > 0) addRow('塾生以外 基本サービス料', '¥' + data.non_member_fee.toLocaleString());
-      document.getElementById('summaryTotal').textContent = (data.total_price_num || 0).toLocaleString();
+      // 月額制の講座など、合計金額の見せ方を申込側から差し替えられるようにする
+      if (data.total_label) document.getElementById('summaryTotalLabel').textContent = data.total_label;
+      if (data.total_text) {
+        document.getElementById('summaryTotalValue').textContent = data.total_text;
+      } else {
+        document.getElementById('summaryTotal').textContent = (data.total_price_num || 0).toLocaleString();
+      }
+      // 戻り先（既定は季節講習ページ）
+      if (data.back_url) {
+        const backLink = document.getElementById('backLink');
+        backLink.href = data.back_url;
+        if (data.back_label) backLink.textContent = data.back_label;
+      }
 
       // 講習ごとの案内文は申込時のデータから差し込む（apply.html の MAIL_TEXT が出どころ）
       const steps = document.getElementById('nextSteps');
       const material = document.getElementById('nsMaterial');
+      // 購入必要教材のない講座では非表示にする
+      if (data.hide_material) material.style.display = 'none';
       [data.meeting_text, data.payment_text, data.capacity_text, data.cancel_text]
         .filter(Boolean)
         .forEach(text => {

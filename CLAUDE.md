@@ -33,6 +33,7 @@ master ブランチに push すると Vercel が自動デプロイします。�
 | `inuyama.html` | 犬山校（授業と自習の拠点。写真・住所・地図） |
 | `iwakura.html` | 岩倉校（超集中自習室。写真・住所・地図） |
 | `legal.html` | 特定商取引法表記 |
+| `kokugo.html` | 共通テスト国語対策講座（案内＋申込フォームを1枚に内蔵） |
 | `booking.html` | 無料体験予約フォーム |
 | `apply.html` | 季節講習 申込フォーム |
 | `apply-complete.html` | 申込完了ページ |
@@ -86,6 +87,15 @@ master ブランチに push すると Vercel が自動デプロイします。�
 ```
 
 3. `intensive.html` の中身を新しい講習に更新し、`CLOSED` を `false` に戻す
+
+## 単発の曜日講座（`kokugo.html`）
+
+季節講習とは別枠の、通常授業扱いで開講する曜日固定の講座です。**案内と申込フォームを1枚のページに内蔵**しています（`/apply` は使いません）。
+
+- EmailJS / GAS は `apply.html` と同じキー・同じ送信先を流用。`session_label` で講習の申込と区別します
+- 末尾の JS に `MANUAL_OPEN` と `CLOSED` の運用フラグがあります（`intensive.html` と同じ意味）
+- 送信後は `/apply-complete` へ遷移します。`apply-complete.html` は `total_label` `total_text` `back_url` `back_label` `hide_material` が申込データに入っていればそれを優先します（月額制の講座や、購入必要教材のない講座のため）
+- **EmailJS の自動返信テンプレートは季節講習と共用**です。注意事項の「購入必要教材は…」の1行がテンプレート側に直書きされているため、教材のない講座でもメールには出ます
 
 ## SEO / OGP
 
