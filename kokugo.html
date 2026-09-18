@@ -213,28 +213,6 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   }
 
   /* AGREEMENT */
-  .agreement-box {
-    padding: 22px 26px;
-    background: rgba(200,184,154,0.12);
-    border-left: 3px solid var(--warm-mid);
-    margin-bottom: 24px;
-  }
-  .agreement-box h4 {
-    font-weight: 400; font-size: 13px; letter-spacing: 0.1em;
-    margin-bottom: 12px;
-  }
-  .agreement-box ul {
-    list-style: none; padding: 0;
-  }
-  .agreement-box li {
-    font-size: 12.5px; letter-spacing: 0.04em;
-    line-height: 2; color: rgba(14,12,10,0.75);
-    padding-left: 16px; position: relative;
-  }
-  .agreement-box li::before {
-    content: '・'; position: absolute; left: 0;
-  }
-
   .checkbox-field {
     display: flex; align-items: flex-start; gap: 12px;
     cursor: pointer;
@@ -625,6 +603,18 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     </div>
   </div>
 
+  <!-- 注意事項（同意していただく内容はここに一本化する） -->
+  <div class="note-section">
+    <div class="section-label">注意事項</div>
+    <p>
+      ・今回の共通テスト国語対策講座は、塾生の方のみのお申し込みとなります。<br>
+      ・毎週日曜日 9:30〜10:40（70分）、2026年10月〜12月の開講です。1月以降の実施は、高1・高2の受講状況等によって検討します。<br>
+      ・本講座は通常授業としての扱いとなり、受講料は月額10,000円を月謝に追加してご請求いたします。<br>
+      ・10月27日のお支払いに10月分・11月分あわせて20,000円、11月27日のお支払いに12月分として10,000円を追加でご請求いたします。<br>
+      ・定員12名となります。定員に達し次第、受付を終了いたします。
+    </p>
+  </div>
+
   <!-- 申込フォーム -->
   <div id="formView">
     <form id="applyForm" novalidate>
@@ -663,24 +653,10 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       </div>
 
       <div class="form-section">
-        <div class="section-label">Agreement</div>
-        <h2 class="form-section-title">受講にあたって</h2>
-
-        <div class="agreement-box">
-          <h4>ご確認ください</h4>
-          <ul>
-            <li>本講座は通常授業としての扱いとなり、受講料は<strong>月額10,000円</strong>を月謝に追加してご請求いたします。</li>
-            <li>10月27日のお支払いに、10月分・11月分あわせて<strong>20,000円</strong>を追加でご請求いたします。</li>
-            <li>11月27日のお支払いに、12月分として<strong>10,000円</strong>を追加でご請求いたします。</li>
-            <li>開講期間は2026年10月〜12月です。1月以降の実施は、高1・高2の受講状況等によって検討します。</li>
-            <li>定員12名のため、定員に達した時点で受付を締切とさせていただきます。</li>
-          </ul>
-        </div>
-
         <label class="checkbox-field" id="agreeField">
           <input type="checkbox" name="agree" required>
           <span class="checkbox-box"></span>
-          <span class="checkbox-label">上記の内容について同意します。<span class="req">必須</span></span>
+          <span class="checkbox-label">授業料・お支払いスケジュール・注意事項を確認し、同意します。<span class="req">必須</span></span>
         </label>
       </div>
 
@@ -699,17 +675,6 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   <div id="closedView" style="display:none;">
     <div class="section-label">Application</div>
     <div class="closed-box">共通テスト国語対策講座の申込は終了しました。</div>
-  </div>
-
-  <!-- 注意事項 -->
-  <div class="note-section">
-    <p>
-      ・今回の共通テスト国語対策講座は、塾生の方のみのお申し込みとなります。<br>
-      ・定員12名となります。定員に達し次第、受付を終了いたします。<br>
-      ・毎週日曜日 9:30〜10:40（70分）、2026年10月〜12月の開講です。<br>
-      ・1月以降の実施は、高1・高2の受講状況等によって検討します。<br>
-      ・受講料は通常授業としての扱いとなり、月謝に追加してご請求いたします。
-    </p>
   </div>
 
 </div>
@@ -825,7 +790,7 @@ function validate(data) {
   if (!data.email) return 'メールアドレスを入力してください。';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'メールアドレスの形式をご確認ください。';
   const agree = document.querySelector('input[name="agree"]');
-  if (!agree.checked) return '受講にあたっての内容へのご同意が必要です。';
+  if (!agree.checked) return '注意事項へのご同意が必要です。';
   return null;
 }
 
