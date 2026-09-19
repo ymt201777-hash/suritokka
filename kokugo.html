@@ -700,7 +700,7 @@ const GAS_WEBAPP_URL         = 'https://script.google.com/macros/s/AKfycbz1AhTLY
 /* ============================================================
    講座データ（次回開講時はここを書き換える）
    ============================================================ */
-const SESSION_LABEL = '共通テスト国語対策講座 2026';
+const SESSION_LABEL = '共通テスト国語対策講座';
 const COURSE_NAME   = '共通テスト 国語対策講座';
 const COURSE_DETAIL = '毎週日曜 9:30〜10:40（70分） / 2026年10月4日（日）開講・10月〜12月';
 const MONTHLY_PRICE = 10000;
@@ -709,7 +709,7 @@ const MONTHLY_PRICE = 10000;
 const MAIL_TEXT = {
   payment: '通常授業としての扱いとなり、月謝に月額10,000円を追加してご請求いたします。10月27日のお支払いに10月分・11月分あわせて20,000円、11月27日のお支払いに12月分として10,000円を追加でご請求いたします。',
   transfer_deadline: '',
-  cancel: '受講のお取りやめ・変更をご希望の場合は、教室までご連絡ください。',
+  cancel: '受講のキャンセルをご希望の場合は、LINEまたはメールでその旨お伝えください。',
   meeting: '',
   capacity: '定員12名のため、定員に達した時点で受付を締切とさせていただきます。',
 };
@@ -806,10 +806,13 @@ async function sendToGAS(data) {
     return { skipped: true };
   }
   // text/plain でCORSプリフライトを回避。GAS側でJSON.parse(e.postData.contents)。
+  // keepalive を付けて、完了ページへ遷移したあとも送信が続くようにする
+  // （GASは応答が遅いので、待つと完了ページの表示がその分遅れる）
   return fetch(GAS_WEBAPP_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(data),
+    keepalive: true,
   });
 }
 
@@ -841,18 +844,17 @@ async function handleSubmit(e) {
   showStatus('', '');
 
   try {
-    // Email送信とSheets記録を並行実行。Sheetsが失敗してもEmailが届けば申込は成立とみなす。
-    const [emailResult, gasResult] = await Promise.allSettled([
-      sendEmails(data),
-      sendToGAS(data),
-    ]);
+    // Sheets記録は待たない。GASの応答が1〜数秒かかるうえ、記録が失敗しても
+    // メールが届けば申込は成立とみなす運用のため、待つ意味がない。
+    // keepalive 付きなので、完了ページへ遷移しても送信は最後まで走る。
+    sendToGAS(data).catch(err => console.error('GAS記録失敗:', err));
 
-    if (emailResult.status === 'rejected') {
+    // メールは申込者に「確認メールを送りました」と伝えるので、こちらは待つ。
+    try {
+      await sendEmails(data);
+    } catch (mailErr) {
+      console.error(mailErr);
       throw new Error('メール送信に失敗しました。時間をおいて再度お試しください。');
-    }
-    if (gasResult.status === 'rejected') {
-      console.error('GAS記録失敗:', gasResult.reason);
-      // メールは届いているので成功扱い
     }
 
     try {
