@@ -374,6 +374,24 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     font-weight: 200; font-size: 13px; letter-spacing: 0.08em;
     line-height: 2.4; color: rgba(14,12,10,0.75);
   }
+  .material-box {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: rgba(200, 184, 154, 0.1);
+    border-left: 3px solid var(--warm-mid);
+    font-size: 13.5px; letter-spacing: 0.06em;
+    line-height: 2; color: rgba(14, 12, 10, 0.85);
+  }
+  .material-label {
+    display: block;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: rgba(14,12,10,0.55); margin-bottom: 4px;
+  }
+  .material-note {
+    display: block; margin-top: 6px;
+    font-weight: 200; font-size: 12px;
+    letter-spacing: 0.04em; color: rgba(14,12,10,0.6);
+  }
 
   /* PRICING */
   .pricing-section { margin-bottom: 80px; }
@@ -572,6 +590,12 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     </div>
 
     <p class="curriculum-close">読解のロジックと時間配分を基礎から一緒に組み立てていきます。</p>
+
+    <div class="material-box">
+      <span class="material-label">購入必要教材</span>
+      Z会『2027年用共通テスト実戦模試 国語』（Z会編集部 編）
+      <span class="material-note">Amazon・書店等でご購入いただけます。初回授業までにご自身でご準備ください。</span>
+    </div>
   </div>
 
   <!-- 料金 -->
@@ -615,7 +639,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       ・毎週日曜日 9:30〜10:40（70分）、2026年10月〜12月の開講です。1月以降の実施は、高1・高2の受講状況等によって検討します。<br>
       ・本講座は通常授業としての扱いとなり、受講料は月額10,000円を月謝に追加してご請求いたします。<br>
       ・10月27日のお支払いに10月分・11月分あわせて20,000円、11月27日のお支払いに12月分として10,000円を追加でご請求いたします。<br>
-      ・定員12名となります。定員に達し次第、受付を終了いたします。
+      ・定員12名となります。定員に達し次第、受付を終了いたします。<br>
+      ・購入必要教材 Z会『2027年用共通テスト実戦模試 国語』は、Amazon・書店等で購入可能なものとなっております。初回授業までにご自身でご準備ください。
     </p>
   </div>
 
@@ -707,6 +732,7 @@ const GAS_WEBAPP_URL         = 'https://script.google.com/macros/s/AKfycbz1AhTLY
 const SESSION_LABEL = '共通テスト国語対策講座';
 const COURSE_NAME   = '共通テスト 国語対策講座（担当: 匠 先生）';
 const COURSE_DETAIL = '毎週日曜 9:30〜10:40（70分） / 2026年10月4日（日）開講・10月〜12月';
+const MATERIAL      = 'Z会『2027年用共通テスト実戦模試 国語』';
 const MONTHLY_PRICE = 10000;
 
 /* 自動返信メールに差し込む文言。EmailJS のテンプレートは触らずここだけ書き換える */
@@ -746,7 +772,7 @@ function applyGate() {
    ============================================================ */
 function getFormData() {
   const fd = new FormData(document.getElementById('applyForm'));
-  const courseLine = '・' + COURSE_NAME + '\n  ' + COURSE_DETAIL;
+  const courseLine = '・' + COURSE_NAME + '\n  ' + COURSE_DETAIL + '\n  購入必要教材: ' + MATERIAL;
 
   return {
     session_label: SESSION_LABEL,
@@ -778,7 +804,7 @@ function getFormData() {
     /* 完了ページ用（apply-complete.html が読む） */
     total_label: '受講料',
     total_text: MONTHLY_PRICE.toLocaleString() + '円 / 月',
-    hide_material: 'true',
+    /* 購入必要教材があるので、完了ページの教材案内はそのまま表示する */
     back_url: '/kokugo',
     back_label: '国語対策講座ページへ戻る',
     submitted_at: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
