@@ -10,6 +10,16 @@
       "source": "/gallery",
       "destination": "/inuyama",
       "permanent": true
+    },
+    {
+      "source": "/intensive",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/apply",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }
