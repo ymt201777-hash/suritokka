@@ -724,6 +724,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 
       // Meta広告の成果として計測
       if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: '無料体験予約' });
+      // GA4の成果（キーイベント）として計測
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'booking', campus: data.campus });
 
       form.style.display = 'none';
       successMsg.style.display = 'block';
