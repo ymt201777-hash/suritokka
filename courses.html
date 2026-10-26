@@ -298,20 +298,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     color: rgba(14,12,10,0.5);
   }
 
-  /* スマホでは曜日ごとのリストに切り替える */
-  .timetable-list { display: none; }
-  .tt-day { margin-bottom: 28px; }
-  .tt-day-title {
-    font-weight: 400; font-size: 14px; letter-spacing: 0.2em;
-    padding-bottom: 10px; border-bottom: 1px solid rgba(14,12,10,0.25);
-  }
-  .tt-day-row {
-    display: flex; align-items: center; gap: 14px;
-    padding: 11px 10px; border-bottom: 1px solid rgba(14,12,10,0.08);
-    font-size: 13.5px; letter-spacing: 0.04em;
-  }
-  .tt-day-row .tt-row-time { flex: 0 0 96px; font-size: 12px; color: rgba(14,12,10,0.6); white-space: nowrap; }
-  .tt-day-row .tt-row-name { font-weight: 400; }
+  /* 時刻は「18:00」「–19:10」に分けて出す。スマホでは2行に折る */
+  .tt-hm { display: inline; }
 
   .courses-section { margin-bottom: 80px; }
   .courses-grid {
@@ -414,8 +402,21 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .hamburger { display: block; }
     .page-header { padding: 120px 24px 60px; }
     .content { padding: 0 24px 80px; }
-    .timetable, .timetable-note { display: none; }
-    .timetable-list { display: block; }
+    /* スマホでも PC と同じ表を、画面幅に収まるよう縮めて出す */
+    .timetable { width: calc(100% + 24px); margin: 0 -12px; border-width: 1.5px; }
+    .timetable thead th { height: 34px; font-size: 13px; }
+    .timetable thead th:first-child { width: 12%; }
+    .timetable tbody th { font-size: 9.5px; letter-spacing: 0; line-height: 1.4; white-space: normal; }
+    .timetable td { height: 62px; padding: 4px 0; }
+    /* 講座名は <wbr> の位置（教科名の前）でだけ折る */
+    .tt-name { font-size: 10px; letter-spacing: 0; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+    .tt-sub { font-size: 8.5px; letter-spacing: -0.03em; line-height: 1.45; }
+    .tt-paren { display: none; }
+    .tt-time { font-size: 8.5px; letter-spacing: 0; line-height: 1.3; margin-top: 3px; }
+    .tt-hm { display: block; }
+    .tt-bracket { display: none; }
+    .timetable a { text-underline-offset: 2px; }
+    .timetable-note { margin-top: 12px; }
     .pricing-cards { grid-template-columns: 1fr; }
     .courses-grid { grid-template-columns: 1fr; }
     .payment-cards { grid-template-columns: 1fr; }
@@ -463,8 +464,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     <div class="section-label">時間割</div>
     <!-- 中身は末尾の JS（TIMETABLE）から生成 -->
     <table class="timetable" id="timetable"></table>
-    <div class="timetable-list" id="timetableList"></div>
-    <p class="timetable-note">※ 土曜・日曜の授業は【 】内の時間で行います。</p>
+    <p class="timetable-note">※ 土曜・日曜の授業は、各コマに記載の時間で行います。</p>
   </div>
 
   <!-- 講座一覧 -->
@@ -675,35 +675,25 @@ const TIMETABLE = {
 
 (function renderTimetable() {
   const days = Object.keys(TIMETABLE);
+  // '18:00–19:10' → 開始と終了を別の span に（スマホで2行に折るため）
+  const hm = t => t.split('–').map((p, j) => '<span class="tt-hm">' + (j ? '–' : '') + p + '</span>').join('');
 
-  // PC: 表
   let html = '<thead><tr><th></th>' + days.map(d => '<th>' + d + '</th>').join('') + '</tr></thead><tbody>';
   SLOTS.forEach((slot, i) => {
-    html += '<tr><th>' + slot + '</th>';
+    html += '<tr><th>' + (slot.includes('–') ? hm(slot) : slot) + '</th>';
     days.forEach(d => {
       const c = TIMETABLE[d][i];
       if (!c) { html += '<td class="tt-empty"></td>'; return; }
-      let inner = '<span class="tt-name">' + c.name + (c.sub ? '<span class="tt-sub">' + c.sub + '</span>' : '') + '</span>';
-      if (c.time) inner += '<span class="tt-time">【' + c.time + '】</span>';
+      // 補足の ( ) はスマホでは外す（「(ハイレベル)」が1行に収まらないため）
+      const sub = c.sub ? c.sub.replace(/^\((.*)\)$/, '<span class="tt-paren">(</span>$1<span class="tt-paren">)</span>') : '';
+      let inner = '<span class="tt-name">' + c.name.replace(/(数学|英語|理科|化学|物理|国語|文法|長文)$/, "<wbr>$1") + (sub ? '<span class="tt-sub">' + sub + '</span>' : '') + '</span>';
+      if (c.time) inner += '<span class="tt-time"><span class="tt-bracket">【</span>' + hm(c.time) + '<span class="tt-bracket">】</span></span>';
       if (c.link) inner = '<a href="' + c.link + '">' + inner + '</a>';
       html += '<td class="tt-' + c.subject + '">' + inner + '</td>';
     });
     html += '</tr>';
   });
   document.getElementById('timetable').innerHTML = html + '</tbody>';
-
-  // スマホ: 曜日ごとのリスト
-  let list = '';
-  days.forEach(d => {
-    const rows = TIMETABLE[d].map((c, i) => {
-      if (!c) return '';
-      const name = '<span class="tt-row-name">' + c.name + (c.sub ? ' ' + c.sub : '') + '</span>';
-      return '<div class="tt-day-row tt-' + c.subject + '"><span class="tt-row-time">' + (c.time || SLOTS[i]) + '</span>'
-        + (c.link ? '<a href="' + c.link + '">' + name + '</a>' : name) + '</div>';
-    }).join('');
-    if (rows) list += '<div class="tt-day"><div class="tt-day-title">' + d + '曜日</div>' + rows + '</div>';
-  });
-  document.getElementById('timetableList').innerHTML = list;
 })();
 
 // Nav scroll effect
