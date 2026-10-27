@@ -38,6 +38,7 @@ master ブランチに push すると Vercel が自動デプロイします。�
 | `apply.html` | 季節講習 申込フォーム |
 | `apply-complete.html` | 申込完了ページ |
 | `intensive-template.html` | 季節講習ページの雛形（gitignore 済み・ローカル専用） |
+| `lp/inuyama.html` | Meta広告の飛ばし先LP（犬山校）。`/lp/inuyama` |
 
 ## フォーム（サーバーレス構成）
 
@@ -134,3 +135,16 @@ GA4（`G-TLJQ87F61R`）を全ページの `<head>` 内、viewport meta の直後
 `intensive-template.html` にも入っているので、雛形からコピーしたページにも自動で付いてきます。
 
 **新しいページを作るときは、このタグを忘れずに入れてください。**
+
+## 広告用LP（`lp/`）
+
+Meta広告の飛ばし先専用のページです。通常のサイトとは別扱いにしています。
+
+- `lp/` フォルダに置き、URLは `/lp/inuyama` のようになります。ほかのページからはリンクしません
+- **`noindex, nofollow` を必ず付けます**（検索結果に出さない）
+- 画像やリンクは `/photo_xxx.jpg` `/booking` のように**先頭に `/` を付けた絶対パス**で書きます（`lp/` の中から相対パスだと切れるため）
+- GA4タグとMetaピクセルは通常ページと同じものを入れます
+- ナビは最小限（ロゴと体験予約ボタンだけ）。下部に予約・LINEの固定ボタンがあります
+- ボタンには `data-cta="..."` を付けると、クリック時に GA4 の `lp_cta_click` イベント（`cta` `lp` `lp_variant`）が送られます。LINEボタン（`_line` で終わるもの）は Meta の `LineClick` も送ります
+- 最初の画面の見出しは、広告に合わせて切り替えます。末尾JSの `COPY` に版を足し、URLに `?v=版名` を付けて広告のリンク先にします（`utm_campaign` に `wakaru` が入っている場合も「わかる/できる」版になります）
+- 料金・実績・講師・体験記は通常ページの要約です。**正は `courses.html` `results.html` `instructors.html`** なので、そちらを変えたらLPも揃えてください
