@@ -423,7 +423,601 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
+
+/* ============================================
+   Footer NAP（全ページ共通・住所と連絡先）
+   ============================================ */
+footer { flex-direction: column; gap: 30px; text-align: center; }
+.footer-nap { line-height: 2.1; }
+.footer-nap p { margin: 0; }
+.footer-nap-name { letter-spacing: 0.22em; margin-bottom: 8px !important; }
+.footer-nap-campus {
+  display: inline-block; min-width: 4.6em;
+  text-align: left; opacity: 0.6;
+}
+.footer-nap-sep { margin: 0 0.6em; opacity: 0.4; }
+.footer-nap a { color: inherit; text-decoration: none; }
+.footer-bottom {
+  display: flex; justify-content: center; align-items: center;
+  gap: 32px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(244, 239, 230, 0.12);
+  width: 100%; max-width: 560px;
+}
+@media (max-width: 768px) {
+  .footer-nap-campus { display: block; min-width: 0; text-align: center; margin-bottom: 2px; }
+  .footer-bottom { flex-direction: column; gap: 14px; }
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://www.suritokka.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "通常授業",
+      "item": "https://www.suritokka.com/courses"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "犬山数学理科特化塾 通常授業の講座一覧",
+  "numberOfItems": 18,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Course",
+        "name": "中１数学",
+        "description": "中１数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Course",
+        "name": "中２数学",
+        "description": "中２数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Course",
+        "name": "公立中３数学",
+        "description": "公立中３数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Course",
+        "name": "私立中３数学",
+        "description": "私立中３数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Course",
+        "name": "高１数学",
+        "description": "高１数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Course",
+        "name": "高２数学ミドル",
+        "description": "高２数学ミドルの通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Course",
+        "name": "高２数学ハイレベル",
+        "description": "高２数学ハイレベルの通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Course",
+        "name": "高３数学ミドル",
+        "description": "高３数学ミドルの通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Course",
+        "name": "高３数学ハイレベル",
+        "description": "高３数学ハイレベルの通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Course",
+        "name": "高３文系数学",
+        "description": "高３文系数学の通常授業（週1回・70分）。",
+        "about": "数学",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Course",
+        "name": "中３理科",
+        "description": "中３理科の通常授業（週1回・70分）。",
+        "about": "理科",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Course",
+        "name": "高３化学",
+        "description": "高３化学の通常授業（週1回・70分）。",
+        "about": "理科",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+        "@type": "Course",
+        "name": "高３物理",
+        "description": "高３物理の通常授業（週1回・70分）。",
+        "about": "理科",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Course",
+        "name": "中１・２英語",
+        "description": "中１・２英語の通常授業（週1回・70分）。",
+        "about": "英語",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Course",
+        "name": "中２・３英語",
+        "description": "中２・３英語の通常授業（週1回・70分）。",
+        "about": "英語",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+        "@type": "Course",
+        "name": "高１・２英文法",
+        "description": "高１・２英文法の通常授業（週1回・70分）。",
+        "about": "英語",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+        "@type": "Course",
+        "name": "高３英文法",
+        "description": "高３英文法の通常授業（週1回・70分）。",
+        "about": "英語",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+        "@type": "Course",
+        "name": "高３英語長文ハイレベル",
+        "description": "高３英語長文ハイレベルの通常授業（週1回・70分）。",
+        "about": "英語",
+        "inLanguage": "ja",
+        "url": "https://www.suritokka.com/courses",
+        "provider": {
+          "@id": "https://www.suritokka.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000",
+          "priceCurrency": "JPY",
+          "category": "1講座あたりの月額（基本料金20,000円／月に加算）",
+          "url": "https://www.suritokka.com/courses"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Onsite",
+          "courseWorkload": "PT70M",
+          "location": {
+            "@id": "https://www.suritokka.com/inuyama#campus"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -611,8 +1205,21 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 </div>
 
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾</span>
-  <a href="/legal">特定商取引法に基づく表記</a>
+  <div class="footer-nap">
+    <p class="footer-nap-name">犬山数学理科特化塾</p>
+    <p><span class="footer-nap-campus">犬山校</span>愛知県犬山市犬山東古券423-8</p>
+    <p><span class="footer-nap-campus">岩倉校</span>愛知県岩倉市栄町2丁目70 清水住宅ビル201号室</p>
+    <p>開校時間 8:00〜22:00（年中無休）</p>
+    <p>
+      <a href="tel:07091514306">070-9151-4306</a>
+      <span class="footer-nap-sep">/</span>
+      <a href="mailto:inuyama@suritokka.com">inuyama@suritokka.com</a>
+    </p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 犬山数学理科特化塾</span>
+    <a href="/legal">特定商取引法に基づく表記</a>
+  </div>
 </footer>
 
 <script>

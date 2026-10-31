@@ -1,0 +1,8 @@
+# 完了ページ・個別案内ページ（/apply-complete, /sw-mendan, /sw-mendan-complete）は
+# 各ページの meta robots="noindex" で除外しています。
+# ここで Disallow にすると noindex を読んでもらえなくなるので、あえて書いていません。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.suritokka.com/sitemap.xml

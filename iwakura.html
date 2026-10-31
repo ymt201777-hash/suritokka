@@ -457,11 +457,35 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
+
+/* ============================================
+   Footer NAP（全ページ共通・住所と連絡先）
+   ============================================ */
+footer { flex-direction: column; gap: 30px; text-align: center; }
+.footer-nap { line-height: 2.1; }
+.footer-nap p { margin: 0; }
+.footer-nap-name { letter-spacing: 0.22em; margin-bottom: 8px !important; }
+.footer-nap-campus {
+  display: inline-block; min-width: 4.6em;
+  text-align: left; opacity: 0.6;
+}
+.footer-nap-sep { margin: 0 0.6em; opacity: 0.4; }
+.footer-nap a { color: inherit; text-decoration: none; }
+.footer-bottom {
+  display: flex; justify-content: center; align-items: center;
+  gap: 32px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(244, 239, 230, 0.12);
+  width: 100%; max-width: 560px;
+}
+@media (max-width: 768px) {
+  .footer-nap-campus { display: block; min-width: 0; text-align: center; margin-bottom: 2px; }
+  .footer-bottom { flex-direction: column; gap: 14px; }
+}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
   "@id": "https://www.suritokka.com/iwakura#campus",
   "name": "犬山数学理科特化塾 岩倉校",
   "url": "https://www.suritokka.com/iwakura",
@@ -470,12 +494,20 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   "parentOrganization": {
     "@id": "https://www.suritokka.com/#organization"
   },
+  "email": "inuyama@suritokka.com",
+  "priceRange": "¥20,000〜/月",
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=35.278491,136.869704",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "JP",
     "addressRegion": "愛知県",
     "addressLocality": "岩倉市",
     "streetAddress": "栄町2丁目70 清水住宅ビル201号室"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.278491,
+    "longitude": 136.869704
   },
   "openingHoursSpecification": [
     {
@@ -491,6 +523,26 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       ],
       "opens": "08:00",
       "closes": "22:00"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://www.suritokka.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "岩倉校",
+      "item": "https://www.suritokka.com/iwakura"
     }
   ]
 }
@@ -645,8 +697,21 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 </div>
 
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾</span>
-  <a href="/legal">特定商取引法に基づく表記</a>
+  <div class="footer-nap">
+    <p class="footer-nap-name">犬山数学理科特化塾</p>
+    <p><span class="footer-nap-campus">犬山校</span>愛知県犬山市犬山東古券423-8</p>
+    <p><span class="footer-nap-campus">岩倉校</span>愛知県岩倉市栄町2丁目70 清水住宅ビル201号室</p>
+    <p>開校時間 8:00〜22:00（年中無休）</p>
+    <p>
+      <a href="tel:07091514306">070-9151-4306</a>
+      <span class="footer-nap-sep">/</span>
+      <a href="mailto:inuyama@suritokka.com">inuyama@suritokka.com</a>
+    </p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 犬山数学理科特化塾</span>
+    <a href="/legal">特定商取引法に基づく表記</a>
+  </div>
 </footer>
 
 <script>

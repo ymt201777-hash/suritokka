@@ -115,10 +115,35 @@ master ブランチに push すると Vercel が自動デプロイします。�
 - `meta name="description"`
 - OGP（`og:title` `og:description` `og:url` `og:image` ほか）と `twitter:card`
 - `link rel="canonical"`
+- パンくずの JSON-LD（`BreadcrumbList`。トップ以外の全ページ）
 
 URL は `https://www.suritokka.com` を基準に、`.html` なしの絶対URLで書きます。OGP画像は全ページ共通で `/ogp.jpg`（1200×630）です。
 
-`index.html` `inuyama.html` `iwakura.html` には JSON-LD の構造化データ（`EducationalOrganization`）が入っています。住所・電話・営業時間を変更したら、ページ本文と構造化データの両方を直してください。
+### 構造化データ（JSON-LD）
+
+| ページ | 入っているもの |
+|---|---|
+| 全ページ（トップ以外） | `BreadcrumbList` |
+| `index.html` | `EducationalOrganization`（塾そのもの）＋ `WebSite`。両校舎を `department` で参照 |
+| `inuyama.html` `iwakura.html` | 校舎（`EducationalOrganization` ＋ `LocalBusiness`）。座標・地図リンク・営業時間つき |
+| `instructors.html` | 講師3名の `Person` |
+| `courses.html` | 講座一覧の `ItemList`（各 `Course`） |
+
+塾の情報は `index.html` の `#organization` が正で、他のページはそこを `@id` で参照しています。**住所・電話・営業時間・料金を変えたら、ページ本文・構造化データ・フッターの3か所を直してください。**
+
+講座を増減したら `courses.html` の `ItemList` も揃えてください（時間割の `TIMETABLE`・講座一覧・構造化データで3か所あります）。
+
+### フッター（NAP）
+
+全ページ共通で、フッターに塾名・両校舎の住所・開校時間・電話・メールを出しています（ローカル検索対策）。マークアップは `.footer-nap` ／ `.footer-bottom`、CSS は各ページの `</style>` 直前にまとめてあります。**どれか1ページを直したら、全ページ揃えてください。**
+
+### sitemap.xml / robots.txt
+
+`sitemap.xml` に検索結果へ出すページを列挙し、`robots.txt` からそこを指しています。**ページを追加・削除したら `sitemap.xml` も更新してください**（`lastmod` も直す）。
+
+完了ページと個別案内ページ（`/apply-complete` `/sw-mendan` `/sw-mendan-complete`）は、各ページの `meta robots="noindex"` で除外しています。robots.txt で `Disallow` にすると noindex 自体を読んでもらえなくなるので、そちらには書きません。
+
+`/kokugo` はどこからもリンクしていない運用なので、sitemap にも入れていません。検索から来てほしくなったら sitemap に追加してください。
 
 `apply-complete.html` は検索結果に出す必要がないので `noindex` を付けています。
 
