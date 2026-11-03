@@ -669,7 +669,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
 <div class="page-header">
   <div class="page-label">Application</div>
   <h1 class="session-name">冬期講習　申込フォーム</h1>
-  <p class="session-period">2026年12月19日（土）〜 2027年1月6日（水）</p>
+  <p class="session-period">2026年12月19日（土）〜 2027年1月17日（日）</p>
 </div>
 <!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
 
@@ -780,7 +780,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       <h2 class="form-section-title">受講希望講座</h2>
       <p class="form-section-desc">
         ご希望の講座をお選びください（基本は1講座 4授業セット ¥20,000）。<br>
-        中3 社会・理科は各 ¥18,000、2講座あわせてのお申し込みで ¥30,000 になります。<br>
+        中3 社会・理科、高2 物理・化学は各 ¥18,000、同じ組み合わせの2講座あわせてのお申し込みで ¥30,000 になります。<br>
         時間割の詳細は <a href="/intensive" target="_blank" style="text-decoration:underline;">季節講習ページ</a> をご確認ください。
       </p>
 
@@ -791,7 +791,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
           <div class="ss-label">Selected</div>
           <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
           <div id="ssSetBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;"></div>
-          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料</div>
+          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料 ¥20,000</div>
         </div>
         <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
       </div>
@@ -818,8 +818,11 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
         <ul>
           <li>受講料は1講座（4授業セット）につき 20,000円 です。</li>
           <li>中3 社会・中3 理科は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
+          <li>高2 物理・高2 化学は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
           <li>共通テスト 統計（2授業）は 10,000円 です。</li>
-          <li>受講料は通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。</li>
+          <li>塾生以外の方は、上記の受講料に加えて <strong>基本サービス料 20,000円</strong>（講習期間中の自習室利用・LINEでの質問対応など）が必要です。</li>
+          <li><strong>塾生の方</strong>：受講料は通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。</li>
+          <li><strong>塾生以外の方</strong>：12月13日（日）までに指定口座へお振込みください。お振込先はお申し込み後の自動返信メールにてご案内いたします。</li>
           <li>キャンセルは <strong>12月13日（日）まで</strong> 受け付けます。それ以降のキャンセルはご返金しかねます。</li>
           <li>購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までには、ご自身でご準備くださいますようよろしくお願いいたします。</li>
         </ul>
@@ -894,6 +897,10 @@ const COURSES = [
     slots: [{d:'12/20',p:3},{d:'12/20',p:4},{d:'12/20',p:5}] },
   { id: 'chu3-rika',     name: '中3　理科', instructor: '杉村', price: 18000,
     slots: [{d:'12/27',p:3},{d:'12/27',p:4},{d:'12/27',p:5}] },
+  { id: 'ko2-butsuri',   name: '高2　物理', instructor: '杉村', price: 18000,
+    slots: [{d:'1/16',p:1},{d:'1/16',p:2},{d:'1/16',p:3}] },
+  { id: 'ko2-kagaku',    name: '高2　化学', instructor: '杉村', price: 18000,
+    slots: [{d:'1/17',p:1},{d:'1/17',p:2},{d:'1/17',p:3}] },
   { id: 'kyotsu-eigo-r', name: '共通テスト　英語リーディング', instructor: '匠', price: 20000,
     slots: [{d:'12/27',p:6},{d:'12/27',p:7},{d:'12/28',p:2},{d:'12/28',p:3}] },
   { id: 'kyotsu-ia',     name: '共通テスト　数学I・A', instructor: '祐一郎', price: 20000,
@@ -914,12 +921,13 @@ const COURSES = [
    ids を全部選んだときだけ、その合計が price になる */
 const COURSE_SETS = [
   { ids: ['chu3-shakai', 'chu3-rika'], price: 30000, label: '中3 社会・理科 セット' },
+  { ids: ['ko2-butsuri', 'ko2-kagaku'], price: 30000, label: '高2 物理・化学 セット' },
 ];
 
 const MOCK_EXAMS = [
 ];
 
-const NON_MEMBER_FEE = 0;
+const NON_MEMBER_FEE = 20000;
 
 const SESSION_LABEL = '冬期講習 2026';
 
@@ -927,7 +935,7 @@ const SESSION_LABEL = '冬期講習 2026';
    EmailJS のテンプレートは触らなくてよい */
 const MAIL_TEXT = {
   payment: '通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。',
-  transfer_deadline: '',   // 塾生以外の受付がある回のみ記入（例: '12月13日（日）'）
+  transfer_deadline: '12月13日（日）',
   cancel: 'キャンセルは 12月13日（日）まで 受け付けます。それ以降のキャンセルはご返金しかねます。',
   meeting: '',
   capacity: '各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。',
@@ -941,8 +949,7 @@ const MAIL_TEXT = {
 const MANUAL_OPEN = true;
 const OPEN_DATES = {
   member: new Date('2026-11-03T00:00:00+09:00'),
-  /* 今回は塾生限定。到達しない日付を入れて member-only 状態を維持する */
-  public: new Date('2099-01-01T00:00:00+09:00'),
+  public: new Date('2026-11-03T00:00:00+09:00'),
 };
 
 const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
