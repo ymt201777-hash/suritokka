@@ -1280,6 +1280,8 @@ function showStatus(type, msg) {
 }
 
 async function sendToGAS(data) {
+  /* プレビューは公開前の見た目チェック用。実際の記録は行わない */
+  if (IS_PREVIEW) return { skipped: true };
   if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.startsWith('YOUR_')) {
     console.warn('GAS_WEBAPP_URL is not configured');
     return { skipped: true };
@@ -1293,6 +1295,8 @@ async function sendToGAS(data) {
 }
 
 async function sendEmails(data) {
+  /* プレビューは公開前の見た目チェック用。実際のメールは送らない */
+  if (IS_PREVIEW) return { skipped: true };
   if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY.startsWith('YOUR_')) {
     console.warn('EmailJS is not configured');
     return { skipped: true };
