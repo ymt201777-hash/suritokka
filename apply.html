@@ -890,23 +890,23 @@ const PERIOD_TIMES = {
 };
 
 const COURSES = [
-  { id: 'chu3-shakai',   name: '中3　社会', instructor: '', price: 18000,
+  { id: 'chu3-shakai',   name: '中3　社会', instructor: '杉村', price: 18000,
     slots: [{d:'12/20',p:3},{d:'12/20',p:4},{d:'12/20',p:5}] },
-  { id: 'chu3-rika',     name: '中3　理科', instructor: '', price: 18000,
+  { id: 'chu3-rika',     name: '中3　理科', instructor: '杉村', price: 18000,
     slots: [{d:'12/27',p:3},{d:'12/27',p:4},{d:'12/27',p:5}] },
-  { id: 'kyotsu-eigo-r', name: '共通テスト　英語リーディング', instructor: '', price: 20000,
+  { id: 'kyotsu-eigo-r', name: '共通テスト　英語リーディング', instructor: '匠', price: 20000,
     slots: [{d:'12/27',p:6},{d:'12/27',p:7},{d:'12/28',p:2},{d:'12/28',p:3}] },
-  { id: 'kyotsu-ia',     name: '共通テスト　数学I・A', instructor: '', price: 20000,
+  { id: 'kyotsu-ia',     name: '共通テスト　数学I・A', instructor: '祐一郎', price: 20000,
     slots: [{d:'12/29',p:1},{d:'12/29',p:2},{d:'1/1',p:1},{d:'1/1',p:2}] },
-  { id: 'kyotsu-iib',    name: '共通テスト　数学Ⅱ・B・C', instructor: '', price: 20000,
+  { id: 'kyotsu-iib',    name: '共通テスト　数学Ⅱ・B・C', instructor: '祐一郎', price: 20000,
     slots: [{d:'12/29',p:3},{d:'12/29',p:4},{d:'1/1',p:3},{d:'1/1',p:4}] },
-  { id: 'kyotsu-kagaku', name: '共通テスト　化学', instructor: '', price: 20000,
+  { id: 'kyotsu-kagaku', name: '共通テスト　化学', instructor: '杉村', price: 20000,
     slots: [{d:'12/30',p:1},{d:'12/30',p:2},{d:'12/31',p:1},{d:'12/31',p:2}] },
-  { id: 'kyotsu-butsuri',name: '共通テスト　物理', instructor: '', price: 20000,
+  { id: 'kyotsu-butsuri',name: '共通テスト　物理', instructor: '杉村', price: 20000,
     slots: [{d:'12/30',p:3},{d:'12/30',p:4},{d:'12/31',p:3},{d:'12/31',p:4}] },
-  { id: 'kyotsu-toukei', name: '共通テスト　統計', instructor: '', price: 10000,
+  { id: 'kyotsu-toukei', name: '共通テスト　統計', instructor: '祐一郎', price: 10000,
     slots: [{d:'1/2',p:1},{d:'1/2',p:2}] },
-  { id: 'kyotsu-jouhou', name: '共通テスト　情報', instructor: '', price: 20000,
+  { id: 'kyotsu-jouhou', name: '共通テスト　情報', instructor: '祐一郎', price: 20000,
     slots: [{d:'1/5',p:3},{d:'1/5',p:4},{d:'1/6',p:3},{d:'1/6',p:4}] },
 ];
 
@@ -932,7 +932,7 @@ const MAIL_TEXT = {
   meeting: '',
   capacity: '各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。',
   /* 購入必要教材の案内。教材のない回は '' にすると、自動返信メールと完了ページの両方から消える */
-  material: '購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までにご自身でご準備くださいますようよろしくお願いいたします。',
+  material: '購入必要教材は講座ごとに異なります。季節講習ページ（https://www.suritokka.com/intensive）の時間割・講座詳細でご確認のうえ、受講日までにご自身でご準備ください。Amazon・書店等でご購入いただけます。',
 };
 
 /* 申込受付開始日（JST）
@@ -969,7 +969,7 @@ function renderCourses() {
       <input type="checkbox" name="courses" value="${c.id}" ${c.full ? 'disabled' : ''}>
       <div class="course-card-check"></div>
       <div class="cc-name">${c.name}${c.full ? '<span class="cc-full">満席・受付終了</span>' : ''}</div>
-      <div class="cc-meta">${c.instructor ? '担当 ' + c.instructor : '70分 × ' + c.slots.length + '回'}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
+      <div class="cc-meta">${'70分 × ' + c.slots.length + '回'}${c.instructor ? '　担当 ' + c.instructor : ''}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
       <div class="cc-set-hint"></div>
       <div class="cc-slots">
         ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
