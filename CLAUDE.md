@@ -49,6 +49,21 @@ master ブランチに push すると Vercel が自動デプロイします。�
 - キーや URL は各 HTML の `<script>` 冒頭に定数として直書きされています
 - 本番の GAS コードは Google 側にあります。リポジトリの `gas-script.gs` は gitignore 対象のローカルメモです
 
+### 自動返信メールの文面（`MAIL_TEXT`）
+
+申込者宛の自動返信は EmailJS のテンプレート（`template_x1xi9dh`）が土台で、**可変の文言は `apply.html` / `kokugo.html` 末尾の `MAIL_TEXT` から差し込みます**。講習ごとに書き換えるのはこちらで、テンプレートは触りません。
+
+| キー | 差し込み先 |
+|---|---|
+| `payment` | お支払いについて |
+| `transfer_deadline` | 振込期限（塾生以外の受付がある回のみ） |
+| `cancel` | キャンセルについて |
+| `meeting` | 対策面談について（空なら枠ごと消える） |
+| `capacity` | 注意事項の定員の行 |
+| `material` | 注意事項の購入必要教材の行（空なら行ごと消える） |
+
+`material` を `''` にすると、自動返信メールの1行と `/apply-complete` の教材案内が**両方**消えます（`hide_material` を同じ値から自動で組み立てているため）。**購入必要教材のない講習では、ここを空にしてください。**
+
 ### honeypot の扱い
 
 スパム対策の honeypot 項目がありますが、**値が入っていても送信をブロックしません**。GAS 側でスパム疑いフラグを立てて記録します。パスワードマネージャの自動入力で正規の申込が誤ってブロックされた経緯があるため、この方針を変えないでください。
@@ -111,7 +126,7 @@ master ブランチに push すると Vercel が自動デプロイします。�
 - EmailJS / GAS は `apply.html` と同じキー・同じ送信先を流用。`session_label` で講習の申込と区別します
 - 末尾の JS に `MANUAL_OPEN` と `CLOSED` の運用フラグがあります（`intensive.html` と同じ意味）
 - 送信後は `/apply-complete` へ遷移します。`apply-complete.html` は `total_label` `total_text` `back_url` `back_label` `hide_material` が申込データに入っていればそれを優先します（月額制の講座や、購入必要教材のない講座のため）
-- **EmailJS の自動返信テンプレートは季節講習と共用**です。注意事項の「購入必要教材は…」の1行がテンプレート側に直書きされているため、教材のない講座でもメールには出ます
+- **EmailJS の自動返信テンプレートは季節講習と共用**です。注意事項の文面は `MAIL_TEXT` から差し込むので、講習ごとにテンプレートを触る必要はありません
 
 ## SEO / OGP
 

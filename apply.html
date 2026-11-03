@@ -888,6 +888,8 @@ const MAIL_TEXT = {
   cancel: 'キャンセルは 12月13日（日）まで 受け付けます。12/13（日）以降のキャンセルはご返金しかねます。',
   meeting: '',
   capacity: '各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。',
+  /* 購入必要教材の案内。教材のない回は '' にすると、自動返信メールと完了ページの両方から消える */
+  material: '購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までにご自身でご準備くださいますようよろしくお願いいたします。',
 };
 
 /* 申込受付開始日（JST）
@@ -1105,6 +1107,8 @@ function getFormData() {
     cancel_text: MAIL_TEXT.cancel,
     meeting_text: MAIL_TEXT.meeting,
     capacity_text: MAIL_TEXT.capacity,
+    material_text: MAIL_TEXT.material,
+    hide_material: MAIL_TEXT.material ? '' : 'true',
     mock_list: mockLines || '（選択なし）',
     mock_ids: selectedMockIds.join(','),
     total_price: total.toLocaleString() + '円',
