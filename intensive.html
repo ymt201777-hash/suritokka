@@ -31,12 +31,12 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>シルバーウィーク講習 | 犬山数学理科特化塾</title>
-<meta name="description" content="犬山数学理科特化塾のシルバーウィーク講習。9月21日〜23日の3日間、共通テスト数学I・AとⅡ・B・Cの対策講座を開講します。受講される方には全員、対策面談を行います。">
+<title>冬期講習 | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾の冬期講習。2026年12月19日〜2027年1月6日、共通テストの数学I・A／Ⅱ・B・C、英語R、化学・物理演習、統計、情報と、中3社会・理科の対策講座を開講します。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="犬山数学理科特化塾">
-<meta property="og:title" content="シルバーウィーク講習 | 犬山数学理科特化塾">
-<meta property="og:description" content="犬山数学理科特化塾のシルバーウィーク講習。9月21日〜23日の3日間、共通テスト数学I・AとⅡ・B・Cの対策講座を開講します。受講される方には全員、対策面談を行います。">
+<meta property="og:title" content="冬期講習 | 犬山数学理科特化塾">
+<meta property="og:description" content="犬山数学理科特化塾の冬期講習。2026年12月19日〜2027年1月6日、共通テストの数学I・A／Ⅱ・B・C、英語R、化学・物理演習、統計、情報と、中3社会・理科の対策講座を開講します。">
 <meta property="og:url" content="https://www.suritokka.com/intensive">
 <meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -258,6 +258,13 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   .lesson.math-iib { background: #cfe0da; color: #1f3f39; }
   .lesson.meeting  { background: #e6ddcc; color: #4a3f2c; }
   .lesson.mock { background: #d8cfba; color: #3a3225; }
+
+  /* 冬期講習の講座色 */
+  .lesson.social { background: #efe2d2; color: #5a4420; }
+  .lesson.chem   { background: #e3d4ee; color: #3a2a5a; }
+  .lesson.phys   { background: #d5d9f2; color: #2a2f5a; }
+  .lesson.stat   { background: #cfd8e8; color: #223044; }
+  .lesson.info   { background: #dceae2; color: #24473a; }
   .lesson.regular {
     background: rgba(14,12,10,0.06); color: rgba(14,12,10,0.45);
     font-size: 10px;
@@ -506,7 +513,51 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .cta-section { padding: 80px 24px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
+
+/* ============================================
+   Footer NAP（全ページ共通・住所と連絡先）
+   ============================================ */
+footer { flex-direction: column; gap: 30px; text-align: center; }
+.footer-nap { line-height: 2.1; }
+.footer-nap p { margin: 0; }
+.footer-nap-name { letter-spacing: 0.22em; margin-bottom: 8px !important; }
+.footer-nap-campus {
+  display: inline-block; min-width: 4.6em;
+  text-align: left; opacity: 0.6;
+}
+.footer-nap-sep { margin: 0 0.6em; opacity: 0.4; }
+.footer-nap a { color: inherit; text-decoration: none; }
+.footer-bottom {
+  display: flex; justify-content: center; align-items: center;
+  gap: 32px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(244, 239, 230, 0.12);
+  width: 100%; max-width: 560px;
+}
+@media (max-width: 768px) {
+  .footer-nap-campus { display: block; min-width: 0; text-align: center; margin-bottom: 2px; }
+  .footer-bottom { flex-direction: column; gap: 14px; }
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://www.suritokka.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "季節講習",
+      "item": "https://www.suritokka.com/intensive"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -540,8 +591,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 <!-- ↓↓↓ ここを毎回書き換える ↓↓↓ -->
 <div class="page-header">
   <div class="page-label">Intensive Course</div>
-  <h1 class="session-name">シルバーウィーク講習</h1>
-  <p class="session-period">2026年9月21日（月）〜 9月23日（水）</p>
+  <h1 class="session-name">冬期講習</h1>
+  <p class="session-period">2026年12月19日（土）〜 2027年1月6日（水）</p>
 </div>
 <!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
 
@@ -550,6 +601,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   <!-- 時間割 -->
   <div class="schedule-section">
     <div class="section-label">日程</div>
+
+    <h3 class="month-label">December</h3>
     <div class="schedule-outer">
       <table>
         <thead>
@@ -559,49 +612,191 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
             <th class="time-header">②<br>10:50–12:00</th>
             <th class="time-header">③<br>13:00–14:10</th>
             <th class="time-header">④<br>14:20–15:30</th>
-            <th class="time-header">⑤<br>18:00–19:10</th>
-            <th class="time-header">⑥<br>19:20–20:30</th>
-            <th class="time-header">⑦<br>20:40–21:50</th>
+            <th class="time-header">⑤<br>15:40–16:50</th>
+            <th class="time-header">⑥<br>18:00–19:10</th>
+            <th class="time-header">⑦<br>19:20–20:30</th>
+            <th class="time-header">⑧<br>20:40–21:50</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="date-cell"><span class="date-day">9/21</span><span class="date-week">月</span></td>
-            <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
-            <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
-            <td colspan="2"><div class="lesson meeting">対策面談　13:00–16:00</div></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
-          </tr>
-          <tr>
-            <td class="date-cell"><span class="date-day">9/22</span><span class="date-week">火</span></td>
-            <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
-            <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
+            <td class="date-cell"><span class="date-day">12/19</span><span class="date-week sat">土</span></td>
             <td class="empty"></td>
             <td class="empty"></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">高1数学</div></td>
+            <td><div class="lesson regular">高1数学</div></td>
+            <td><div class="lesson regular">中3理科<span class="lesson-time">17:00-18:10</span></div></td>
+            <td><div class="lesson regular">高3化学<span class="lesson-time">18:20-19:30</span></div></td>
+            <td><div class="lesson regular">高3物理<span class="lesson-time">19:40-20:50</span></div></td>
           </tr>
           <tr>
-            <td class="date-cell"><span class="date-day">9/23</span><span class="date-week">水</span></td>
+            <td class="date-cell"><span class="date-day">12/20</span><span class="date-week sun">日</span></td>
+            <td><div class="lesson regular">共テ国語<br>(高校生)</div></td>
+            <td><div class="lesson regular">共テ国語<br>(高校生)</div></td>
+            <td><div class="lesson social">中3<br>社会</div></td>
+            <td><div class="lesson social">中3<br>社会</div></td>
+            <td><div class="lesson social">中3<br>社会</div></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">12/27</span><span class="date-week sun">日</span></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson science">中3<br>理科</div></td>
+            <td><div class="lesson science">中3<br>理科</div></td>
+            <td><div class="lesson science">中3<br>理科</div></td>
+            <td><div class="lesson english">共通テスト<br>英語R</div></td>
+            <td><div class="lesson english">共通テスト<br>英語R</div></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">12/28</span><span class="date-week">月</span></td>
+            <td class="empty"></td>
+            <td><div class="lesson english">共通テスト<br>英語R</div></td>
+            <td><div class="lesson english">共通テスト<br>英語R</div></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">中1・2英語</div></td>
+            <td><div class="lesson regular">中2・3英語</div></td>
+            <td><div class="lesson regular">高校英語文法<br>(高3)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">12/29</span><span class="date-week">火</span></td>
             <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
             <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
             <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
             <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
-            <td><div class="lesson regular">通常</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">高3<br>文系数学</div></td>
+            <td><div class="lesson regular">高3数学<br>(ミドル)</div></td>
+            <td><div class="lesson regular">高2数学<br>(ミドル)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">12/30</span><span class="date-week">水</span></td>
+            <td><div class="lesson chem">化学演習<br>①</div></td>
+            <td><div class="lesson chem">化学演習<br>②</div></td>
+            <td><div class="lesson phys">物理演習<br>①</div></td>
+            <td><div class="lesson phys">物理演習<br>②</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">私立中3<br>数学</div></td>
+            <td><div class="lesson regular">公立中3<br>数学</div></td>
+            <td><div class="lesson regular">高2数学<br>(ハイレベル)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">12/31</span><span class="date-week">木</span></td>
+            <td><div class="lesson chem">化学演習<br>③</div></td>
+            <td><div class="lesson chem">化学演習<br>④</div></td>
+            <td><div class="lesson phys">物理演習<br>③</div></td>
+            <td><div class="lesson phys">物理演習<br>④</div></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">高校英語長文<br>(高校生)</div></td>
+            <td><div class="lesson regular">高校英語文法<br>(高1・2)</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="month-label">January</h3>
+    <div class="schedule-outer">
+      <table>
+        <thead>
+          <tr>
+            <th class="date-col"></th>
+            <th class="time-header">①<br>9:30–10:40</th>
+            <th class="time-header">②<br>10:50–12:00</th>
+            <th class="time-header">③<br>13:00–14:10</th>
+            <th class="time-header">④<br>14:20–15:30</th>
+            <th class="time-header">⑤<br>15:40–16:50</th>
+            <th class="time-header">⑥<br>18:00–19:10</th>
+            <th class="time-header">⑦<br>19:20–20:30</th>
+            <th class="time-header">⑧<br>20:40–21:50</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/1</span><span class="date-week">金</span></td>
+            <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
+            <td><div class="lesson math-ia">共通テスト<br>I・A</div></td>
+            <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
+            <td><div class="lesson math-iib">共通テスト<br>Ⅱ・B・C</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">中1数学</div></td>
+            <td><div class="lesson regular">中2数学</div></td>
+            <td><div class="lesson regular">高3数学<br>(ハイレベル)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/2</span><span class="date-week sat">土</span></td>
+            <td><div class="lesson stat">共通テスト<br>統計</div></td>
+            <td><div class="lesson stat">共通テスト<br>統計</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">高2数学</div></td>
+            <td><div class="lesson regular">高1数学</div></td>
+            <td><div class="lesson regular">中3理科<span class="lesson-time">17:00-18:10</span></div></td>
+            <td><div class="lesson regular">高3化学<span class="lesson-time">18:20-19:30</span></div></td>
+            <td><div class="lesson regular">高3物理<span class="lesson-time">19:40-20:50</span></div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/3</span><span class="date-week sun">日</span></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/4</span><span class="date-week">月</span></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">中1・2英語</div></td>
+            <td><div class="lesson regular">中2・3英語</div></td>
+            <td><div class="lesson regular">高校英語文法<br>(高3)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/5</span><span class="date-week">火</span></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson info">共通テスト<br>情報</div></td>
+            <td><div class="lesson info">共通テスト<br>情報</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">高3<br>文系数学</div></td>
+            <td><div class="lesson regular">高3数学<br>(ミドル)</div></td>
+            <td><div class="lesson regular">高2数学<br>(ミドル)</div></td>
+          </tr>
+          <tr>
+            <td class="date-cell"><span class="date-day">1/6</span><span class="date-week">水</span></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td><div class="lesson info">共通テスト<br>情報</div></td>
+            <td><div class="lesson info">共通テスト<br>情報</div></td>
+            <td class="empty"></td>
+            <td><div class="lesson regular">私立中3<br>数学</div></td>
+            <td><div class="lesson regular">公立中3<br>数学</div></td>
+            <td><div class="lesson regular">高2数学<br>(ハイレベル)</div></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#efe2d2;"></div>中3 社会</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e8d4f0;"></div>中3 理科</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f0d6dc;"></div>共通テスト 英語R</div>
       <div class="legend-item"><div class="legend-dot" style="background:#d4dff0;"></div>共通テスト I・A</div>
       <div class="legend-item"><div class="legend-dot" style="background:#cfe0da;"></div>共通テスト Ⅱ・B・C</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#e6ddcc;"></div>対策面談</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e3d4ee;"></div>化学演習</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#d5d9f2;"></div>物理演習</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#cfd8e8;"></div>共通テスト 統計</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#dceae2;"></div>共通テスト 情報</div>
       <div class="legend-item"><div class="legend-dot" style="background:rgba(14,12,10,0.06); border:1px solid rgba(14,12,10,0.1);"></div>通常授業</div>
     </div>
   </div>
@@ -612,32 +807,83 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 
     <div class="course-detail">
       <div class="course-detail-header">
-        <h3 class="course-detail-title">共通テスト　数学I・A 対策<span class="detail-full">満席・受付終了</span></h3>
+        <h3 class="course-detail-title">中3　社会</h3>
+        <span class="course-detail-meta">70分 × 3回</span>
+      </div>
+      <p class="course-detail-instructor">12月20日（日）③④⑤</p>
+      <p class="course-detail-desc">高校入試に向けた中3社会の対策講座。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">中3　理科</h3>
+        <span class="course-detail-meta">70分 × 3回</span>
+      </div>
+      <p class="course-detail-instructor">12月27日（日）③④⑤</p>
+      <p class="course-detail-desc">高校入試に向けた中3理科の対策講座。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト　英語R</h3>
         <span class="course-detail-meta">70分 × 4回</span>
       </div>
-      <p class="course-detail-instructor">担当講師　祐一郎</p>
-      <div class="course-detail-material">購入必要教材　河合塾『2027大学入学共通テスト過去問レビュー 数学I,A,II,B,C』</div>
+      <p class="course-detail-instructor">12月27日（日）⑥⑦　12月28日（月）②③</p>
+      <p class="course-detail-desc">共通テスト英語リーディングの対策講座。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト　数学I・A</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">12月29日（火）①②　1月1日（金）①②</p>
       <p class="course-detail-desc">共通テスト数学I・Aの対策講座。過去問を使った演習と解説を通して、独特の出題形式に慣れ、限られた時間で解ききるための手順を身につけます。</p>
     </div>
 
     <div class="course-detail">
       <div class="course-detail-header">
-        <h3 class="course-detail-title">共通テスト　数学Ⅱ・B・C 対策</h3>
+        <h3 class="course-detail-title">共通テスト　数学Ⅱ・B・C</h3>
         <span class="course-detail-meta">70分 × 4回</span>
       </div>
-      <p class="course-detail-instructor">担当講師　祐一郎</p>
-      <div class="course-detail-material">購入必要教材　河合塾『2027大学入学共通テスト過去問レビュー 数学I,A,II,B,C』</div>
+      <p class="course-detail-instructor">12月29日（火）③④　1月1日（金）③④</p>
       <p class="course-detail-desc">共通テスト数学Ⅱ・B・Cの対策講座。過去問演習と解説を重ねて、処理の速さと正確さを高めます。</p>
     </div>
 
     <div class="course-detail">
       <div class="course-detail-header">
-        <h3 class="course-detail-title">対策面談</h3>
-        <span class="course-detail-meta">20〜30分 / 受講者全員</span>
+        <h3 class="course-detail-title">共通テスト　化学演習</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
       </div>
-      <p class="course-detail-instructor">9月21日（月）13:00〜16:00</p>
-      <div class="course-detail-material">受講される方は全員、対策面談を受けていただきます</div>
-      <p class="course-detail-desc">現在の得点状況と志望校をふまえて、共通テストまでの残り期間に何をどの順で進めるべきかを一緒に整理します。生徒の特性を踏まえて、解き進める順番などの戦略も一緒に練ります。受講者が多い場合は、終了時間を延長して全員分の時間を確保します。</p>
+      <p class="course-detail-instructor">12月30日（水）①②　12月31日（木）①②</p>
+      <p class="course-detail-desc">共通テスト化学の演習講座。①〜④の通し受講を前提に、分野をひと通り演習します。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト　物理演習</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">12月30日（水）③④　12月31日（木）③④</p>
+      <p class="course-detail-desc">共通テスト物理の演習講座。①〜④の通し受講を前提に、分野をひと通り演習します。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト　統計</h3>
+        <span class="course-detail-meta">70分 × 2回</span>
+      </div>
+      <p class="course-detail-instructor">1月2日（土）①②</p>
+      <p class="course-detail-desc">共通テスト数学の統計分野にしぼった講座。</p>
+    </div>
+
+    <div class="course-detail">
+      <div class="course-detail-header">
+        <h3 class="course-detail-title">共通テスト　情報</h3>
+        <span class="course-detail-meta">70分 × 4回</span>
+      </div>
+      <p class="course-detail-instructor">1月5日（火）③④　1月6日（水）③④</p>
+      <p class="course-detail-desc">共通テスト「情報I」の対策講座。</p>
     </div>
   </div>
 
@@ -652,15 +898,19 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
           <span class="pricing-num">20,000</span>
           <span class="pricing-unit">円</span>
         </div>
+        <div class="pricing-desc" style="opacity:0.8; font-size:13px; line-height:2.4;">
+          共通テスト 英語R／数学I・A／数学Ⅱ・B・C／<br>
+          化学演習／物理演習／情報
+        </div>
       </div>
       <div class="pricing-card">
-        <div class="pricing-card-label">Note</div>
-        <div class="pricing-card-title">受講に関して</div>
+        <div class="pricing-card-label">Other</div>
+        <div class="pricing-card-title">上記以外の講座</div>
         <div class="pricing-desc" style="opacity:0.8; font-size:13px; line-height:2.4;">
-          今回は塾生の方のみのお申し込みとなります。<br>
-          対策面談は受講料に含まれます。<br>
-          2講座あわせての受講も可能です。<br>
-          講習期間中も通常授業を行います。
+          中3 社会　18,000円<br>
+          中3 理科　18,000円<br>
+          <strong style="font-weight:400;">中3 社会・理科 2講座セット　30,000円</strong><br>
+          共通テスト 統計（2授業）　10,000円
         </div>
       </div>
     </div>
@@ -671,7 +921,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     <p class="apply-text" id="applyIntro">申込開始日</p>
     <div id="applyContent">
       <div class="apply-pending">
-        <div class="ap-row"><span class="ap-label">受付開始</span><span class="ap-date">受付中</span></div>
+        <div class="ap-row"><span class="ap-label">受付開始</span><span class="ap-date">準備中</span></div>
       </div>
     </div>
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
@@ -683,11 +933,11 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     <div class="info-grid">
       <div class="info-item">
         <span class="info-label">申込期限</span>
-        <span class="info-value">2026年9月18日（金）</span>
+        <span class="info-value">2026年12月13日（日）</span>
       </div>
       <div class="info-item">
         <span class="info-label">お支払い</span>
-        <span class="info-value">通常授業のお支払い方法に、10月27日のお支払いに追加でご請求</span>
+        <span class="info-value">通常授業のお支払い方法に、12月27日のお支払いに追加でご請求</span>
       </div>
     </div>
   </div>
@@ -695,21 +945,32 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   <!-- 注意事項 -->
   <div class="note-section">
     <p>
-      ・共通テスト 数学I・A 対策は定員に達したため、受付を終了しました。<br>
-      ・今回のシルバーウィーク講習は、塾生の方のみのお申し込みとなります。<br>
+      ・今回の冬期講習は、塾生の方のみのお申し込みとなります。<br>
       ・各講座 定員12名となります。<br>
       ・定員になり次第、受付を終了いたします。お早めにお申し込みください。<br>
-      ・受講される方は全員、9月21日（月）の対策面談にご参加いただきます。時間は直接生徒と調整いたします。<br>
-      ・講習期間中も通常授業を行います。<br>
-      ・購入必要教材は、Amazon、書店等で購入可能なものとなっております。受講予定の講座前までには、ご自身で準備いただくようよろしくお願いいたします。
+      ・複数講座あわせての受講も可能です。<br>
+      ・講習期間中も通常授業を行います。
     </p>
   </div>
 
 </div>
 
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾</span>
-  <a href="/legal">特定商取引法に基づく表記</a>
+  <div class="footer-nap">
+    <p class="footer-nap-name">犬山数学理科特化塾</p>
+    <p><span class="footer-nap-campus">犬山校</span>愛知県犬山市犬山東古券423-8</p>
+    <p><span class="footer-nap-campus">岩倉校</span>愛知県岩倉市栄町2丁目70 清水住宅ビル201号室</p>
+    <p>開校時間 8:00〜22:00（年中無休）</p>
+    <p>
+      <a href="tel:07091514306">070-9151-4306</a>
+      <span class="footer-nap-sep">/</span>
+      <a href="mailto:inuyama@suritokka.com">inuyama@suritokka.com</a>
+    </p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 犬山数学理科特化塾</span>
+    <a href="/legal">特定商取引法に基づく表記</a>
+  </div>
 </footer>
 
 <script>
@@ -717,9 +978,9 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
    MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく申込ボタン非表示）
    CLOSED: 受付終了後は true にする（クリック不可の終了表示に差し替わる） */
 (function () {
-  const MANUAL_OPEN = true;
+  const MANUAL_OPEN = false;
   const CLOSED = false;
-  const memberOpen = new Date('2026-09-01T00:00:00+09:00');
+  const memberOpen = new Date('2026-11-16T00:00:00+09:00');
   /* 今回は塾生限定。到達しない日付を入れて「塾生以外は受付なし」の状態を保つ */
   const publicOpen = new Date('2099-01-01T00:00:00+09:00');
   const now = new Date();
@@ -729,7 +990,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   const applyNote = document.getElementById('applyNote');
   if (CLOSED) {
     applyIntro.style.display = 'none';
-    applyContent.innerHTML = '<span class="apply-btn is-closed"><span>シルバーウィーク講習の申込は終了しました。</span></span>';
+    applyContent.innerHTML = '<span class="apply-btn is-closed"><span>冬期講習の申込は終了しました。</span></span>';
     applyNote.style.display = 'none';
     return;
   }

@@ -64,18 +64,21 @@ master ブランチに push すると Vercel が自動デプロイします。�
 - `MANUAL_OPEN` — 申込ボタンを表示するかどうか
 - `CLOSED` — `true` にすると「◯◯講習の申込は終了しました。」というクリック不可の表示に差し替わる
 
-### 開講していない期間（現在この状態）
+### 公開の3つの状態
 
-講習が終わったら、ページは残したまま**到達できない状態**にします。
+| 状態 | `vercel.json` の redirects | ナビの「季節講習」 |
+|---|---|---|
+| 全公開 | なし | 入れる |
+| 直リンクのみ（**現在この状態**） | なし | 入れない |
+| 到達できない | `/intensive` `/apply` をトップへ一時転送（`permanent: false`） | 入れない |
 
-- `vercel.json` の redirects で `/intensive` と `/apply` をトップへ一時転送（`permanent: false`）
-- 全ページのナビから「季節講習」を外す
+**直リンクのみ**は、塾生限定の講習で使います。ページは生きているので URL を知っている人は開けますが、サイトを辿って来ることはできません。LINE などで URL を直接案内します。この状態では `sitemap.xml` に `/intensive` を載せません（`/kokugo` と同じ扱い）。
 
-ファイルは消しません。次の講習で中身を書き換えて再公開します。
+講習が終わったら、ページは残したまま**到達できない状態**にします。ファイルは消しません。次の講習で中身を書き換えて再公開します。
 
-### 再公開の手順
+### 全公開に切り替える手順
 
-1. `vercel.json` の redirects から `/intensive` と `/apply` の2行を削除
+1. `vercel.json` の redirects に `/intensive` と `/apply` が残っていたら削除
 2. 全ページのナビに「季節講習」を戻す（PC・スマホの2箇所ずつ）
 
 ```html
@@ -86,7 +89,8 @@ master ブランチに push すると Vercel が自動デプロイします。�
   <a href="/intensive">季節講習</a>
 ```
 
-3. `intensive.html` の中身を新しい講習に更新し、`CLOSED` を `false` に戻す
+3. `sitemap.xml` に `/intensive` を追加する
+4. `intensive.html` の中身を新しい講習に更新し、`CLOSED` を `false` に戻す
 
 ## 通常授業の時間割（`courses.html`）
 

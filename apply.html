@@ -31,12 +31,12 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<title>シルバーウィーク講習 申込フォーム | 犬山数学理科特化塾</title>
-<meta name="description" content="犬山数学理科特化塾 シルバーウィーク講習のお申し込みフォーム。共通テスト数学I・A／Ⅱ・B・C の対策講座から、受講する講座を選んでお申し込みください。">
+<title>冬期講習 申込フォーム | 犬山数学理科特化塾</title>
+<meta name="description" content="犬山数学理科特化塾 冬期講習のお申し込みフォーム。共通テスト対策の各講座から、受講する講座を選んでお申し込みください。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="犬山数学理科特化塾">
-<meta property="og:title" content="シルバーウィーク講習 申込フォーム | 犬山数学理科特化塾">
-<meta property="og:description" content="犬山数学理科特化塾 シルバーウィーク講習のお申し込みフォーム。共通テスト数学I・A／Ⅱ・B・C の対策講座から、受講する講座を選んでお申し込みください。">
+<meta property="og:title" content="冬期講習 申込フォーム | 犬山数学理科特化塾">
+<meta property="og:description" content="犬山数学理科特化塾 冬期講習のお申し込みフォーム。共通テスト対策の各講座から、受講する講座を選んでお申し込みください。">
 <meta property="og:url" content="https://www.suritokka.com/apply">
 <meta property="og:image" content="https://www.suritokka.com/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -543,7 +543,57 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .submit-btn { padding: 16px 48px; font-size: 13px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
+
+/* ============================================
+   Footer NAP（全ページ共通・住所と連絡先）
+   ============================================ */
+footer { flex-direction: column; gap: 30px; text-align: center; }
+.footer-nap { line-height: 2.1; }
+.footer-nap p { margin: 0; }
+.footer-nap-name { letter-spacing: 0.22em; margin-bottom: 8px !important; }
+.footer-nap-campus {
+  display: inline-block; min-width: 4.6em;
+  text-align: left; opacity: 0.6;
+}
+.footer-nap-sep { margin: 0 0.6em; opacity: 0.4; }
+.footer-nap a { color: inherit; text-decoration: none; }
+.footer-bottom {
+  display: flex; justify-content: center; align-items: center;
+  gap: 32px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(244, 239, 230, 0.12);
+  width: 100%; max-width: 560px;
+}
+@media (max-width: 768px) {
+  .footer-nap-campus { display: block; min-width: 0; text-align: center; margin-bottom: 2px; }
+  .footer-bottom { flex-direction: column; gap: 14px; }
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://www.suritokka.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "季節講習",
+      "item": "https://www.suritokka.com/intensive"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "申込フォーム",
+      "item": "https://www.suritokka.com/apply"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -575,8 +625,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 <!-- ↓↓↓ ここを毎回書き換える ↓↓↓ -->
 <div class="page-header">
   <div class="page-label">Application</div>
-  <h1 class="session-name">シルバーウィーク講習　申込フォーム</h1>
-  <p class="session-period">2026年9月21日（月）〜 9月23日（水）</p>
+  <h1 class="session-name">冬期講習　申込フォーム</h1>
+  <p class="session-period">2026年12月19日（土）〜 2027年1月6日（水）</p>
 </div>
 <!-- ↑↑↑ ここを毎回書き換える ↑↑↑ -->
 
@@ -590,7 +640,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       <div class="gate-rows">
         <div class="gate-row">
           <span class="gate-label">受付開始</span>
-          <span class="gate-date">2026年9月1日（火）</span>
+          <span class="gate-date">2026年11月16日（月）</span>
         </div>
       </div>
       <p class="gate-note">
@@ -609,7 +659,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
   </div>
 
   <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
-    今回のシルバーウィーク講習は、<strong>塾生の方のみ</strong>のお申し込みとなります。
+    今回の冬期講習は、<strong>塾生の方のみ</strong>のお申し込みとなります。
   </div>
 
   <form id="applyForm" novalidate>
@@ -686,11 +736,22 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       <div class="section-label">Course Selection</div>
       <h2 class="form-section-title">受講希望講座</h2>
       <p class="form-section-desc">
-        ご希望の講座をお選びください（1講座 = 4回セット ¥20,000）。<br>
+        ご希望の講座をお選びください（基本は1講座 4授業セット ¥20,000）。<br>
+        中3 社会・理科は各 ¥18,000、2講座あわせてのお申し込みで ¥30,000 になります。<br>
         時間割の詳細は <a href="/intensive" target="_blank" style="text-decoration:underline;">季節講習ページ</a> をご確認ください。
       </p>
 
       <div class="course-list" id="courseList"><!-- rendered by JS --></div>
+
+      <div class="selection-summary">
+        <div>
+          <div class="ss-label">Selected</div>
+          <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
+          <div id="ssSetBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;"></div>
+          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料</div>
+        </div>
+        <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
+      </div>
     </div>
 
     <!-- 全県模試（今回は実施なし。次回復活させる場合は style を外す） -->
@@ -702,15 +763,6 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       </p>
 
       <div class="course-list" id="mockExamList"><!-- rendered by JS --></div>
-
-      <div class="selection-summary">
-        <div>
-          <div class="ss-label">Selected</div>
-          <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
-          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料</div>
-        </div>
-        <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
-      </div>
     </div>
 
     <!-- 同意 -->
@@ -721,10 +773,11 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       <div class="agreement-box">
         <h4>お支払いについて</h4>
         <ul>
-          <li>受講料は1講座（4回セット）につき 20,000円 です。対策面談の費用は受講料に含まれます。</li>
-          <li>受講される方は全員、<strong>9月21日（月）13:00〜16:00</strong> の対策面談にご参加いただきます（お一人20〜30分ほど）。時間は直接生徒と調整いたします。</li>
-          <li>受講料は通常授業のお支払い方法に、10月27日のご請求へ追加でご請求いたします。</li>
-          <li>キャンセルは <strong>9月18日（金）まで</strong> 受け付けます。9/18（金）以降のキャンセルはご返金しかねます。</li>
+          <li>受講料は1講座（4授業セット）につき 20,000円 です。</li>
+          <li>中3 社会・中3 理科は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
+          <li>共通テスト 統計（2授業）は 10,000円 です。</li>
+          <li>受講料は通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。</li>
+          <li>キャンセルは <strong>12月13日（日）まで</strong> 受け付けます。12/13（日）以降のキャンセルはご返金しかねます。</li>
           <li>購入必要教材は、Amazon・書店等で購入可能なものとなっております。受講予定の講座前までには、ご自身でご準備くださいますようよろしくお願いいたします。</li>
         </ul>
       </div>
@@ -751,8 +804,21 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
 </div>
 
 <footer>
-  <span>&copy; 2024 犬山数学理科特化塾</span>
-  <a href="/legal">特定商取引法に基づく表記</a>
+  <div class="footer-nap">
+    <p class="footer-nap-name">犬山数学理科特化塾</p>
+    <p><span class="footer-nap-campus">犬山校</span>愛知県犬山市犬山東古券423-8</p>
+    <p><span class="footer-nap-campus">岩倉校</span>愛知県岩倉市栄町2丁目70 清水住宅ビル201号室</p>
+    <p>開校時間 8:00〜22:00（年中無休）</p>
+    <p>
+      <a href="tel:07091514306">070-9151-4306</a>
+      <span class="footer-nap-sep">/</span>
+      <a href="mailto:inuyama@suritokka.com">inuyama@suritokka.com</a>
+    </p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 犬山数学理科特化塾</span>
+    <a href="/legal">特定商取引法に基づく表記</a>
+  </div>
 </footer>
 
 <!-- EmailJS SDK -->
@@ -771,19 +837,40 @@ const GAS_WEBAPP_URL         = 'https://script.google.com/macros/s/AKfycbz1AhTLY
 /* ============================================================
    講座データ（季節講習ごとに書き換え）
    ============================================================ */
-/* 全講座共通。受講者は全員この面談を受ける */
-const MEETING_SLOT = { d: '9/21', label: '対策面談', time: '13:00-16:00' };
+/* 全講座共通の面談がある回のみ設定する（例: { d: '9/21', label: '対策面談', time: '13:00-16:00' }）。
+   今回は実施しないので null */
+const MEETING_SLOT = null;
 
 const PERIOD_TIMES = {
   1: '9:30-10:40', 2: '10:50-12:00', 3: '13:00-14:10', 4: '14:20-15:30',
-  5: '16:30-17:40', 6: '18:00-19:10', 7: '19:20-20:30', 8: '20:40-21:50',
+  5: '15:40-16:50', 6: '18:00-19:10', 7: '19:20-20:30', 8: '20:40-21:50',
 };
 
 const COURSES = [
-  { id: 'kyotsu-ia',  name: '共通テスト　数学I・A 対策', instructor: '祐一郎', price: 20000, full: true,
-    slots: [{d:'9/21',p:1},{d:'9/22',p:1},{d:'9/23',p:1},{d:'9/23',p:2}] },
-  { id: 'kyotsu-iib', name: '共通テスト　数学Ⅱ・B・C 対策', instructor: '祐一郎', price: 20000,
-    slots: [{d:'9/21',p:2},{d:'9/22',p:2},{d:'9/23',p:3},{d:'9/23',p:4}] },
+  { id: 'chu3-shakai',   name: '中3　社会', instructor: '', price: 18000,
+    slots: [{d:'12/20',p:3},{d:'12/20',p:4},{d:'12/20',p:5}] },
+  { id: 'chu3-rika',     name: '中3　理科', instructor: '', price: 18000,
+    slots: [{d:'12/27',p:3},{d:'12/27',p:4},{d:'12/27',p:5}] },
+  { id: 'kyotsu-eigo-r', name: '共通テスト　英語R', instructor: '', price: 20000,
+    slots: [{d:'12/27',p:6},{d:'12/27',p:7},{d:'12/28',p:2},{d:'12/28',p:3}] },
+  { id: 'kyotsu-ia',     name: '共通テスト　数学I・A', instructor: '', price: 20000,
+    slots: [{d:'12/29',p:1},{d:'12/29',p:2},{d:'1/1',p:1},{d:'1/1',p:2}] },
+  { id: 'kyotsu-iib',    name: '共通テスト　数学Ⅱ・B・C', instructor: '', price: 20000,
+    slots: [{d:'12/29',p:3},{d:'12/29',p:4},{d:'1/1',p:3},{d:'1/1',p:4}] },
+  { id: 'kyotsu-kagaku', name: '共通テスト　化学演習', instructor: '', price: 20000,
+    slots: [{d:'12/30',p:1},{d:'12/30',p:2},{d:'12/31',p:1},{d:'12/31',p:2}] },
+  { id: 'kyotsu-butsuri',name: '共通テスト　物理演習', instructor: '', price: 20000,
+    slots: [{d:'12/30',p:3},{d:'12/30',p:4},{d:'12/31',p:3},{d:'12/31',p:4}] },
+  { id: 'kyotsu-toukei', name: '共通テスト　統計', instructor: '', price: 10000,
+    slots: [{d:'1/2',p:1},{d:'1/2',p:2}] },
+  { id: 'kyotsu-jouhou', name: '共通テスト　情報', instructor: '', price: 20000,
+    slots: [{d:'1/5',p:3},{d:'1/5',p:4},{d:'1/6',p:3},{d:'1/6',p:4}] },
+];
+
+/* 複数講座をまとめて取ると割引になる組み合わせ。
+   ids を全部選んだときだけ、その合計が price になる */
+const COURSE_SETS = [
+  { ids: ['chu3-shakai', 'chu3-rika'], price: 30000, label: '中3 社会・理科 セット' },
 ];
 
 const MOCK_EXAMS = [
@@ -791,24 +878,24 @@ const MOCK_EXAMS = [
 
 const NON_MEMBER_FEE = 0;
 
-const SESSION_LABEL = 'シルバーウィーク講習 2026';
+const SESSION_LABEL = '冬期講習 2026';
 
 /* 自動返信メールに差し込む文言。講習ごとにここだけ書き換えれば
    EmailJS のテンプレートは触らなくてよい */
 const MAIL_TEXT = {
-  payment: '通常授業のお支払い方法に、10月27日のご請求へ追加でご請求いたします。',
-  transfer_deadline: '',   // 塾生以外の受付がある回のみ記入（例: '9月18日（金）'）
-  cancel: 'キャンセルは 9月18日（金）まで 受け付けます。9/18（金）以降のキャンセルはご返金しかねます。',
-  meeting: '受講される方は全員、9月21日（月）13:00〜16:00 の対策面談にご参加いただきます（お一人20〜30分ほど）。時間は直接生徒と調整いたします。',
+  payment: '通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。',
+  transfer_deadline: '',   // 塾生以外の受付がある回のみ記入（例: '12月13日（日）'）
+  cancel: 'キャンセルは 12月13日（日）まで 受け付けます。12/13（日）以降のキャンセルはご返金しかねます。',
+  meeting: '',
   capacity: '各講座 定員12名のため、定員に達した時点でその講座の受講受付は締切となります。',
 };
 
 /* 申込受付開始日（JST）
    MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示）
    ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
-const MANUAL_OPEN = true;
+const MANUAL_OPEN = false;
 const OPEN_DATES = {
-  member: new Date('2026-09-01T00:00:00+09:00'),
+  member: new Date('2026-11-16T00:00:00+09:00'),
   /* 今回は塾生限定。到達しない日付を入れて member-only 状態を維持する */
   public: new Date('2099-01-01T00:00:00+09:00'),
 };
@@ -835,10 +922,10 @@ function renderCourses() {
       <input type="checkbox" name="courses" value="${c.id}" ${c.full ? 'disabled' : ''}>
       <div class="course-card-check"></div>
       <div class="cc-name">${c.name}${c.full ? '<span class="cc-full">満席・受付終了</span>' : ''}</div>
-      <div class="cc-meta">担当 ${c.instructor}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
+      <div class="cc-meta">${c.instructor ? '担当 ' + c.instructor : '70分 × ' + c.slots.length + '回'}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
       <div class="cc-slots">
         ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
-        <span class="cc-slot">${MEETING_SLOT.d} ${MEETING_SLOT.label}</span>
+        ${MEETING_SLOT ? `<span class="cc-slot">${MEETING_SLOT.d} ${MEETING_SLOT.label}</span>` : ''}
       </div>
     </label>
   `).join('');
@@ -862,6 +949,21 @@ function renderMockExams() {
 /* ============================================================
    状態管理
    ============================================================ */
+/* 選択中の講座に適用されるセット割を返す */
+function getAppliedSets(selectedIds) {
+  return COURSE_SETS.filter(set => set.ids.every(id => selectedIds.includes(id)));
+}
+
+function getSetDiscount(selectedIds) {
+  return getAppliedSets(selectedIds).reduce((sum, set) => {
+    const listed = set.ids.reduce((s, id) => {
+      const c = COURSES.find(c => c.id === id);
+      return s + (c ? c.price : 0);
+    }, 0);
+    return sum + (listed - set.price);
+  }, 0);
+}
+
 function updateSummary() {
   const checked = document.querySelectorAll('input[name="courses"]:checked');
   const checkedMocks = document.querySelectorAll('input[name="mocks"]:checked');
@@ -882,11 +984,21 @@ function updateSummary() {
     const course = COURSES.find(c => c.id === el.value);
     return sum + (course ? course.price : 0);
   }, 0);
+  const selectedIds = Array.from(checked).map(el => el.value);
+  const appliedSets = getAppliedSets(selectedIds);
+  const discount = getSetDiscount(selectedIds);
+  const setBadge = document.getElementById('ssSetBadge');
+  if (appliedSets.length > 0) {
+    setBadge.style.display = 'block';
+    setBadge.textContent = appliedSets.map(s => s.label + '（' + s.price.toLocaleString() + '円）').join(' / ');
+  } else {
+    setBadge.style.display = 'none';
+  }
   const studentTypeEl = document.querySelector('input[name="studentType"]:checked');
   const nonMemberFee = (studentTypeEl && studentTypeEl.value === '塾生以外') ? NON_MEMBER_FEE : 0;
   document.getElementById('ssNonMemberBadge').style.display = nonMemberFee > 0 ? 'block' : 'none';
   document.getElementById('ssCount').textContent = count;
-  document.getElementById('ssTotal').textContent = (total + mockTotal + nonMemberFee).toLocaleString();
+  document.getElementById('ssTotal').textContent = (total - discount + mockTotal + nonMemberFee).toLocaleString();
 }
 
 function setupRadioCards() {
@@ -947,11 +1059,17 @@ function getFormData() {
 
   const courseLines = selectedCourses.map(c => {
     const slots = c.slots.map(s => `${s.d} ${periodSym(s.p)} (${PERIOD_TIMES[s.p]})`).join(' / ');
-    const withMeeting = slots + ` / ${MEETING_SLOT.d} ${MEETING_SLOT.label} (${MEETING_SLOT.time})`;
-    return `・${c.name}（担当: ${c.instructor}）\n  ${withMeeting}`;
+    const withMeeting = MEETING_SLOT
+      ? slots + ` / ${MEETING_SLOT.d} ${MEETING_SLOT.label} (${MEETING_SLOT.time})`
+      : slots;
+    const who = c.instructor ? `（担当: ${c.instructor}）` : '';
+    return `・${c.name}${who}\n  ${withMeeting}`;
   }).join('\n\n');
 
-  const courseTotal = selectedCourses.reduce((s, c) => s + c.price, 0);
+  const appliedSets = getAppliedSets(selectedIds);
+  const setDiscount = getSetDiscount(selectedIds);
+  const courseTotal = selectedCourses.reduce((s, c) => s + c.price, 0) - setDiscount;
+  const setLines = appliedSets.map(s => `※ ${s.label} 適用（${s.price.toLocaleString()}円）`).join('\n');
 
   const selectedMockIds = fd.getAll('mocks');
   const selectedMocks = selectedMockIds.map(id => MOCK_EXAMS.find(m => m.id === id)).filter(Boolean);
@@ -979,7 +1097,7 @@ function getFormData() {
     parent_name: (fd.get('parentName') || '').trim(),
     parent_phone: (fd.get('parentPhone') || '').trim(),
     course_count: selectedCourses.length,
-    course_list: courseLines || '（選択なし）',
+    course_list: (courseLines || '（選択なし）') + (setLines ? '\n\n' + setLines : ''),
     course_ids: selectedIds.join(','),
     mock_count: selectedMocks.length || '',
     payment_text: MAIL_TEXT.payment,
