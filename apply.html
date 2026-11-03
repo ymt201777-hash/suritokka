@@ -640,7 +640,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       <div class="gate-rows">
         <div class="gate-row">
           <span class="gate-label">受付開始</span>
-          <span class="gate-date">2026年11月16日（月）</span>
+          <span class="gate-date">2026年11月3日（火）</span>
         </div>
       </div>
       <p class="gate-note">
@@ -895,9 +895,9 @@ const MAIL_TEXT = {
 /* 申込受付開始日（JST）
    MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく Coming Soon 表示）
    ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
-const MANUAL_OPEN = false;
+const MANUAL_OPEN = true;
 const OPEN_DATES = {
-  member: new Date('2026-11-16T00:00:00+09:00'),
+  member: new Date('2026-11-03T00:00:00+09:00'),
   /* 今回は塾生限定。到達しない日付を入れて member-only 状態を維持する */
   public: new Date('2099-01-01T00:00:00+09:00'),
 };

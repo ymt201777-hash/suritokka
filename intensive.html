@@ -921,7 +921,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
     <p class="apply-text" id="applyIntro">申込開始日</p>
     <div id="applyContent">
       <div class="apply-pending">
-        <div class="ap-row"><span class="ap-label">受付開始</span><span class="ap-date">2026年11月16日（月）</span></div>
+        <div class="ap-row"><span class="ap-label">受付開始</span><span class="ap-date">2026年11月3日（火）</span></div>
       </div>
     </div>
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
@@ -978,9 +978,9 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
    MANUAL_OPEN: 公開指示が出たら true にする（false の間は日付関係なく申込ボタン非表示）
    CLOSED: 受付終了後は true にする（クリック不可の終了表示に差し替わる） */
 (function () {
-  const MANUAL_OPEN = false;
+  const MANUAL_OPEN = true;
   const CLOSED = false;
-  const memberOpen = new Date('2026-11-16T00:00:00+09:00');
+  const memberOpen = new Date('2026-11-03T00:00:00+09:00');
   /* 今回は塾生限定。到達しない日付を入れて「塾生以外は受付なし」の状態を保つ */
   const publicOpen = new Date('2099-01-01T00:00:00+09:00');
   const now = new Date();
