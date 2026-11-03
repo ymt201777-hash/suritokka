@@ -316,34 +316,47 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     color: rgba(14,12,10,0.85);
   }
 
-  /* セット割（中3 社会・理科）の見せ方 */
+  /* セット割（中3 社会・理科）の見せ方。
+     明るさは選択状態だけが決める（選ぶと白く明るくなる）。
+     セットであることは枠線・連結・下の価格帯で示し、背景は暗くしない */
+  .course-set { grid-column: 1 / -1; }
+  .course-set-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
   .cc-set-hint {
     display: none;
     margin: -9px 0 12px;
     font-size: 11px; letter-spacing: 0.05em; line-height: 1.6;
   }
   .cc-set-hint.show { display: block; }
-  .cc-price s { opacity: 0.45; margin-right: 7px; }
-  .cc-price-new { margin-right: 0; }
+  .cc-price s { opacity: 0.4; margin-right: 7px; }
+  .cc-price-new { color: #8a6534; }
 
   /* あと1講座でセットが成立する状態 */
-  .course-card.is-set-offer {
-    border-color: rgba(166,124,66,0.6);
-    background: rgba(200,184,154,0.16);
-  }
-  .course-card.is-set-offer .cc-price-new,
+  .course-card.is-set-offer { border-color: rgba(166,124,66,0.7); }
   .course-card.is-set-offer .cc-set-hint { color: #8a6534; }
 
-  /* セット成立。隣り合う2枚を1つのカードに見せる */
-  .course-card.is-set-done {
-    border-color: var(--ink);
-    background: rgba(200,184,154,0.3);
-  }
-  .course-card.is-set-done .cc-set-hint { color: rgba(14,12,10,0.7); }
+  /* セット成立。隣り合う2枚を1枚のカードに見せる */
+  .course-card.is-set-done .cc-price { text-decoration: line-through; opacity: 0.4; }
   .course-card.join-h-start { margin-right: -14px; border-right: none; }
-  .course-card.join-h-end { border-left-style: dashed; border-left-color: rgba(14,12,10,0.22); }
+  .course-card.join-h-end { border-left-style: dashed; border-left-color: rgba(14,12,10,0.25); }
   .course-card.join-v-start { margin-bottom: -14px; border-bottom: none; }
-  .course-card.join-v-end { border-top-style: dashed; border-top-color: rgba(14,12,10,0.22); }
+  .course-card.join-v-end { border-top-style: dashed; border-top-color: rgba(14,12,10,0.25); }
+
+  /* 連結したカードの下に、セット価格を中央にまとめて出す。
+     カード内の金額欄を書き換えると、18,000円の位置が別の数字に変わって
+     値上がりしたように見えるため、セット価格はここだけに置く */
+  .course-set-band { display: none; }
+  .course-set.is-done .course-set-band {
+    display: flex; justify-content: center; align-items: baseline;
+    flex-wrap: wrap; gap: 4px 18px;
+    margin-top: 14px; padding: 14px 18px;
+    border: 1px solid var(--ink);
+    background: rgba(255,255,255,0.85);
+  }
+  .csb-label { font-size: 11px; letter-spacing: 0.18em; color: rgba(14,12,10,0.55); }
+  .csb-price { font-family: var(--serif-en); font-size: 24px; font-weight: 300; letter-spacing: -0.01em; }
+  .csb-price .yen { font-size: 12px; letter-spacing: 0.1em; margin-left: 5px; opacity: 0.6; }
+  .csb-save { font-size: 11px; letter-spacing: 0.08em; color: #8a6534; }
 
   /* SUMMARY */
   .selection-summary {
@@ -569,6 +582,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     .field-row { grid-template-columns: 1fr; gap: 0; }
     .radio-group { grid-template-columns: 1fr; }
     .course-list { grid-template-columns: 1fr; }
+    .course-set-cards { grid-template-columns: 1fr; }
     .submit-btn { padding: 16px 48px; font-size: 13px; }
     footer { flex-direction: column; gap: 24px; text-align: center; padding: 48px 24px; }
   }
@@ -948,7 +962,9 @@ function getGateState() {
 function renderCourses() {
   const list = document.getElementById('courseList');
   const periodSym = (p) => ['①','②','③','④','⑤','⑥','⑦','⑧'][p-1];
-  list.innerHTML = COURSES.map(c => `
+  const indexOf = (id) => COURSES.findIndex(c => c.id === id);
+
+  const cardHtml = (c) => `
     <label class="course-card ${c.full ? 'is-full' : ''}" data-course-id="${c.id}" data-price="${c.price}">
       <input type="checkbox" name="courses" value="${c.id}" ${c.full ? 'disabled' : ''}>
       <div class="course-card-check"></div>
@@ -959,8 +975,33 @@ function renderCourses() {
         ${c.slots.map(s => `<span class="cc-slot">${s.d} ${periodSym(s.p)}</span>`).join('')}
         ${MEETING_SLOT ? `<span class="cc-slot">${MEETING_SLOT.d} ${MEETING_SLOT.label}</span>` : ''}
       </div>
-    </label>
-  `).join('');
+    </label>`;
+
+  /* COURSES の並びで連続しているセットは、1つの枠にまとめて描く。
+     離れている場合は普通のカードとして並べる（連結もセット価格帯も出さない） */
+  const grouped = COURSE_SETS.filter(set => {
+    const idx = set.ids.map(indexOf);
+    return idx.every(i => i >= 0) && idx.every((v, i) => i === 0 || v === idx[i-1] + 1);
+  });
+
+  let html = '';
+  for (let i = 0; i < COURSES.length; i++) {
+    const set = grouped.find(st => st.ids[0] === COURSES[i].id);
+    if (!set) { html += cardHtml(COURSES[i]); continue; }
+    const listed = set.ids.reduce((sum, id) => sum + COURSES[indexOf(id)].price, 0);
+    const saving = listed - set.price;
+    html += `
+    <div class="course-set">
+      <div class="course-set-cards">${set.ids.map(id => cardHtml(COURSES[indexOf(id)])).join('')}</div>
+      <div class="course-set-band">
+        <span class="csb-label">${set.label}</span>
+        <span class="csb-price">¥${set.price.toLocaleString()}<span class="yen">（2講座）</span></span>
+        <span class="csb-save">${saving.toLocaleString()}円おトク</span>
+      </div>
+    </div>`;
+    i += set.ids.length - 1;
+  }
+  list.innerHTML = html;
 }
 
 function renderMockExams() {
@@ -998,7 +1039,7 @@ function getSetDiscount(selectedIds) {
 
 /* セット割をカード上で見えるようにする。
    ・あと1講座でセットが成立 → 定価に取り消し線を入れ、差額だけで足せることを出す
-   ・セット成立 → 隣り合う2枚を連結して1つのカードに見せ、セット価格を出す */
+   ・セット成立 → 隣り合う2枚を連結し、セット価格は下の帯にまとめて出す */
 function updateSetHints(selectedIds) {
   const cards = [...document.querySelectorAll('.course-card[data-course-id]')];
   cards.forEach(card => {
@@ -1008,6 +1049,7 @@ function updateSetHints(selectedIds) {
     hint.textContent = '';
     card.querySelector('.cc-price').textContent = '¥' + Number(card.dataset.price).toLocaleString();
   });
+  document.querySelectorAll('.course-set').forEach(el => el.classList.remove('is-done'));
 
   const priceOf = (id) => {
     const c = COURSES.find(x => x.id === id);
@@ -1017,24 +1059,13 @@ function updateSetHints(selectedIds) {
   COURSE_SETS.forEach(set => {
     const setCards = set.ids.map(id => cards.find(el => el.dataset.courseId === id));
     if (setCards.some(el => !el)) return;
-    const listed = set.ids.reduce((sum, id) => sum + priceOf(id), 0);
-    const saving = listed - set.price;
+    const saving = set.ids.reduce((sum, id) => sum + priceOf(id), 0) - set.price;
     const chosen = set.ids.filter(id => selectedIds.includes(id));
 
     if (chosen.length === set.ids.length) {
-      setCards.forEach((card, i) => {
-        card.classList.add('is-set-done');
-        const hint = card.querySelector('.cc-set-hint');
-        const price = card.querySelector('.cc-price');
-        if (i === 0) {
-          price.innerHTML = '<s>¥' + listed.toLocaleString() + '</s><span class="cc-price-new">¥' + set.price.toLocaleString() + '</span>';
-          hint.textContent = set.label + '　' + saving.toLocaleString() + '円おトクになりました';
-        } else {
-          price.textContent = '';
-          hint.textContent = 'セット価格に含まれています';
-        }
-        hint.classList.add('show');
-      });
+      setCards.forEach(card => card.classList.add('is-set-done'));
+      const wrap = setCards[0].closest('.course-set');
+      if (wrap) wrap.classList.add('is-done');
       joinSetCards(setCards);
     } else if (chosen.length === set.ids.length - 1) {
       const nextId = set.ids.find(id => !selectedIds.includes(id));
@@ -1045,13 +1076,13 @@ function updateSetHints(selectedIds) {
       card.querySelector('.cc-price').innerHTML =
         '<s>¥' + priceOf(nextId).toLocaleString() + '</s><span class="cc-price-new">+¥' + addPrice.toLocaleString() + '</span>';
       const hint = card.querySelector('.cc-set-hint');
-      hint.textContent = 'あわせて選ぶと ' + saving.toLocaleString() + '円おトク（2講座で ' + set.price.toLocaleString() + '円）';
+      hint.textContent = 'あわせて選ぶと ' + saving.toLocaleString() + '円おトク';
       hint.classList.add('show');
     }
   });
 }
 
-/* 隣り合う2枚を1つのカードに見せる。PCは横並び、スマホは縦並びで連結する。
+/* 隣り合う2枚を1枚のカードに見せる。PCは横、スマホは縦に連結する。
    並びが離れているときは何もしない */
 function joinSetCards(setCards) {
   if (setCards.length !== 2) return;
