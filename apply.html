@@ -682,8 +682,12 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       <h2>お申し込み受付開始日</h2>
       <div class="gate-rows">
         <div class="gate-row">
-          <span class="gate-label">受付開始</span>
-          <span class="gate-date">2026年11月3日（火）</span>
+          <span class="gate-label">塾生</span>
+          <span class="gate-date">2026年11月7日（土）</span>
+        </div>
+        <div class="gate-row">
+          <span class="gate-label">塾生以外</span>
+          <span class="gate-date">2026年11月21日（土）</span>
         </div>
       </div>
       <p class="gate-note">
@@ -702,7 +706,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
   </div>
 
   <div class="gate-banner" id="memberOnlyBanner" style="display:none;">
-    今回の冬期講習は、<strong>塾生の方のみ</strong>のお申し込みとなります。
+    現在は<strong>塾生の方のみ</strong>の受付期間です。塾生以外の方は 11月21日（土） から受付開始です。
   </div>
 
   <form id="applyForm" novalidate>
@@ -792,7 +796,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
           <div class="ss-label">Selected</div>
           <div class="ss-count"><span id="ssCount">0</span> 講座<span id="ssMockBadge" style="display:none; margin-left:8px; font-size:13px; opacity:0.7;">+ <span id="ssMockCount">0</span> 模試</span></div>
           <div id="ssSetBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;"></div>
-          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本サービス料 ¥20,000</div>
+          <div id="ssNonMemberBadge" style="display:none; margin-top:6px; font-size:12px; opacity:0.7; letter-spacing:0.04em;">+ 塾生以外 基本料金 ¥20,000</div>
         </div>
         <div class="ss-total"><span id="ssTotal">0</span><span class="yen">円</span></div>
       </div>
@@ -821,7 +825,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
           <li>中3 社会・中3 理科は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
           <li>高2 物理・高2 化学は各 15,000円 です。</li>
           <li>共通テスト 統計（2授業）は 10,000円 です。</li>
-          <li>塾生以外の方は、上記の受講料に加えて <strong>基本サービス料 20,000円</strong>（講習期間中の自習室利用・LINEでの質問対応など）が必要です。</li>
+          <li>塾生以外の方は、上記の受講料に加えて <strong>基本料金 20,000円</strong>（12月19日〜1月17日の自習室利用・LINEでの質問対応など）が必要です。</li>
           <li><strong>塾生の方</strong>：受講料は通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。</li>
           <li><strong>塾生以外の方</strong>：12月13日（日）までに指定口座へお振込みください。お振込先はお申し込み後の自動返信メールにてご案内いたします。</li>
           <li>キャンセルは <strong>12月13日（日）まで</strong> 受け付けます。それ以降のキャンセルはご返金しかねます。</li>
@@ -948,8 +952,8 @@ const MAIL_TEXT = {
    ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
 const MANUAL_OPEN = true;
 const OPEN_DATES = {
-  member: new Date('2026-11-03T00:00:00+09:00'),
-  public: new Date('2026-11-03T00:00:00+09:00'),
+  member: new Date('2026-11-07T00:00:00+09:00'),
+  public: new Date('2026-11-21T00:00:00+09:00'),
 };
 
 const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
@@ -1395,7 +1399,7 @@ function applyGate() {
     nonMemberCard.classList.add('locked');
     const lock = document.createElement('div');
     lock.className = 'rc-lock';
-    lock.textContent = '今回は塾生のみになります。';
+    lock.textContent = '11月21日（土）から受付開始です。';
     nonMemberCard.appendChild(lock);
   }
   return true;

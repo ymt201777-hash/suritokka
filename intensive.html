@@ -989,7 +989,8 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
     <p class="apply-text" id="applyIntro">申込開始日</p>
     <div id="applyContent">
       <div class="apply-pending">
-        <div class="ap-row"><span class="ap-label">受付開始</span><span class="ap-date">2026年11月3日（火）</span></div>
+        <div class="ap-row"><span class="ap-label">塾生</span><span class="ap-date">2026年11月7日（土）</span></div>
+        <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年11月21日（土）</span></div>
       </div>
     </div>
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
@@ -1013,7 +1014,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
   <!-- 注意事項 -->
   <div class="note-section">
     <p>
-      ・塾生以外の方もお申し込みいただけます。受講料に加えて基本サービス料 20,000円（講習期間中の自習室利用・LINEでの質問対応など）が必要です。<br>
+      ・塾生以外の方もお申し込みいただけます。受講料に加えて基本料金 20,000円（12月19日〜1月17日の自習室利用・LINEでの質問対応など）が必要です。<br>
       ・各講座 定員12名となります。<br>
       ・定員になり次第、受付を終了いたします。お早めにお申し込みください。<br>
       ・複数講座あわせての受講も可能です。<br>
@@ -1048,8 +1049,8 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
 (function () {
   const MANUAL_OPEN = true;
   const CLOSED = false;
-  const memberOpen = new Date('2026-11-03T00:00:00+09:00');
-  const publicOpen = new Date('2026-11-03T00:00:00+09:00');
+  const memberOpen = new Date('2026-11-07T00:00:00+09:00');
+  const publicOpen = new Date('2026-11-21T00:00:00+09:00');
   const now = new Date();
   if (!MANUAL_OPEN || now < memberOpen) return;
   const applyIntro = document.getElementById('applyIntro');
@@ -1064,7 +1065,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
   applyIntro.textContent = '下記より、お申し込みいただけます。';
   applyContent.innerHTML = '<a href="/apply" class="apply-btn"><span>申込フォームへ進む</span></a>';
   if (now < publicOpen) {
-    applyNote.textContent = '※ 今回は塾生の方のみのお申し込みとなります。';
+    applyNote.textContent = '※ 現在は塾生の方のみの受付です。塾生以外の方は11月21日（土）から受付開始です。';
   } else {
     applyNote.style.display = 'none';
   }

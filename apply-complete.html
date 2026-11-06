@@ -424,7 +424,7 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
       addRow('生徒氏名', data.student_name);
       if (data.course_count > 0) addRow('受講講座', data.course_list);
       if (data.mock_count > 0) addRow('全県模試', data.mock_list);
-      if (data.non_member_fee > 0) addRow('塾生以外 基本サービス料', '¥' + data.non_member_fee.toLocaleString());
+      if (data.non_member_fee > 0) addRow('塾生以外 基本料金', '¥' + data.non_member_fee.toLocaleString());
       // 月額制の講座など、合計金額の見せ方を申込側から差し替えられるようにする
       if (data.total_label) document.getElementById('summaryTotalLabel').textContent = data.total_label;
       if (data.total_text) {
