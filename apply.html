@@ -780,7 +780,8 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       <h2 class="form-section-title">受講希望講座</h2>
       <p class="form-section-desc">
         ご希望の講座をお選びください（基本は1講座 4授業セット ¥20,000）。<br>
-        中3 社会・理科、高2 物理・化学は各 ¥18,000、同じ組み合わせの2講座あわせてのお申し込みで ¥30,000 になります。<br>
+        中3 社会・理科は各 ¥18,000、2講座あわせてのお申し込みで ¥30,000 になります。<br>
+        高2 物理・化学は各 ¥15,000 です。<br>
         時間割の詳細は <a href="/intensive" target="_blank" style="text-decoration:underline;">季節講習ページ</a> をご確認ください。
       </p>
 
@@ -818,7 +819,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
         <ul>
           <li>受講料は1講座（4授業セット）につき 20,000円 です。</li>
           <li>中3 社会・中3 理科は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
-          <li>高2 物理・高2 化学は各 18,000円、2講座あわせてのお申し込みで 30,000円 となります。</li>
+          <li>高2 物理・高2 化学は各 15,000円 です。</li>
           <li>共通テスト 統計（2授業）は 10,000円 です。</li>
           <li>塾生以外の方は、上記の受講料に加えて <strong>基本サービス料 20,000円</strong>（講習期間中の自習室利用・LINEでの質問対応など）が必要です。</li>
           <li><strong>塾生の方</strong>：受講料は通常授業のお支払い方法に、12月27日のご請求へ追加でご請求いたします。</li>
@@ -897,9 +898,9 @@ const COURSES = [
     slots: [{d:'12/20',p:3},{d:'12/20',p:4},{d:'12/20',p:5}] },
   { id: 'chu3-rika',     name: '中3　理科', instructor: '杉村', price: 18000,
     slots: [{d:'12/27',p:3},{d:'12/27',p:4},{d:'12/27',p:5}] },
-  { id: 'ko2-butsuri',   name: '高2　物理', instructor: '杉村', price: 18000,
+  { id: 'ko2-butsuri',   name: '高2　物理', instructor: '杉村', price: 15000,
     slots: [{d:'1/16',p:1},{d:'1/16',p:2},{d:'1/16',p:3}] },
-  { id: 'ko2-kagaku',    name: '高2　化学', instructor: '杉村', price: 18000,
+  { id: 'ko2-kagaku',    name: '高2　化学', instructor: '杉村', price: 15000,
     slots: [{d:'1/17',p:1},{d:'1/17',p:2},{d:'1/17',p:3}] },
   { id: 'kyotsu-eigo-r', name: '共通テスト　英語リーディング', instructor: '匠', price: 20000,
     slots: [{d:'12/27',p:6},{d:'12/27',p:7},{d:'12/28',p:2},{d:'12/28',p:3}] },
@@ -921,7 +922,6 @@ const COURSES = [
    ids を全部選んだときだけ、その合計が price になる */
 const COURSE_SETS = [
   { ids: ['chu3-shakai', 'chu3-rika'], price: 30000, label: '中3 社会・理科 セット' },
-  { ids: ['ko2-butsuri', 'ko2-kagaku'], price: 30000, label: '高2 物理・化学 セット' },
 ];
 
 const MOCK_EXAMS = [
