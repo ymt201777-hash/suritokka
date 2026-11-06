@@ -399,6 +399,16 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     color: rgba(14,12,10,0.5);
     margin-top: 16px; line-height: 1.7;
   }
+  .apply-join {
+    font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(14,12,10,0.6);
+    margin-top: 20px; line-height: 1.9;
+  }
+  .apply-join a {
+    color: var(--ink);
+    border-bottom: 1px solid rgba(14,12,10,0.3);
+    padding-bottom: 1px;
+  }
 
   .note-section {
     background: rgba(200,184,154,0.15);
@@ -994,6 +1004,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       </div>
     </div>
     <p class="apply-note" id="applyNote">受付開始日以降、こちらのページから申込フォームへ進めます。</p>
+    <p class="apply-join" id="applyJoin">入塾をご検討中の方へ<br>入塾後は、塾生として講習にお申し込みいただけます。<br><a href="/booking" onclick="if(typeof gtag==='function')gtag('event','intensive_join_click')">学習相談・体験授業のご予約はこちら</a></p>
   </div>
 
   <!-- 申込期限・お支払い -->
@@ -1061,6 +1072,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
     applyIntro.style.display = 'none';
     applyContent.innerHTML = '<span class="apply-btn is-closed"><span>冬期講習の申込は終了しました。</span></span>';
     applyNote.style.display = 'none';
+    document.getElementById('applyJoin').style.display = 'none';
     return;
   }
   applyIntro.textContent = '下記より、お申し込みいただけます。';
