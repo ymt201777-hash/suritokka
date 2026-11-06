@@ -12,7 +12,14 @@
       "Read(//c/Users/japog/Desktop/suritokka/**)",
       "Bash(done)",
       "Bash(do sed:*)",
-      "WebFetch(domain:docs.web3forms.com)"
+      "WebFetch(domain:docs.web3forms.com)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(powershell:*)",
+      "Bash(grep -l \"favicon-32x32\" *.html)",
+      "Bash(git *)",
+      "PowerShell(Move-Item *)",
+      "Bash(node *)"
     ]
   }
 }
