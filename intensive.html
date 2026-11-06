@@ -989,7 +989,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
     <p class="apply-text" id="applyIntro">申込開始日</p>
     <div id="applyContent">
       <div class="apply-pending">
-        <div class="ap-row"><span class="ap-label">塾生</span><span class="ap-date">2026年11月6日（金）</span></div>
+        <div class="ap-row"><span class="ap-label">塾生</span><span class="ap-date">2026年11月7日（土）10:00</span></div>
         <div class="ap-row"><span class="ap-label">塾生以外</span><span class="ap-date">2026年11月21日（土）</span></div>
       </div>
     </div>
@@ -1049,8 +1049,8 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
 (function () {
   const MANUAL_OPEN = true;
   const CLOSED = false;
-  const memberOpen = new Date('2026-11-06T00:00:00+09:00');
-  const publicOpen = new Date('2026-11-06T00:00:00+09:00'); /* 確認用に一時開放。11/21 に戻す */
+  const memberOpen = new Date('2026-11-07T10:00:00+09:00');
+  const publicOpen = new Date('2026-11-21T00:00:00+09:00');
   const now = new Date();
   if (!MANUAL_OPEN || now < memberOpen) return;
   const applyIntro = document.getElementById('applyIntro');

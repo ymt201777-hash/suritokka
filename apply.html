@@ -683,7 +683,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
       <div class="gate-rows">
         <div class="gate-row">
           <span class="gate-label">塾生</span>
-          <span class="gate-date">2026年11月6日（金）</span>
+          <span class="gate-date">2026年11月7日（土）10:00</span>
         </div>
         <div class="gate-row">
           <span class="gate-label">塾生以外</span>
@@ -952,8 +952,8 @@ const MAIL_TEXT = {
    ?preview=1 をURLに付けると MANUAL_OPEN・日付ゲートを両方バイパス（講師の公開前チェック用） */
 const MANUAL_OPEN = true;
 const OPEN_DATES = {
-  member: new Date('2026-11-06T00:00:00+09:00'),
-  public: new Date('2026-11-06T00:00:00+09:00'), /* 確認用に一時開放。11/21 に戻す */
+  member: new Date('2026-11-07T10:00:00+09:00'),
+  public: new Date('2026-11-21T00:00:00+09:00'),
 };
 
 const IS_PREVIEW = new URLSearchParams(location.search).has('preview');
