@@ -751,6 +751,13 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
   emailjs.init('LI36yHTHbw37mvKeA');
 
   const form = document.getElementById('bookingForm');
+
+  // ?campus=iwakura / inuyama で利用校を選んだ状態にする（LPからの予約用）
+  (function () {
+    const c = new URLSearchParams(location.search).get('campus');
+    const map = { iwakura: '岩倉校', inuyama: '犬山校' };
+    if (map[c]) form.campus.value = map[c];
+  })();
   const successMsg = document.getElementById('successMsg');
 
   form.addEventListener('submit', async (e) => {

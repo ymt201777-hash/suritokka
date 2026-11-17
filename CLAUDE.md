@@ -39,6 +39,7 @@ master ブランチに push すると Vercel が自動デプロイします。�
 | `apply-complete.html` | 申込完了ページ |
 | `intensive-template.html` | 季節講習ページの雛形（gitignore 済み・ローカル専用） |
 | `lp/inuyama.html` | Meta広告の飛ばし先LP（犬山校）。`/lp/inuyama` |
+| `lp/iwakura.html` | Meta広告の飛ばし先LP（岩倉校・自習室）。`/lp/iwakura` |
 
 ## フォーム（サーバーレス構成）
 
@@ -201,4 +202,5 @@ Meta広告の飛ばし先専用のページです。通常のサイトとは別�
 - ナビは最小限（ロゴと体験予約ボタンだけ）。下部に予約・LINEの固定ボタンがあります
 - ボタンには `data-cta="..."` を付けると、クリック時に GA4 の `lp_cta_click` イベント（`cta` `lp` `lp_variant`）が送られます。LINEボタン（`_line` で終わるもの）は Meta の `LineClick` も送ります
 - 最初の画面の見出しは、広告に合わせて切り替えます。末尾JSの `COPY` に版を足し、URLに `?v=版名` を付けて広告のリンク先にします（`utm_campaign` に `wakaru` が入っている場合も「わかる/できる」版になります）
+- 予約ボタンは `/booking?campus=iwakura`（または `inuyama`）にすると、予約フォームの利用校が選ばれた状態で開きます
 - 料金・実績・講師・体験記は通常ページの要約です。**正は `courses.html` `results.html` `instructors.html`** なので、そちらを変えたらLPも揃えてください
