@@ -207,6 +207,8 @@ src="https://www.facebook.com/tr?id=753103923459321&ev=PageView&noscript=1"
     font-weight: 200; font-size: 12.5px; letter-spacing: 0.06em;
     line-height: 2.4; opacity: 0.6;
   }
+  /* 講座名の途中で改行させない。折り返しは ／ の後ろだけ */
+  .pricing-desc .nw { white-space: nowrap; }
 
   /* SCHEDULE TABLE */
   .schedule-section { margin-bottom: 80px; }
@@ -978,8 +980,7 @@ footer { flex-direction: column; gap: 30px; text-align: center; }
           <span class="pricing-unit">円</span>
         </div>
         <div class="pricing-desc" style="opacity:0.8; font-size:13px; line-height:2.4;">
-          共通テスト 英語リーディング／数学I・A／数学Ⅱ・B・C／<br>
-          化学／物理／情報
+          <span class="nw">共通テスト 英語リーディング／</span><wbr><span class="nw">英語リスニング／</span><wbr><span class="nw">数学I・A／</span><wbr><span class="nw">数学Ⅱ・B・C／</span><wbr><span class="nw">化学／</span><wbr><span class="nw">物理／</span><wbr><span class="nw">情報</span>
         </div>
       </div>
       <div class="pricing-card">
