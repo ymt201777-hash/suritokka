@@ -939,6 +939,12 @@ const NON_MEMBER_FEE = 20000;
 
 const SESSION_LABEL = '冬期講習 2026';
 
+/* 定員。スプレッドシートの申込数がこの人数に達した講座は選べなくなる。
+   人数は GAS の doGet（?action=counts）から取得する。取得できないときは全講座を選べるままにする。
+   COURSES に full: true を書けば、人数に関係なく手動で締め切れる */
+const CAPACITY = 12;
+const FULL_LABEL = '定員に達しました。';
+
 /* 自動返信メールに差し込む文言。講習ごとにここだけ書き換えれば
    EmailJS のテンプレートは触らなくてよい */
 const MAIL_TEXT = {
@@ -983,7 +989,7 @@ function renderCourses() {
     <label class="course-card ${c.full ? 'is-full' : ''}" data-course-id="${c.id}" data-price="${c.price}">
       <input type="checkbox" name="courses" value="${c.id}" ${c.full ? 'disabled' : ''}>
       <div class="course-card-check"></div>
-      <div class="cc-name">${c.name}${c.full ? '<span class="cc-full">満席・受付終了</span>' : ''}</div>
+      <div class="cc-name">${c.name}${c.full ? '<span class="cc-full">' + FULL_LABEL + '</span>' : ''}</div>
       <div class="cc-meta">${'70分 × ' + c.slots.length + '回'}${c.instructor ? '　担当 ' + c.instructor : ''}<span class="cc-price">¥${c.price.toLocaleString()}</span></div>
       <div class="cc-set-hint"></div>
       <div class="cc-slots">
@@ -1181,6 +1187,7 @@ function setupCourseCards() {
   document.querySelectorAll('.course-card').forEach(card => {
     card.addEventListener('click', (e) => {
       e.preventDefault();
+      if (card.classList.contains('is-full')) return;
       const input = card.querySelector('input');
       input.checked = !input.checked;
       card.classList.toggle('selected', input.checked);
@@ -1197,6 +1204,53 @@ function setupCheckbox(fieldEl) {
     input.checked = !input.checked;
     fieldEl.classList.toggle('checked', input.checked);
   });
+}
+
+/* ============================================================
+   定員
+   ============================================================ */
+/* GAS から講座ごとの申込数を取る。失敗したら null（＝定員チェックをしない） */
+async function fetchCounts() {
+  if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.startsWith('YOUR_')) return null;
+  const url = GAS_WEBAPP_URL + '?action=counts&session=' + encodeURIComponent(SESSION_LABEL) + '&t=' + Date.now();
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const res = await fetch(url, { signal: ctrl.signal });
+    const json = JSON.parse(await res.text());
+    return (json && json.ok && json.counts) ? json.counts : null;
+  } catch (_) {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/* 定員に達した講座のカードを選べない状態にする。選択中なら外す。
+   締め切った講座の id の配列を返す */
+function applyCapacity(counts) {
+  const closed = [];
+  if (!counts) return closed;
+  COURSES.forEach(c => {
+    if (c.full || (counts[c.id] || 0) < CAPACITY) return;
+    c.full = true;
+    const card = document.querySelector('.course-card[data-course-id="' + c.id + '"]');
+    if (!card) return;
+    const input = card.querySelector('input');
+    if (input.checked) closed.push(c.id);
+    input.checked = false;
+    input.disabled = true;
+    card.classList.remove('selected');
+    card.classList.add('is-full');
+    if (!card.querySelector('.cc-full')) {
+      const tag = document.createElement('span');
+      tag.className = 'cc-full';
+      tag.textContent = FULL_LABEL;
+      card.querySelector('.cc-name').appendChild(tag);
+    }
+  });
+  updateSummary();
+  return closed;
 }
 
 /* ============================================================
@@ -1344,6 +1398,18 @@ async function handleSubmit(e) {
   btn.querySelector('span').textContent = '送信中...';
   showStatus('', '');
 
+  /* ページを開いてから送信までの間に定員に達した講座がないか確認する */
+  if (!IS_PREVIEW) {
+    const closed = applyCapacity(await fetchCounts());
+    if (closed.length > 0) {
+      const names = closed.map(id => COURSES.find(c => c.id === id).name.replace(/　/g, ' '));
+      showStatus('error', names.join('、') + ' は定員に達したため、選択を外しました。講座を確認して、もう一度送信してください。');
+      btn.disabled = false;
+      btn.querySelector('span').textContent = '申し込みを送信する';
+      return;
+    }
+  }
+
   try {
     // Email送信とSheets記録を並行実行。Sheetsが失敗してもEmailが届けば申込は成立とみなす。
     const [emailResult, gasResult] = await Promise.allSettled([
@@ -1425,6 +1491,7 @@ if (formActive) {
   setupCourseCards();
   setupCheckbox(document.getElementById('agreeField'));
   document.getElementById('applyForm').addEventListener('submit', handleSubmit);
+  fetchCounts().then(applyCapacity);
   /* PC↔スマホで並びが変わるとセットの連結方向も変わる */
   window.addEventListener('resize', updateSummary);
 }
