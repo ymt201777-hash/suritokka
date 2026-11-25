@@ -944,6 +944,8 @@ const SESSION_LABEL = '冬期講習 2026';
    COURSES に full: true を書けば、人数に関係なく手動で締め切れる */
 const CAPACITY = 12;
 const FULL_LABEL = '定員に達しました。';
+/* GAS から人数を取って自動で締め切るか。GAS に doGet を足すまでは false（手動で full: true を書く運用） */
+const AUTO_CAPACITY = false;
 
 /* 自動返信メールに差し込む文言。講習ごとにここだけ書き換えれば
    EmailJS のテンプレートは触らなくてよい */
@@ -1211,6 +1213,7 @@ function setupCheckbox(fieldEl) {
    ============================================================ */
 /* GAS から講座ごとの申込数を取る。失敗したら null（＝定員チェックをしない） */
 async function fetchCounts() {
+  if (!AUTO_CAPACITY) return null;
   if (!GAS_WEBAPP_URL || GAS_WEBAPP_URL.startsWith('YOUR_')) return null;
   const url = GAS_WEBAPP_URL + '?action=counts&session=' + encodeURIComponent(SESSION_LABEL) + '&t=' + Date.now();
   const ctrl = new AbortController();
